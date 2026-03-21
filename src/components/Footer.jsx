@@ -7,6 +7,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Linkedin, Twitter } from "lucide-react";
+import LocMap from "./LocMap";
 
 /* ── Column data ─────────────────────────────────── */
 const COMPANY_LINKS = [
@@ -39,8 +40,8 @@ export default function Footer() {
   return (
     <footer className="bg-navy-900 text-white">
       {/* ── Main columns ── */}
-      <div className="container-site py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container-site py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
             {/* Logo */}
@@ -138,6 +139,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <LocMap />
           </div>
         </div>
       </div>

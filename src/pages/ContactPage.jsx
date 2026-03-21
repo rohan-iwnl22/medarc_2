@@ -6,17 +6,18 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
 import { Button, TagLabel } from "../components/ui.jsx";
+import LocMap from "../components/LocMap.jsx";
 
 /* ── Contact info items ───────────────────────────── */
 const INFO = [
   {
-    icon:  MapPin,
+    icon: MapPin,
     label: "Address",
-    text:  "100 Innovation Drive, Suite 400\nCambridge, MA 02142",
+    text: "Plot no:25, Wardhaman Nagar, Ring Road \n Kaulkhed Akola 444004",
   },
-  { icon: Phone, label: "Phone",  text: "+1 (800) 555-0199" },
-  { icon: Mail,  label: "Email",  text: "contact@medarc.com" },
-  { icon: Clock, label: "Hours",  text: "Mon–Fri: 8 AM – 6 PM ET" },
+  { icon: Phone, label: "Phone", text: "+91 9359283227" },
+  { icon: Mail, label: "Email", text: "latika.medarc@gmail.com" },
+  { icon: Clock, label: "Hours", text: "Mon–Fri: 8 AM – 6 PM ET" },
 ];
 
 /* ── Interest options for form ────────────────────── */
@@ -32,9 +33,16 @@ const INTERESTS = [
 /* ═══════════════════════════════════════════════════ */
 export default function ContactPage() {
   /* Form state */
-  const [form, setForm]       = useState({ name: "", company: "", email: "", phone: "", interest: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    interest: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading]     = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,12 +66,11 @@ export default function ContactPage() {
         <div className="container-site text-center">
           <TagLabel>Get In Touch</TagLabel>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mt-4 mb-3">
-            Let's discuss your{" "}
-            <span className="text-gradient">next study</span>
+            Let's discuss your <span className="text-gradient">next study</span>
           </h1>
           <p className="text-stone-500 max-w-md mx-auto">
-            Whether you're planning your first-in-human trial or need regulatory support for a market
-            submission, our team is ready to help.
+            Whether you're planning your first-in-human trial or need regulatory
+            support for a market submission, our team is ready to help.
           </p>
         </div>
       </section>
@@ -72,7 +79,6 @@ export default function ContactPage() {
       <section className="section-pad">
         <div className="container-site">
           <div className="grid lg:grid-cols-3 gap-12">
-
             {/* ── Contact info sidebar ── */}
             <aside className="space-y-6">
               {INFO.map(({ icon: Icon, label, text }) => (
@@ -84,17 +90,23 @@ export default function ContactPage() {
                     <p className="text-xs font-mono font-semibold uppercase tracking-wider text-stone-400 mb-0.5">
                       {label}
                     </p>
-                    <p className="text-sm text-stone-700 whitespace-pre-line leading-relaxed">{text}</p>
+                    <p className="text-sm text-stone-700 whitespace-pre-line leading-relaxed">
+                      {text}
+                    </p>
                   </div>
                 </div>
               ))}
 
               {/* Map placeholder */}
-              <div className="rounded-2xl overflow-hidden bg-stone-100 h-44 flex items-center justify-center border border-stone-200">
+              {/* <div className="rounded-2xl overflow-hidden bg-stone-100 h-44 flex items-center justify-center border border-stone-200">
                 <div className="text-center">
-                  <MapPin size={28} className="text-primary-400 mx-auto mb-1" />
+                  <MapPin l size={28} className="text-primary-400 mx-auto mb-1" />
                   <p className="text-xs text-stone-400">Cambridge, MA 02142</p>
                 </div>
+              </div> */}
+
+              <div className=" flex items-center justify-center">
+                <LocMap/>
               </div>
             </aside>
 
@@ -108,20 +120,30 @@ export default function ContactPage() {
                     Message Received!
                   </h2>
                   <p className="text-stone-500 max-w-sm mb-6">
-                    Thank you for reaching out. A member of our team will be in touch within one business day.
+                    Thank you for reaching out. A member of our team will be in
+                    touch within one business day.
                   </p>
                   <Button onClick={() => setSubmitted(false)} variant="outline">
                     Send Another Message
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="card space-y-5" noValidate>
-                  <h2 className="font-display text-xl font-bold text-stone-900">Request a Consultation</h2>
+                <form
+                  onSubmit={handleSubmit}
+                  className="card space-y-5"
+                  noValidate
+                >
+                  <h2 className="font-display text-xl font-bold text-stone-900">
+                    Request a Consultation
+                  </h2>
 
                   {/* Name + Company */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-stone-700 mb-1">
+                      <label
+                        htmlFor="name"
+                        className="block text-xs font-semibold text-stone-700 mb-1"
+                      >
                         Full Name <span className="text-red-400">*</span>
                       </label>
                       <input
@@ -136,7 +158,10 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-stone-700 mb-1">
+                      <label
+                        htmlFor="company"
+                        className="block text-xs font-semibold text-stone-700 mb-1"
+                      >
                         Company / Institution
                       </label>
                       <input
@@ -154,7 +179,10 @@ export default function ContactPage() {
                   {/* Email + Phone */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-stone-700 mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-xs font-semibold text-stone-700 mb-1"
+                      >
                         Email <span className="text-red-400">*</span>
                       </label>
                       <input
@@ -169,7 +197,10 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-stone-700 mb-1">
+                      <label
+                        htmlFor="phone"
+                        className="block text-xs font-semibold text-stone-700 mb-1"
+                      >
                         Phone
                       </label>
                       <input
@@ -186,7 +217,10 @@ export default function ContactPage() {
 
                   {/* Area of interest */}
                   <div>
-                    <label htmlFor="interest" className="block text-xs font-semibold text-stone-700 mb-1">
+                    <label
+                      htmlFor="interest"
+                      className="block text-xs font-semibold text-stone-700 mb-1"
+                    >
                       Area of Interest
                     </label>
                     <select
@@ -198,14 +232,19 @@ export default function ContactPage() {
                     >
                       <option value="">Select a service…</option>
                       {INTERESTS.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
                       ))}
                     </select>
                   </div>
 
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-stone-700 mb-1">
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-semibold text-stone-700 mb-1"
+                    >
                       Message <span className="text-red-400">*</span>
                     </label>
                     <textarea
@@ -223,8 +262,10 @@ export default function ContactPage() {
                   {/* Privacy note */}
                   <p className="text-[11px] text-stone-400 leading-relaxed">
                     By submitting this form you agree to our{" "}
-                    <span className="text-primary-500 underline cursor-pointer">Privacy Policy</span>.
-                    Your information will never be shared with third parties.
+                    <span className="text-primary-500 underline cursor-pointer">
+                      Privacy Policy
+                    </span>
+                    . Your information will never be shared with third parties.
                   </p>
 
                   {/* Submit */}
