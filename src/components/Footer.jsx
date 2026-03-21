@@ -10,24 +10,27 @@ import { MapPin, Phone, Mail, Linkedin, Twitter } from "lucide-react";
 
 /* ── Column data ─────────────────────────────────── */
 const COMPANY_LINKS = [
-  { label: "About Us",       to: "/about" },
+  { label: "About Us", to: "/about" },
   { label: "Leadership Team", to: "/about" },
-  { label: "Careers",        to: "/contact" },
-  { label: "News & Press",   to: "/contact" },
+  { label: "Careers", to: "/contact" },
+  { label: "News & Press", to: "/contact" },
 ];
 
 const SERVICE_LINKS = [
-  { label: "Clinical Operations",  to: "/services" },
-  { label: "Regulatory Affairs",   to: "/regulatory" },
-  { label: "Data Management",      to: "/services" },
-  { label: "Biostatistics",        to: "/services" },
-  { label: "Pharmacovigilance",    to: "/services" },
+  { label: "Clinical Operations", to: "/services" },
+  { label: "Regulatory Affairs", to: "/regulatory" },
+  { label: "Data Management", to: "/services" },
+  { label: "Biostatistics", to: "/services" },
+  { label: "Pharmacovigilance", to: "/services" },
 ];
 
 const CONTACT_INFO = [
-  { icon: MapPin, text: "100 Innovation Drive, Suite 400, Cambridge, MA 02142" },
-  { icon: Phone,  text: "+1 (800) 555-0199" },
-  { icon: Mail,   text: "contact@medarc.com" },
+  {
+    icon: MapPin,
+    text: "Plot no:25, wardhaman Nagar, Ring Road Kaulkhed Akola 444004",
+  },
+  { icon: Phone, text: "+91-9359283227" },
+  { icon: Mail, text: "latika.medarc@gmail.com" },
 ];
 
 export default function Footer() {
@@ -38,7 +41,6 @@ export default function Footer() {
       {/* ── Main columns ── */}
       <div className="container-site py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
           {/* Brand column */}
           <div className="lg:col-span-1">
             {/* Logo */}
@@ -46,18 +48,20 @@ export default function Footer() {
               <span className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold text-sm font-mono">
                 +
               </span>
-              <span className="font-display font-bold text-lg tracking-tight">MedArc</span>
+              <span className="font-display font-bold text-lg tracking-tight">
+                MedArc
+              </span>
             </Link>
 
             <p className="text-sm text-white/60 leading-relaxed mb-5">
-              Advancing medical research through precision clinical trial management and
-              rigorous regulatory compliance.
+              Advancing medical research through precision clinical trial
+              management and rigorous regulatory compliance.
             </p>
 
             {/* Social icons */}
             <div className="flex items-center gap-3">
               <a
-                href="https://linkedin.com"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -66,7 +70,7 @@ export default function Footer() {
                 <Linkedin size={15} />
               </a>
               <a
-                href="https://twitter.com"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter / X"
@@ -122,8 +126,14 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {CONTACT_INFO.map(({ icon: Icon, text }) => (
-                <li key={text} className="flex items-start gap-2 text-sm text-white/70">
-                  <Icon size={14} className="mt-0.5 shrink-0 text-primary-400" />
+                <li
+                  key={text}
+                  className="flex items-start gap-2 text-sm text-white/70"
+                >
+                  <Icon
+                    size={14}
+                    className="mt-0.5 shrink-0 text-primary-400"
+                  />
                   <span>{text}</span>
                 </li>
               ))}
@@ -137,8 +147,18 @@ export default function Footer() {
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
           <span>© {year} MedArc Clinical Research. All rights reserved.</span>
           <div className="flex items-center gap-4">
-            <Link to="/contact" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
-            <Link to="/contact" className="hover:text-white/70 transition-colors">Terms of Service</Link>
+            <Link
+              to="/contact"
+              className="hover:text-white/70 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-white/70 transition-colors"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
