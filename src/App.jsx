@@ -7,14 +7,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Navbar   from "./components/Navbar.jsx";
-import Footer   from "./components/Footer.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 
-import HomePage       from "./pages/HomePage.jsx";
-import ServicesPage   from "./pages/ServicesPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import ServicesPage from "./pages/ServicesPage.jsx";
 import RegulatoryPage from "./pages/RegulatoryPage.jsx";
-import AboutPage      from "./pages/AboutPage.jsx";
-import ContactPage    from "./pages/ContactPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import IEC from "./pages/IEC.jsx";
 
 export default function App() {
   return (
@@ -25,13 +26,14 @@ export default function App() {
       {/* ── Page content ── */}
       <main className="flex-1">
         <Routes>
-          <Route path="/"            element={<HomePage />} />
-          <Route path="/services"    element={<ServicesPage />} />
-          <Route path="/regulatory"  element={<RegulatoryPage />} />
-          <Route path="/about"       element={<AboutPage />} />
-          <Route path="/contact"     element={<ContactPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/regulatory" element={<RegulatoryPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/iec" element={<IEC />} />
           {/* Fallback — redirect to home */}
-          <Route path="*"            element={<HomePage />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
 

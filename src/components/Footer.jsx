@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Linkedin, Twitter } from "lucide-react";
 import LocMap from "./LocMap";
 
+const LogoURL = "https://i.postimg.cc/15qwdk59/med-Arc-Logo.jpg";
+
 /* ── Column data ─────────────────────────────────── */
 const COMPANY_LINKS = [
   { label: "NDCT", to: "https://cdsco.gov.in/opencms/opencms/en/Home/" },
@@ -50,37 +52,47 @@ export default function Footer() {
       <div className="container-site py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold text-sm font-mono">
-                +
-              </span>
-              <span className="font-display font-bold text-lg tracking-tight">
+          <div className="lg:col-span-1 space-y-5">
+            {/* Logo + Brand */}
+            <div className="flex items-center gap-3">
+              <div className="bg-white/10 backdrop-blur-md p-2 rounded-lg shadow-lg ring-1 ring-white/10">
+                <img
+                  src={LogoURL}
+                  alt="MedArc Logo"
+                  className="h-10 w-auto object-contain"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              </div>
+
+              <span className="text-lg font-semibold text-white tracking-tight">
                 MedArc
               </span>
-            </Link>
+            </div>
 
-            <p className="text-sm text-white/60 leading-relaxed mb-5">
+            {/* Description */}
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
               Advancing medical research through precision clinical trial
               management and rigorous regulatory compliance.
             </p>
 
-            <div className="flex items-center gap-3">
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 pt-2">
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-md bg-white/10 hover:bg-primary-500 flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary-500 hover:scale-105 flex items-center justify-center transition-all duration-200"
               >
-                <Linkedin size={15} />
+                <Linkedin size={16} />
               </a>
+
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-md bg-white/10 hover:bg-primary-500 flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary-500 hover:scale-105 flex items-center justify-center transition-all duration-200"
               >
-                <Twitter size={15} />
+                <Twitter size={16} />
               </a>
             </div>
           </div>
