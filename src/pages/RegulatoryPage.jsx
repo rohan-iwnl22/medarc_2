@@ -1,6 +1,6 @@
 /**
  * RegulatoryPage.jsx
- * Updated with real MedArc Regulatory Services content
+ * Updated with Regulatory + Medical Writing Services
  */
 
 import React from "react";
@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   FlaskConical,
   Layers,
+  PenTool,
 } from "lucide-react";
 
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
@@ -73,6 +74,20 @@ const SECTIONS = [
       "FDA Electronic Submissions Gateway (ESG) coordination",
     ],
   },
+
+  /* ✅ NEW SECTION ADDED */
+  {
+    icon: PenTool,
+    title: "Medical Writing Services",
+    desc: "Comprehensive medical writing support for clinical research, regulatory submissions, and study documentation.",
+    items: [
+      "Protocol development for PI-initiated, observational, Ayurvedic, and cosmetic studies",
+      "Preparation of Informed Consent Documents (ICDs) in English with translation support (Marathi, Hindi)",
+      "Design of Case Report Forms (CRFs) and study manuals",
+      "Development of data collection tools and supporting study documents",
+      "Compilation and review of regulatory submission packages for Ethics Committees and authorities",
+    ],
+  },
 ];
 
 /* ═══════════════════════════════════════════════════ */
@@ -81,7 +96,7 @@ export default function RegulatoryPage() {
 
   return (
     <>
-      {/* ══ HERO ═══════════════════════════════════ */}
+      {/* HERO */}
       <section className="pt-32 pb-16 bg-stone-50 border-b border-stone-100">
         <div className="container-site text-center">
           <span className="tag-label mb-4 inline-block">
@@ -96,13 +111,14 @@ export default function RegulatoryPage() {
             MedArc Clinical Research offers comprehensive regulatory affairs and
             medical writing services to support global product development and
             lifecycle management. Our team brings strong expertise in regulatory
-            strategy, dossier preparation, and submission management across the
-            United States, Europe, and international markets.
+            strategy, dossier preparation, submission management, and clinical
+            documentation across the United States, Europe, and international
+            markets.
           </p>
         </div>
       </section>
 
-      {/* ══ INTRO HIGHLIGHT ═════════════════════════ */}
+      {/* INTRO */}
       <section className="section-pad">
         <div className="container-site">
           <div className="bg-primary-50 border border-primary-100 rounded-2xl p-6 md:p-8">
@@ -110,21 +126,22 @@ export default function RegulatoryPage() {
               We provide specialized support in regulatory documentation,
               clinical and non-clinical literature searches, product research,
               Structured Product Labeling (SPL), FDA Electronic Submissions
-              Gateway (ESG), Certificate of Pharmaceutical Product (CPP), and
-              Site Master File (SMF) preparation.
+              Gateway (ESG), Certificate of Pharmaceutical Product (CPP), Site
+              Master File (SMF), and end-to-end medical writing services for
+              clinical and regulatory requirements.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ══ MAIN SECTIONS ═══════════════════════════ */}
+      {/* MAIN SECTIONS */}
       <section className="section-pad bg-stone-50">
         <div className="container-site">
           <div ref={sectionRef} className="reveal">
             <SectionHeader
               label="Our Capabilities"
-              title="Comprehensive Regulatory Support"
-              subtitle="End-to-end regulatory services covering submissions, compliance, lifecycle management, and FDA support."
+              title="Comprehensive Regulatory & Medical Writing Support"
+              subtitle="End-to-end services covering regulatory submissions, compliance, lifecycle management, FDA support, and medical writing."
               className="mb-14"
             />
           </div>
@@ -155,17 +172,17 @@ export default function RegulatoryPage() {
         </div>
       </section>
 
-      {/* ══ CTA ════════════════════════════════════ */}
+      {/* CTA */}
       <section className="py-20 bg-navy-900 text-center">
         <div className="container-site">
           <h2 className="section-title-light mb-3 max-w-xl mx-auto">
-            Need regulatory support for your product?
+            Need regulatory or medical writing support?
           </h2>
 
           <p className="text-white/60 mb-8 max-w-md mx-auto">
-            Partner with MedArc Clinical Research for reliable regulatory
-            strategy, documentation, and submission support across global
-            markets.
+            Partner with MedArc Clinical Research for expert regulatory
+            strategy, documentation, submissions, and high-quality medical
+            writing services across global markets.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
