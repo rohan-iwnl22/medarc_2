@@ -106,7 +106,7 @@ export default function ContactPage() {
               </div> */}
 
               <div className=" flex items-center justify-center">
-                <LocMap/>
+                <LocMap theme="light" />
               </div>
             </aside>
 

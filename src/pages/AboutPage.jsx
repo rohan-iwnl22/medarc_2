@@ -22,14 +22,6 @@ import {
 } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-/* ── Stats (Updated) ─────────────────────────────── */
-const STATS = [
-  { value: "2023", label: "Established" },
-  { value: "Phase I–IV", label: "Trial Support" },
-  { value: "100%", label: "GCP Compliance" },
-  { value: "High", label: "Client Retention" },
-];
-
 /* ── Core Strengths ──────────────────────────────── */
 const VALUES = [
   {
@@ -81,13 +73,6 @@ export default function AboutPage() {
           <Button to="/contact" variant="accent">
             Partner With Us
           </Button>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-16 pt-10 border-t border-stone-200 max-w-3xl mx-auto">
-            {STATS.map((s) => (
-              <StatCard key={s.label} value={s.value} label={s.label} />
-            ))}
-          </div>
         </div>
       </section>
 
