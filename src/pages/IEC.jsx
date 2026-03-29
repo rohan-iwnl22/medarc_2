@@ -56,7 +56,7 @@ const IEC = () => {
   return (
     <>
       {/* HERO */}
-      <section className="pt-32 pb-16 bg-stone-50 border-b border-stone-100">
+      <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
           <span className="tag-label mb-4 inline-block">
             Ethics Committee Services
@@ -90,7 +90,7 @@ const IEC = () => {
       </section>
 
       {/* MAIN SECTIONS */}
-      <section className="section-pad bg-stone-50">
+      <section className="section-pad bg-[#f7f6f4]">
         <div className="container-site">
           <div ref={sectionRef} className="reveal">
             <SectionHeader

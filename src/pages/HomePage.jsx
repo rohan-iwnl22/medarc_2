@@ -18,13 +18,7 @@ import {
 import { Button, SectionHeader, StatCard } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-/* ── Data ───────────────────────── */
-const STATS = [
-  { value: "2023", label: "Established" },
-  { value: "Phase I–IV", label: "Trial Support" },
-  { value: "100%", label: "GCP Compliance" },
-  { value: "High", label: "Client Retention" },
-];
+const BannerURL = "https://i.postimg.cc/ZRph1XnG/home-banner.png";
 
 const SERVICES = [
   {
@@ -74,41 +68,59 @@ export default function HomePage() {
   return (
     <>
       {/* ══ HERO ═════════════════════ */}
-      <section className="relative min-h-screen bg-navy-900 flex items-center overflow-hidden pt-16">
-        {/* Background glow */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-600/20 blur-3xl rounded-full" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-500/10 blur-3xl rounded-full" />
-        </div>
-
-        <div className="container-site relative z-10 py-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* LEFT */}
-            <div ref={heroRef} className="max-w-xl">
-              <span className="text-xs uppercase tracking-widest text-primary-400 border border-primary-700 px-3 py-1 rounded-full mb-6 inline-block">
-                Clinical Research Support Organization
+      <section className="pt-32 pb-16 border-b border-stone-200">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* LEFT — Text Content */}
+            <div ref={heroRef} className="reveal">
+              <span className="tag-label mb-4 inline-block bg-primary-500/10 text-primary-600 border-primary-500/30">
+                Site Management Organization
               </span>
 
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                Advancing Clinical Research with{" "}
-                <span className="text-gradient">Integrity & Excellence</span>
+              <h1 className="section-title max-w-xl mb-4 text-gray-900">
+                MedArc Clinical Research{" "}
+                <span className="text-primary-600">Pvt. Ltd.</span>
               </h1>
 
-              {/* CLEAN TEXT */}
-              <p className="text-white/70 mb-6 leading-relaxed">
-                MedArc Clinical Research supports investigators, hospitals, and
-                sponsors in conducting ethical, compliant, and efficient
-                clinical studies.
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                MedArc Clinical Research Pvt. Ltd. is a distinguished and
+                trusted Site Management Organization (SMO) dedicated to
+                delivering unparalleled excellence in clinical trial management
+                across India. Our steadfast commitment to quality is powerfully
+                reflected in our rigorous adherence to the highest global
+                industry standards and best practices — upheld at every critical
+                stage of the research journey.
               </p>
 
-              {/* BULLET STYLE */}
-              <ul className="text-white/60 text-sm space-y-2 mb-8">
-                <li>• Clinical trial management & regulatory support</li>
-                <li>• Strong adherence to GCP & ethical standards</li>
-                <li>• Supporting pharma, biotech & medical devices</li>
-              </ul>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                At MedArc Clinical Research, we have meticulously developed
+                comprehensive Standard Operating Procedures (SOPs) that not only
+                meet but consistently surpass regulatory expectations — ensuring
+                efficient, precise, and seamless execution of clinical trials
+                while instilling unwavering confidence in our clients and
+                partners.
+              </p>
 
-              <div className="flex gap-3">
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                With a resolute focus on operational excellence and patient
+                safety, we guarantee smooth and effective trial conduct through
+                well-structured, time-tested processes and seasoned oversight.
+                Every initiative we undertake is firmly guided by the highest
+                ethical principles and strict compliance with all applicable
+                regulatory frameworks — including ICH Guidelines — ensuring
+                uncompromising data integrity, accuracy, and reliability at
+                every turn.
+              </p>
+
+              <p className="text-gray-700 mb-8 leading-relaxed">
+                By choosing MedArc Clinical Research, you align with a
+                results-driven team passionately committed to precision,
+                professionalism, and transformative excellence — empowering
+                meaningful and lasting progress in the ever-evolving landscape
+                of clinical research.
+              </p>
+
+              <div className="flex gap-4 flex-wrap">
                 <Button to="/services">Explore Services</Button>
                 <Button to="/contact" variant="ghost">
                   Contact Us
@@ -116,30 +128,22 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT VISUAL */}
-            <div className="hidden lg:flex justify-center">
-              <div className="bg-navy-800 border border-white/10 p-12 rounded-2xl">
-                <FlaskConical size={70} className="text-primary-400" />
+            {/* RIGHT — Banner Image */}
+            <div className="hidden lg:flex justify-center items-stretch">
+              <div className="w-full max-w-lg rounded-2xl overflow-hidden border border-stone-200 shadow-lg">
+                <img
+                  src={BannerURL}
+                  alt="MedArc Clinical Research"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
-          </div>
-
-          {/* STATS — FIXED */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-white/10 pt-10 max-w-4xl mx-auto">
-            {STATS.map((s) => (
-              <StatCard
-                key={s.label}
-                value={s.value}
-                label={s.label}
-                theme="light"
-              />
-            ))}
           </div>
         </div>
       </section>
 
       {/* ══ SERVICES ═══════════════ */}
-      <section className="section-pad bg-stone-50">
+      <section className="section-pad bg-[#f7f6f4]">
         <div className="container-site">
           <div ref={servicesRef}>
             <SectionHeader
@@ -149,19 +153,26 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            {SERVICES.map((svc) => {
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {SERVICES.map((svc, idx) => {
               const Icon = svc.icon;
               return (
-                <div className="card hover:border-primary-200">
-                  <Icon className="text-primary-500 mb-3" />
-                  <h3 className="font-semibold mb-1">{svc.title}</h3>
-                  <p className="text-sm text-stone-500 mb-3">{svc.desc}</p>
+                <div
+                  key={idx}
+                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 hover:border-primary-200"
+                >
+                  <Icon className="text-primary-500 w-10 h-10 mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    {svc.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {svc.desc}
+                  </p>
                   <Link
                     to={svc.to}
-                    className="text-primary-600 text-sm inline-flex items-center gap-1"
+                    className="text-primary-600 text-sm inline-flex items-center gap-1 font-medium hover:text-primary-700 transition-colors"
                   >
-                    Learn more <ArrowRight size={14} />
+                    Learn more <ArrowRight size={16} />
                   </Link>
                 </div>
               );
@@ -171,18 +182,25 @@ export default function HomePage() {
       </section>
 
       {/* ══ WHY ═══════════════════ */}
-      <section className="section-pad">
-        <div className="container-site text-center max-w-3xl">
-          <h2 className="section-title mb-4">Why Choose MedArc?</h2>
-          <p className="text-stone-500 mb-10">
+      <section className="section-pad bg-[#f7f6f4]">
+        <div className="container-site text-center max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Why Choose MedArc?
+          </h2>
+          <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
             Built on scientific integrity, compliance, and efficient execution.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {WHY_ITEMS.map(({ icon: Icon, title }) => (
-              <div className="flex flex-col items-center text-center">
-                <Icon className="text-primary-500 mb-2" />
-                <p className="text-sm font-medium">{title}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {WHY_ITEMS.map(({ icon: Icon, title }, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mb-3 group-hover:bg-primary-100 transition-colors">
+                  <Icon className="text-primary-500 w-8 h-8" />
+                </div>
+                <p className="text-gray-700 font-semibold">{title}</p>
               </div>
             ))}
           </div>
@@ -190,14 +208,22 @@ export default function HomePage() {
       </section>
 
       {/* ══ CTA ═══════════════════ */}
-      <section className="py-20 bg-navy-900 text-center">
-        <h2 className="text-white text-3xl mb-4">
-          Ready to start your clinical research journey?
-        </h2>
-        <p className="text-white/60 mb-6">
-          Partner with MedArc for quality, compliance, and excellence.
-        </p>
-        <Button to="/contact">Get Started</Button>
+      <section className="py-20 bg-gradient-to-r from-primary-800 to-primary-900 text-center">
+        <div className="container-site">
+          <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
+            Ready to start your clinical research journey?
+          </h2>
+          <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
+            Partner with MedArc for quality, compliance, and excellence.
+          </p>
+          <Button
+            to="/contact"
+            variant="primary"
+            className="bg-white text-primary-700 hover:bg-gray-100"
+          >
+            Get Started
+          </Button>
+        </div>
       </section>
     </>
   );

@@ -19,7 +19,7 @@ import IEC from "./pages/IEC.jsx";
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#f7f6f4]">
       {/* ── Global navigation ── */}
       <Navbar />
 

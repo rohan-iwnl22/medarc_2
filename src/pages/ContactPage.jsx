@@ -62,7 +62,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ══ PAGE HERO ════════════════════════════════ */}
-      <section className="pt-32 pb-12 bg-stone-50 border-b border-stone-100">
+      <section className="pt-32 pb-12 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
           <TagLabel>Get In Touch</TagLabel>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mt-4 mb-3">

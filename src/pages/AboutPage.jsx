@@ -61,7 +61,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ══ HERO ═════════════════════════════════════ */}
-      <section className="pt-32 pb-16 text-center bg-stone-50 border-b border-stone-100">
+      <section className="pt-32 pb-16 text-center bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site">
           <TagLabel>About MedArc</TagLabel>
 
@@ -122,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══ SERVICES OVERVIEW ═══════════════════════ */}
-      <section className="section-pad bg-stone-50">
+      <section className="section-pad bg-[#f7f6f4]">
         <div className="container-site">
           <SectionHeader
             label="Our Capabilities"
