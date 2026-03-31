@@ -1,6 +1,6 @@
 /**
  * HomePage.jsx
- * Revamped: clean hero + proper spacing + visible stats
+ * Revamped: full-width hero image on top, text content below, centered buttons
  */
 
 import React from "react";
@@ -68,74 +68,85 @@ export default function HomePage() {
   return (
     <>
       {/* ══ HERO ═════════════════════ */}
-      <section className="pt-32 pb-16 border-b border-stone-200">
-        <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* LEFT — Text Content */}
-            <div ref={heroRef} className="reveal">
-              <span className="tag-label mb-4 inline-block bg-primary-500/10 text-primary-600 border-primary-500/30">
-                Site Management Organization
-              </span>
+      <section className="pt-20 pb-0 border-b border-stone-200">
+        {/* Full-width Banner Image */}
+        <div className="w-full">
+          <img
+            src={BannerURL}
+            alt="MedArc Clinical Research"
+            className="w-full object-cover max-h-[520px]"
+          />
+        </div>
 
-              <h1 className="section-title max-w-xl mb-4 text-gray-900">
-                MedArc Clinical Research{" "}
-                <span className="text-primary-600">Pvt. Ltd.</span>
-              </h1>
+        {/* Text Content Below Image */}
+        <div className="container-site py-14">
+          <div
+            ref={heroRef}
+            className="reveal max-w-4xl mx-auto flex flex-col items-center text-center"
+          >
+            <span className="tag-label mb-4 inline-block bg-primary-500/10 text-primary-600 border-primary-500/30">
+              Site Management Organization
+            </span>
 
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                MedArc Clinical Research Pvt. Ltd. is a distinguished and
-                trusted Site Management Organization (SMO) dedicated to
-                delivering unparalleled excellence in clinical trial management
-                across India. Our steadfast commitment to quality is powerfully
-                reflected in our rigorous adherence to the highest global
-                industry standards and best practices — upheld at every critical
-                stage of the research journey.
-              </p>
+            <h1 className="section-title mb-4 text-gray-900">
+              MedArc Clinical Research{" "}
+              <span className="text-primary-600">Pvt. Ltd.</span>
+            </h1>
 
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                At MedArc Clinical Research, we have meticulously developed
-                comprehensive Standard Operating Procedures (SOPs) that not only
-                meet but consistently surpass regulatory expectations — ensuring
-                efficient, precise, and seamless execution of clinical trials
-                while instilling unwavering confidence in our clients and
-                partners.
-              </p>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              MedArc Clinical Research Pvt. Ltd. is a distinguished and trusted
+              Site Management Organization (SMO) dedicated to delivering
+              unparalleled excellence in clinical trial management across India.
+              Our steadfast commitment to quality is powerfully reflected in our
+              rigorous adherence to the highest global industry standards and
+              best practices — upheld at every critical stage of the research
+              journey.
+            </p>
 
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                With a resolute focus on operational excellence and patient
-                safety, we guarantee smooth and effective trial conduct through
-                well-structured, time-tested processes and seasoned oversight.
-                Every initiative we undertake is firmly guided by the highest
-                ethical principles and strict compliance with all applicable
-                regulatory frameworks — including ICH Guidelines — ensuring
-                uncompromising data integrity, accuracy, and reliability at
-                every turn.
-              </p>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              At MedArc Clinical Research, we have meticulously developed
+              comprehensive Standard Operating Procedures (SOPs) that not only
+              meet but consistently surpass regulatory expectations — ensuring
+              efficient, precise, and seamless execution of clinical trials
+              while instilling unwavering confidence in our clients and
+              partners.
+            </p>
 
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                By choosing MedArc Clinical Research, you align with a
-                results-driven team passionately committed to precision,
-                professionalism, and transformative excellence — empowering
-                meaningful and lasting progress in the ever-evolving landscape
-                of clinical research.
-              </p>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              With a resolute focus on operational excellence and patient
+              safety, we guarantee smooth and effective trial conduct through
+              well-structured, time-tested processes and seasoned oversight.
+              Every initiative we undertake is firmly guided by the highest
+              ethical principles and strict compliance with all applicable
+              regulatory frameworks — including ICH Guidelines — ensuring
+              uncompromising data integrity, accuracy, and reliability at every
+              turn.
+            </p>
 
-              <div className="flex gap-4 flex-wrap">
-                <Button to="/services">Explore Services</Button>
-                <Button to="/contact" variant="ghost">
-                  Contact Us
+            <p className="text-gray-700 mb-8 leading-relaxed">
+              By choosing MedArc Clinical Research, you align with a
+              results-driven team passionately committed to precision,
+              professionalism, and transformative excellence — empowering
+              meaningful and lasting progress in the ever-evolving landscape of
+              clinical research.
+            </p>
+
+            {/* ✅ FIXED CENTERED BUTTONS */}
+            <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4">
+              <div className="flex justify-center w-full sm:w-auto">
+                <Button to="/services" className="block text-center">
+                  Explore Services
                 </Button>
               </div>
-            </div>
 
-            {/* RIGHT — Banner Image */}
-            <div className="hidden lg:flex justify-center items-stretch">
-              <div className="w-full max-w-lg rounded-2xl overflow-hidden border border-stone-200 shadow-lg">
-                <img
-                  src={BannerURL}
-                  alt="MedArc Clinical Research"
-                  className="w-full h-full object-cover"
-                />
+              <div className="flex justify-center w-full sm:w-auto">
+                <Button
+                  to="/contact"
+                  variant="ghost"
+                  className="block text-center"
+                >
+                  Contact Us
+                </Button>
               </div>
             </div>
           </div>

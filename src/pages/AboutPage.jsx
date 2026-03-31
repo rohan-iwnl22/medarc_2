@@ -1,6 +1,6 @@
 /**
  * AboutPage.jsx
- * Updated with real MedArc Clinical Research content
+ * Updated with Why Choose Us section (no content removed)
  */
 
 import React from "react";
@@ -11,6 +11,12 @@ import {
   Target,
   Award,
   FlaskConical,
+  Clock,
+  Zap,
+  Activity,
+  DollarSign,
+  FileCheck,
+  Database,
 } from "lucide-react";
 
 import {
@@ -46,6 +52,54 @@ const VALUES = [
   },
 ];
 
+/* ── Why Choose Us (NEW) ─────────────────────────── */
+const WHY_POINTS = [
+  {
+    icon: Users,
+    title: "Experienced Team",
+    desc: "10 years research industry experience",
+  },
+  {
+    icon: Zap,
+    title: "Responsive Approach",
+    desc: "Quick and proactive support",
+  },
+  {
+    icon: Award,
+    title: "Quality Delivery",
+    desc: "Timely and high-quality outcomes",
+  },
+  {
+    icon: Activity,
+    title: "Rapid Enrollment",
+    desc: "Fast patient recruitment and strong retention",
+  },
+  { icon: Clock, title: "Quick Resolution", desc: "Efficient query handling" },
+  { icon: Target, title: "Fast Start-Up", desc: "Expedited site initiation" },
+  { icon: Zap, title: "Timely Execution", desc: "Accelerated study timelines" },
+  {
+    icon: Microscope,
+    title: "Efficient Monitoring",
+    desc: "Strong on-site oversight",
+  },
+  {
+    icon: DollarSign,
+    title: "Cost Efficiency",
+    desc: "Optimized project budgets",
+  },
+  {
+    icon: FlaskConical,
+    title: "Therapeutic Expertise",
+    desc: "Strong domain knowledge",
+  },
+  {
+    icon: FileCheck,
+    title: "Regulatory Compliance",
+    desc: "Aligned with DCGI, EMA, FDA guidelines",
+  },
+  { icon: Database, title: "Flexible Systems", desc: "Paper & EDC experience" },
+];
+
 /* ═══════════════════════════════════════════════════ */
 export default function AboutPage() {
   const storyRef = useReveal();
@@ -63,11 +117,25 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
-            MedArc Clinical Research is a professional clinical research support
-            organization committed to delivering high-quality services in
-            clinical trials and research management. We support investigators,
-            hospitals, sponsors, and CROs in conducting ethical, compliant, and
-            efficient clinical studies.
+            MedArc Clinical Research maintains a strong network of experienced
+            Principal Investigators, reputed hospitals, and research
+            institutions, enabling efficient access to diverse patient
+            populations. This allows us to meet protocol-specific requirements
+            and support timely enrollment of eligible study participants.
+          </p>
+          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
+            In India, MedArc provides comprehensive clinical trial support,
+            including site management, project coordination, and strategic
+            patient recruitment. Our approach combines innovative thinking,
+            proactive problem-solving, and a skilled team to ensure smooth study
+            execution.
+          </p>
+          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
+            We emphasize transparency in all our operations, fostering trust and
+            long-term partnerships with our clients. Additionally, our
+            streamlined information management systems ensure timely reporting
+            and provide sponsors with reliable, real-time access to critical
+            study data.
           </p>
 
           <Button to="/contact" variant="accent">
@@ -88,44 +156,64 @@ export default function AboutPage() {
             />
 
             <p className="text-stone-500 leading-relaxed mb-4">
-              We specialize in clinical research management and regulatory
-              support for pharmaceutical, biotechnology, and medical device
-              research. Our team works closely with investigators and
-              institutions to ensure studies are conducted according to
-              regulatory guidelines, Good Clinical Practice (GCP), and ethical
-              standards.
+              MedArc Clinical Research is committed to delivering reliable,
+              compliant, and efficient clinical trial execution. We specialize
+              in clinical research management and regulatory support for
+              pharmaceuticals across all therapeutic areas, as well as
+              nutraceuticals, cosmetics (consumer products), Ayurvedic studies,
+              PI-initiated studies, observational studies, and medical devices.
             </p>
 
-            <p className="text-stone-500 leading-relaxed">
-              MedArc Clinical Research bridges investigators with sponsors and
-              CROs, delivering end-to-end clinical trial support from site
-              feasibility to study close-out while ensuring quality, compliance,
-              and efficient study execution.
+            <p className="text-stone-500 leading-relaxed mb-4">
+              Our team works closely with investigators, institutions, sponsors,
+              and CROs to ensure that studies are conducted in alignment with
+              regulatory requirements and ethical standards. With a strong focus
+              on quality and operational excellence, we support every stage of
+              the clinical trial lifecycle.
+            </p>
+
+            <p className="text-stone-500 leading-relaxed mb-4">
+              From site feasibility and study initiation to execution and
+              close-out, MedArc Clinical Research provides end-to-end
+              support—bridging the gap between investigators and sponsors while
+              ensuring accuracy, compliance, and timely delivery of clinical
+              research activities.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ══ SERVICES OVERVIEW ═══════════════════════ */}
-      <section className="section-pad bg-[#f7f6f4]">
+      {/* ══ WHY CHOOSE US (NEW) ═════════════════════ */}
+      <section className="section-pad bg-[#f7f6f4] border-y border-stone-100">
         <div className="container-site">
           <SectionHeader
-            label="Our Capabilities"
-            title="End-to-End Clinical Trial Support"
-            subtitle="Comprehensive services covering every stage of clinical research."
+            label="Our Strengths"
+            title="Why Choose MedArc"
+            subtitle="Delivering speed, quality, and compliance across every clinical study."
             className="mb-12"
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "Site Selection & Feasibility",
-              "Regulatory & Ethics Support",
-              "Study Start-Up Services",
-              "Clinical Trial Management",
-              "Study Close-Out & Documentation",
-            ].map((item) => (
-              <div key={item} className="card">
-                <CheckItem>{item}</CheckItem>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {WHY_POINTS.map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                className="group bg-white rounded-2xl p-5 border border-stone-100 hover:shadow-md transition-all duration-300 flex gap-4"
+              >
+                <div className="w-11 h-11 rounded-xl bg-primary-50 flex items-center justify-center group-hover:bg-primary-500 transition">
+                  <Icon
+                    size={20}
+                    className="text-primary-500 group-hover:text-white transition"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-stone-900">
+                    {title}
+                  </h3>
+                  <p className="text-xs text-stone-500 leading-relaxed">
+                    {desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -157,7 +245,6 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Extra highlights */}
           <div className="mt-10 space-y-2">
             {[
               "Rich experience in Phase I–IV clinical trials",
@@ -173,7 +260,6 @@ export default function AboutPage() {
       {/* ══ MISSION & VISION ═══════════════════════ */}
       <section className="section-pad bg-navy-900">
         <div className="container-site grid md:grid-cols-2 gap-10">
-          {/* Mission */}
           <div>
             <div className="flex items-center gap-3 mb-3">
               <Target className="text-primary-400" />
@@ -186,7 +272,6 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Vision */}
           <div>
             <div className="flex items-center gap-3 mb-3">
               <Award className="text-primary-400" />

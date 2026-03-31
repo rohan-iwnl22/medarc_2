@@ -69,8 +69,8 @@ const IEC = () => {
           <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed">
             MedArc Clinical Research provides end-to-end support to hospitals
             and institutions for the establishment, registration, and smooth
-            functioning of Institutional Ethics Committees (IEC) in compliance
-            with CDSCO, DHR, and ICH-GCP guidelines.
+            functioning of Institutional and Independent Ethics Committees (IEC)
+            in compliance with CDSCO, DHR, and ICH-GCP guidelines.
           </p>
         </div>
       </section>

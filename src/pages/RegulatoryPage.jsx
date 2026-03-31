@@ -71,7 +71,6 @@ const SECTIONS = [
       "Drug establishment registration",
       "NDC labeler code applications",
       "Product listing & labeling compliance",
-      "FDA Electronic Submissions Gateway (ESG) coordination",
     ],
   },
 
@@ -119,7 +118,7 @@ export default function RegulatoryPage() {
       </section>
 
       {/* INTRO */}
-      <section className="section-pad">
+      {/* <section className="section-pad">
         <div className="container-site">
           <div className="bg-primary-50 border border-primary-100 rounded-2xl p-6 md:p-8">
             <p className="text-stone-700 leading-relaxed">
@@ -132,7 +131,7 @@ export default function RegulatoryPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* MAIN SECTIONS */}
       <section className="section-pad bg-[#f7f6f4]">
