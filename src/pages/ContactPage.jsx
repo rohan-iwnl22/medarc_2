@@ -22,11 +22,9 @@ const INFO = [
 
 /* ── Interest options for form ────────────────────── */
 const INTERESTS = [
-  "Clinical Trial Management",
-  "Regulatory Affairs",
-  "Data Management & Biostatistics",
-  "Compliance & Quality",
-  "Pharmacovigilance",
+  "For CRO and Investigator",
+  "Regulatory and Medical Writing",
+  "Ethics Committee Establishment",
   "Other",
 ];
 
