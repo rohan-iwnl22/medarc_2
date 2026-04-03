@@ -143,7 +143,7 @@ export default function HomePage() {
               <div className="flex justify-center w-full sm:w-auto">
                 <Button
                   to="/contact"
-                  variant="ghost"
+                  variant="dark"
                   className="block text-center"
                 >
                   Contact Us
