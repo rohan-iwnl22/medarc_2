@@ -4,14 +4,7 @@
  */
 
 import React from "react";
-import {
-  Search,
-  Scale,
-  Rocket,
-  ClipboardList,
-  FileCheck2,
-  CheckCircle2,
-} from "lucide-react";
+import { Search, Scale, Rocket, ClipboardList, FileCheck2 } from "lucide-react";
 
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
@@ -29,6 +22,7 @@ const SERVICES = [
       "Investigator experience review",
       "Feasibility reporting and recommendations",
     ],
+    link: "https://i.postimg.cc/CKPSR40X/chatgpt-site-selection-and-feasbility.png",
     reverse: false,
   },
   {
@@ -42,6 +36,7 @@ const SERVICES = [
       "ICH-GCP compliance",
       "National & international regulatory adherence",
     ],
+    link: "https://i.postimg.cc/SsHXM44V/chatgpt-regulatory.png",
     reverse: true,
   },
   {
@@ -55,6 +50,7 @@ const SERVICES = [
       "Essential document preparation",
       "Study activation & approvals",
     ],
+    link: "https://i.postimg.cc/WbHyqfqm/chatgpt-study-startup-services.png",
     reverse: false,
   },
   {
@@ -68,6 +64,7 @@ const SERVICES = [
       "Protocol adherence",
       "Documentation and monitoring support",
     ],
+    link: "https://i.postimg.cc/3r6jXM9K/chatgpt-clinical-trial-management.png",
     reverse: true,
   },
   {
@@ -81,11 +78,12 @@ const SERVICES = [
       "Essential document completion",
       "Archiving as per GCP guidelines",
     ],
+    link: "https://i.postimg.cc/wMJktFCP/chagpt-study-close-up-services.png",
     reverse: false,
   },
 ];
 
-/* ── Process Steps (unchanged) ───────────────────── */
+/* ── Process Steps ───────────────────────────────── */
 const STEPS = [
   {
     num: "1",
@@ -170,13 +168,18 @@ export default function ServicesPage() {
                   </ul>
                 </div>
 
-                {/* RIGHT VISUAL */}
+                {/* RIGHT VISUAL — image fills container properly */}
                 <div
-                  className={`rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-primary-50 to-stone-100 flex items-center justify-center ${
+                  className={`rounded-xl overflow-hidden bg-stone-100 ${
                     svc.reverse ? "lg:order-1" : ""
                   }`}
+                  style={{ aspectRatio: "16/11" }}
                 >
-                  <Icon size={72} className="text-primary-200" />
+                  <img
+                    src={svc.link}
+                    alt={svc.title}
+                    className="w-full h-full object-cover block"
+                  />
                 </div>
               </div>
             </div>
