@@ -1,6 +1,6 @@
 /**
  * AboutPage.jsx
- * Updated with Why Choose Us section (no content removed)
+ * Fixed: consistent section spacing + larger label and heading fonts
  */
 
 import React from "react";
@@ -22,7 +22,6 @@ import {
 import {
   Button,
   SectionHeader,
-  StatCard,
   CheckItem,
   TagLabel,
 } from "../components/ui.jsx";
@@ -52,7 +51,7 @@ const VALUES = [
   },
 ];
 
-/* ── Why Choose Us (NEW) ─────────────────────────── */
+/* ── Why Choose Us ───────────────────────────────── */
 const WHY_POINTS = [
   {
     icon: Users,
@@ -107,30 +106,33 @@ export default function AboutPage() {
   return (
     <>
       {/* ══ HERO ═════════════════════════════════════ */}
-      <section className="pt-32 pb-16 text-center bg-[#f7f6f4] border-b border-stone-100">
+      <section className="pt-36 pb-24 text-center bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site">
-          <TagLabel>About MedArc</TagLabel>
+          {/* TAG */}
+          <span className="inline-block text-xl font-semibold tracking-widest uppercase text-primary-500 mb-5">
+            About MedArc
+          </span>
 
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-stone-900 mt-4 mb-4 leading-tight max-w-3xl mx-auto">
+          <h1 className="font-display text-5xl sm:text-6xl font-bold text-stone-900 mt-2 mb-6 leading-tight max-w-3xl mx-auto">
             Advancing Clinical Research Through{" "}
             <span className="text-gradient">Integrity & Excellence</span>
           </h1>
 
-          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-stone-500 text-lg max-w-3xl mx-auto leading-relaxed mb-6">
             MedArc Clinical Research maintains a strong network of experienced
             Principal Investigators, reputed hospitals, and research
             institutions, enabling efficient access to diverse patient
             populations. This allows us to meet protocol-specific requirements
             and support timely enrollment of eligible study participants.
           </p>
-          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-stone-500 text-lg max-w-3xl mx-auto leading-relaxed mb-6">
             In India, MedArc provides comprehensive clinical trial support,
             including site management, project coordination, and strategic
             patient recruitment. Our approach combines innovative thinking,
             proactive problem-solving, and a skilled team to ensure smooth study
             execution.
           </p>
-          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-stone-500 text-lg max-w-3xl mx-auto leading-relaxed mb-10">
             We emphasize transparency in all our operations, fostering trust and
             long-term partnerships with our clients. Additionally, our
             streamlined information management systems ensure timely reporting
@@ -145,17 +147,22 @@ export default function AboutPage() {
       </section>
 
       {/* ══ OVERVIEW ════════════════════════════════ */}
-      <section className="section-pad">
+      <section className="py-28">
         <div className="container-site">
           <div ref={storyRef} className="reveal max-w-4xl mx-auto text-center">
-            <SectionHeader
-              label="Who We Are"
-              title="Clinical Research Support You Can Trust"
-              subtitle="Delivering reliable, compliant, and efficient clinical trial execution."
-              className="mb-8"
-            />
+            {/* Section label */}
+            <span className="inline-block text-xl font-semibold tracking-widest uppercase text-primary-500 mb-4">
+              Who We Are
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+              Clinical Research Support You Can Trust
+            </h2>
+            <p className="text-stone-400 text-lg mb-12">
+              Delivering reliable, compliant, and efficient clinical trial
+              execution.
+            </p>
 
-            <p className="text-stone-500 leading-relaxed mb-4">
+            <p className="text-stone-500 text-lg leading-relaxed mb-5">
               MedArc Clinical Research is committed to delivering reliable,
               compliant, and efficient clinical trial execution. We specialize
               in clinical research management and regulatory support for
@@ -163,16 +170,14 @@ export default function AboutPage() {
               nutraceuticals, cosmetics (consumer products), Ayurvedic studies,
               PI-initiated studies, observational studies, and medical devices.
             </p>
-
-            <p className="text-stone-500 leading-relaxed mb-4">
+            <p className="text-stone-500 text-lg leading-relaxed mb-5">
               Our team works closely with investigators, institutions, sponsors,
               and CROs to ensure that studies are conducted in alignment with
               regulatory requirements and ethical standards. With a strong focus
               on quality and operational excellence, we support every stage of
               the clinical trial lifecycle.
             </p>
-
-            <p className="text-stone-500 leading-relaxed mb-4">
+            <p className="text-stone-500 text-lg leading-relaxed">
               From site feasibility and study initiation to execution and
               close-out, MedArc Clinical Research provides end-to-end
               support—bridging the gap between investigators and sponsors while
@@ -183,34 +188,40 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ WHY CHOOSE US (NEW) ═════════════════════ */}
-      <section className="section-pad bg-[#f7f6f4] border-y border-stone-100">
+      {/* ══ WHY CHOOSE US ═══════════════════════════ */}
+      <section className="py-28 bg-[#f7f6f4] border-y border-stone-100">
         <div className="container-site">
-          <SectionHeader
-            label="Our Strengths"
-            title="Why Choose MedArc"
-            subtitle="Delivering speed, quality, and compliance across every clinical study."
-            className="mb-12"
-          />
+          {/* Section label */}
+          <div className="text-center mb-14">
+            <span className="inline-block text-xl font-semibold tracking-widest uppercase text-primary-500 mb-4">
+              Our Strengths
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+              Why Choose MedArc
+            </h2>
+            <p className="text-stone-400 text-lg max-w-xl mx-auto">
+              Delivering speed, quality, and compliance across every clinical
+              study.
+            </p>
+          </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_POINTS.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="group bg-white rounded-2xl p-5 border border-stone-100 hover:shadow-md transition-all duration-300 flex gap-4"
+                className="group bg-white rounded-2xl p-6 border border-stone-100 hover:shadow-md transition-all duration-300 flex gap-5"
               >
-                <div className="w-11 h-11 rounded-xl bg-primary-50 flex items-center justify-center group-hover:bg-primary-500 transition">
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-primary-50 flex items-center justify-center group-hover:bg-primary-500 transition">
                   <Icon
-                    size={20}
+                    size={22}
                     className="text-primary-500 group-hover:text-white transition"
                   />
                 </div>
-
                 <div>
-                  <h3 className="text-sm font-semibold text-stone-900">
+                  <h3 className="text-base font-semibold text-stone-900 mb-1">
                     {title}
                   </h3>
-                  <p className="text-xs text-stone-500 leading-relaxed">
+                  <p className="text-sm text-stone-500 leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -220,32 +231,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ WHY MEDARC ═════════════════════════════ */}
-      <section className="section-pad">
+      {/* ══ WHY MEDARC ══════════════════════════════ */}
+      <section className="py-28">
         <div className="container-site">
-          <SectionHeader
-            label="Why MedArc"
-            title="Driven by Quality, Compliance & Efficiency"
-            className="mb-12"
-          />
+          <div className="text-center mb-14">
+            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-primary-500 mb-4">
+              Why MedArc
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+              Driven by Quality, Compliance & Efficiency
+            </h2>
+          </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
             {VALUES.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="card flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center">
-                  <Icon size={18} className="text-primary-500" />
+              <div key={title} className="card flex gap-5">
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-primary-50 flex items-center justify-center">
+                  <Icon size={22} className="text-primary-500" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-stone-900 text-sm">
+                  <h3 className="font-semibold text-stone-900 text-base mb-1">
                     {title}
                   </h3>
-                  <p className="text-xs text-stone-500">{desc}</p>
+                  <p className="text-sm text-stone-500 leading-relaxed">
+                    {desc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 space-y-2">
+          <div className="mt-12 space-y-3">
             {[
               "Rich experience in Phase I–IV clinical trials",
               "High client retention due to responsiveness & performance",
@@ -257,15 +273,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ MISSION & VISION ═══════════════════════ */}
-      <section className="section-pad bg-navy-900">
-        <div className="container-site grid md:grid-cols-2 gap-10">
+      {/* ══ MISSION & VISION ════════════════════════ */}
+      <section className="py-28 bg-navy-900">
+        <div className="container-site grid md:grid-cols-2 gap-12">
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <Target className="text-primary-400" />
-              <h3 className="text-white font-semibold">Our Mission</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Target size={24} className="text-primary-400" />
+              <h3 className="text-white text-xl font-semibold">Our Mission</h3>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-white/60 text-base leading-relaxed">
               To charter new frontiers of medical and pharmaceutical science by
               delivering high-quality, professional clinical research site
               management services.
@@ -273,12 +289,12 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <div className="flex items-center gap-3 mb-3">
-              <Award className="text-primary-400" />
-              <h3 className="text-white font-semibold">Our Vision</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Award size={24} className="text-primary-400" />
+              <h3 className="text-white text-xl font-semibold">Our Vision</h3>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
-              To establish MedArc as India’s trail-blazing Site Management CRO,
+            <p className="text-white/60 text-base leading-relaxed">
+              To establish MedArc as India's trail-blazing Site Management CRO,
               building a network of highly qualified professionals and
               maintaining the highest standards of quality in clinical trials.
             </p>
@@ -287,18 +303,16 @@ export default function AboutPage() {
       </section>
 
       {/* ══ CTA ═════════════════════════════════════ */}
-      <section className="py-20 text-center">
+      <section className="py-28 text-center">
         <div className="container-site">
-          <h2 className="section-title mb-3">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
             Ready to collaborate with MedArc?
           </h2>
-
-          <p className="text-stone-500 mb-8 max-w-md mx-auto">
+          <p className="text-stone-500 text-lg mb-10 max-w-md mx-auto">
             Connect with us to explore how we can support your clinical research
             and regulatory requirements.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4">
             <Button to="/contact">Contact Us</Button>
             <Button to="/services" variant="outline">
               Explore Services

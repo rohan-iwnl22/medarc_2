@@ -176,6 +176,7 @@ export default function ServicesPage() {
                   style={{ aspectRatio: "16/11" }}
                 >
                   <img
+                    loading="lazy"
                     src={svc.link}
                     alt={svc.title}
                     className="w-full h-full object-cover block"
