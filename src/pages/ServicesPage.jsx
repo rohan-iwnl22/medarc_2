@@ -22,7 +22,8 @@ const SERVICES = [
       "Investigator experience review",
       "Feasibility reporting and recommendations",
     ],
-    link: "https://i.postimg.cc/CKPSR40X/chatgpt-site-selection-and-feasbility.png",
+    // link: "https://i.postimg.cc/CKPSR40X/chatgpt-site-selection-and-feasbility.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20site%20selection%20and%20feasbility.png",
     reverse: false,
   },
   {
@@ -36,7 +37,8 @@ const SERVICES = [
       "ICH-GCP compliance",
       "National & international regulatory adherence",
     ],
-    link: "https://i.postimg.cc/SsHXM44V/chatgpt-regulatory.png",
+    // link: "https://i.postimg.cc/SsHXM44V/chatgpt-regulatory.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20regulatory.png",
     reverse: true,
   },
   {
@@ -50,7 +52,8 @@ const SERVICES = [
       "Essential document preparation",
       "Study activation & approvals",
     ],
-    link: "https://i.postimg.cc/WbHyqfqm/chatgpt-study-startup-services.png",
+    // link: "https://i.postimg.cc/WbHyqfqm/chatgpt-study-startup-services.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20study%20startup%20services.png",
     reverse: false,
   },
   {
@@ -64,7 +67,8 @@ const SERVICES = [
       "Protocol adherence",
       "Documentation and monitoring support",
     ],
-    link: "https://i.postimg.cc/3r6jXM9K/chatgpt-clinical-trial-management.png",
+    // link: "https://i.postimg.cc/3r6jXM9K/chatgpt-clinical-trial-management.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20clinical%20trial%20management.png",
     reverse: true,
   },
   {
@@ -78,7 +82,8 @@ const SERVICES = [
       "Essential document completion",
       "Archiving as per GCP guidelines",
     ],
-    link: "https://i.postimg.cc/wMJktFCP/chagpt-study-close-up-services.png",
+    // link: "https://i.postimg.cc/wMJktFCP/chagpt-study-close-up-services.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chagpt%20study%20close%20up%20services.png",
     reverse: false,
   },
 ];

@@ -1,25 +1,37 @@
 /**
  * HomePage.jsx
- * Revamped: full-width hero image on top, text content below, centered buttons
+ * Updated: Replaced "Why Choose MedArc" with Therapeutic Areas carousel
  */
 
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FlaskConical,
   FileCheck2,
   BarChart3,
   ShieldCheck,
-  Globe2,
-  Cpu,
   ArrowRight,
+  Brain,
+  Heart,
+  Activity,
+  Microscope,
+  Baby,
+  Eye,
+  Bone,
+  Wind,
+  Stethoscope,
+  Pill,
+  Droplets,
+  Thermometer,
+  Scissors,
+  Ear,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
-import { Button, SectionHeader, StatCard } from "../components/ui.jsx";
+import { Button, SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-// const BannerURL = "https://i.postimg.cc/ZRph1XnG/home-banner.png";
-// const BannerURL = "https://i.postimg.cc/qvLH0skj/new-Med-Arc-Logo.png";
 const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
 
 const SERVICES = [
@@ -43,24 +55,122 @@ const SERVICES = [
   },
 ];
 
-const WHY_ITEMS = [
-  {
-    icon: FlaskConical,
-    title: "Scientific Excellence",
-  },
-  {
-    icon: Globe2,
-    title: "Ethical Standards",
-  },
-  {
-    icon: Cpu,
-    title: "Efficient Execution",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Regulatory Compliance",
-  },
+const THERAPEUTIC_AREAS = [
+  { icon: Brain, label: "Neurology" },
+  { icon: Microscope, label: "Oncology" },
+  { icon: Activity, label: "Endocrinology" },
+  { icon: Heart, label: "Cardiology" },
+  { icon: Thermometer, label: "Infectious Disease" },
+  { icon: Pill, label: "Gastroenterology" },
+  { icon: Stethoscope, label: "Gynaecology" },
+  { icon: Droplets, label: "Haematology" },
+  { icon: ShieldCheck, label: "Critical Care" },
+  { icon: Baby, label: "Paediatrics" },
+  { icon: Ear, label: "ENT" },
+  { icon: Scissors, label: "Surgery" },
+  { icon: Bone, label: "Orthopaedics & Rheumatology" },
+  { icon: Activity, label: "Nephrology" },
+  { icon: Thermometer, label: "Metabolic Disease" },
+  { icon: Eye, label: "Ophthalmology" },
+  { icon: FlaskConical, label: "Nutraceutical" },
+  { icon: Wind, label: "Pulmonology" },
+  { icon: Stethoscope, label: "Dental" },
+  { icon: Heart, label: "Medical Device" },
 ];
+
+/* ── Carousel ────────────────────────────────────── */
+function TherapeuticCarousel() {
+  const trackRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 640) setVisibleCount(1);
+      else if (w < 768) setVisibleCount(2);
+      else if (w < 1024) setVisibleCount(3);
+      else setVisibleCount(4);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const maxIndex = THERAPEUTIC_AREAS.length - visibleCount;
+
+  const prev = () => setCurrent((c) => Math.max(c - 1, 0));
+  const next = () => setCurrent((c) => Math.min(c + 1, maxIndex));
+
+  const cardWidthPct = 100 / visibleCount;
+
+  return (
+    <div className="relative">
+      {/* Track */}
+      <div className="overflow-hidden">
+        <div
+          ref={trackRef}
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${current * cardWidthPct}%)` }}
+        >
+          {THERAPEUTIC_AREAS.map(({ icon: Icon, label }) => (
+            <div
+              key={label}
+              style={{ minWidth: `${cardWidthPct}%` }}
+              className="px-3"
+            >
+              <div className="group bg-white border border-stone-100 rounded-2xl p-8 flex flex-col items-center text-center hover:shadow-lg hover:border-primary-200 transition-all duration-300 cursor-default">
+                <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors duration-300">
+                  <Icon
+                    size={28}
+                    className="text-primary-500 group-hover:text-white transition-colors duration-300"
+                  />
+                </div>
+                <p className="text-stone-800 font-semibold text-base leading-snug">
+                  {label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-4 mt-10">
+        <button
+          onClick={prev}
+          disabled={current === 0}
+          className="w-11 h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        {/* Dots */}
+        <div className="flex gap-2">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current
+                  ? "w-6 h-2.5 bg-primary-500"
+                  : "w-2.5 h-2.5 bg-stone-200 hover:bg-stone-300"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={next}
+          disabled={current === maxIndex}
+          className="w-11 h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 /* ═════════════════════════════════ */
 export default function HomePage() {
@@ -71,7 +181,6 @@ export default function HomePage() {
     <>
       {/* ══ HERO ═════════════════════ */}
       <section className="pt-20 pb-0 border-b border-stone-200">
-        {/* Full-width Banner Image */}
         <div className="w-full">
           <img
             src={BannerURL}
@@ -80,7 +189,6 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Text Content Below Image */}
         <div className="container-site py-14">
           <div
             ref={heroRef}
@@ -90,7 +198,8 @@ export default function HomePage() {
               Site Management Organization
             </span>
 
-            <h1 className="section-title mb-4 text-gray-900">
+            {/* <h1 className="section-title mb-4 text-gray-900 "> */}
+            <h1 className="section-title mb-4 text-primary-600">
               MedArc Clinical Research{" "}
               <span className="text-primary-600">Pvt. Ltd.</span>
             </h1>
@@ -133,23 +242,17 @@ export default function HomePage() {
               clinical research.
             </p>
 
-            {/* ✅ FIXED CENTERED BUTTONS */}
             <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4">
-              <div className="flex justify-center w-full sm:w-auto">
-                <Button to="/services" className="block text-center">
-                  Explore Services
-                </Button>
-              </div>
-
-              <div className="flex justify-center w-full sm:w-auto">
-                <Button
-                  to="/contact"
-                  variant="dark"
-                  className="block text-center"
-                >
-                  Contact Us
-                </Button>
-              </div>
+              <Button to="/services" className="block text-center">
+                Explore Services
+              </Button>
+              <Button
+                to="/contact"
+                variant="dark"
+                className="block text-center"
+              >
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
@@ -194,29 +297,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ WHY ═══════════════════ */}
-      <section className="section-pad bg-[#f7f6f4]">
-        <div className="container-site text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Why Choose MedArc?
-          </h2>
-          <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
-            Built on scientific integrity, compliance, and efficient execution.
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {WHY_ITEMS.map(({ icon: Icon, title }, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center text-center group"
-              >
-                <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mb-3 group-hover:bg-primary-100 transition-colors">
-                  <Icon className="text-primary-500 w-8 h-8" />
-                </div>
-                <p className="text-gray-700 font-semibold">{title}</p>
-              </div>
-            ))}
-          </div>
+      {/* ══ THERAPEUTIC AREAS ══════ */}
+      <section className="section-pad bg-white">
+        <div className="container-site">
+          <SectionHeader label="Therapeutic Areas" className="mb-14" />
+          <TherapeuticCarousel />
         </div>
       </section>
 
