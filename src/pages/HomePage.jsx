@@ -19,7 +19,8 @@ import { Button, SectionHeader, StatCard } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 // const BannerURL = "https://i.postimg.cc/ZRph1XnG/home-banner.png";
-const BannerURL = "https://i.postimg.cc/qvLH0skj/new-Med-Arc-Logo.png";
+// const BannerURL = "https://i.postimg.cc/qvLH0skj/new-Med-Arc-Logo.png";
+const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
 
 const SERVICES = [
   {
