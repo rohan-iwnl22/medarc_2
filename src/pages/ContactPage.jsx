@@ -63,8 +63,8 @@ export default function ContactPage() {
       <section className="pt-32 pb-12 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
           <TagLabel>Get In Touch</TagLabel>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mt-4 mb-3">
-            Let's discuss your <span className="text-gradient">next study</span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-500 mt-4 mb-3">
+            Let's discuss your next study
           </h1>
           <p className="text-stone-500 max-w-md mx-auto">
             Whether you're planning your first-in-human trial or need regulatory

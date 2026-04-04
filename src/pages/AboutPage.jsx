@@ -237,7 +237,7 @@ export default function AboutPage() {
             <span className="inline-block text-sm font-semibold tracking-widest uppercase text-primary-500 mb-4">
               Why MedArc
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-primary-500 leading-tight">
               Driven by Quality, Compliance & Efficiency
             </h2>
           </div>
