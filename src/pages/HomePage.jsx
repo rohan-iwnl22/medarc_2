@@ -1,6 +1,6 @@
 /**
  * HomePage.jsx
- * Updated: Replaced "Why Choose MedArc" with Therapeutic Areas carousel
+ * Fixed: carousel renders images, infinite loop, mobile breakpoints
  */
 
 import React, { useRef, useEffect, useState } from "react";
@@ -9,22 +9,7 @@ import {
   FlaskConical,
   FileCheck2,
   BarChart3,
-  ShieldCheck,
   ArrowRight,
-  Brain,
-  Heart,
-  Activity,
-  Microscope,
-  Baby,
-  Eye,
-  Bone,
-  Wind,
-  Stethoscope,
-  Pill,
-  Droplets,
-  Thermometer,
-  Scissors,
-  Ear,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -56,38 +41,101 @@ const SERVICES = [
 ];
 
 const THERAPEUTIC_AREAS = [
-  { icon: Brain, label: "Neurology" },
-  { icon: Microscope, label: "Oncology" },
-  { icon: Activity, label: "Endocrinology" },
-  { icon: Heart, label: "Cardiology" },
-  { icon: Thermometer, label: "Infectious Disease" },
-  { icon: Pill, label: "Gastroenterology" },
-  { icon: Stethoscope, label: "Gynaecology" },
-  { icon: Droplets, label: "Haematology" },
-  { icon: ShieldCheck, label: "Critical Care" },
-  { icon: Baby, label: "Paediatrics" },
-  { icon: Ear, label: "ENT" },
-  { icon: Scissors, label: "Surgery" },
-  { icon: Bone, label: "Orthopaedics & Rheumatology" },
-  { icon: Activity, label: "Nephrology" },
-  { icon: Thermometer, label: "Metabolic Disease" },
-  { icon: Eye, label: "Ophthalmology" },
-  { icon: FlaskConical, label: "Nutraceutical" },
-  { icon: Wind, label: "Pulmonology" },
-  { icon: Stethoscope, label: "Dental" },
-  { icon: Heart, label: "Medical Device" },
+  {
+    name: "Neurology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/neuro.png",
+  },
+  {
+    name: "Oncology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/onco.png",
+  },
+  {
+    name: "Endocrinology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/endo.png",
+  },
+  {
+    name: "Cardiology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/cardio.png",
+  },
+  {
+    name: "Infectious Disease",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/infec.png",
+  },
+  {
+    name: "Gastroenterology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/gastro.png",
+  },
+  {
+    name: "Gynaecology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/gynao.png",
+  },
+  {
+    name: "Haematology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/haemo.png",
+  },
+  {
+    name: "Critical Care",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/cric%20care.png",
+  },
+  {
+    name: "Paediatrics",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/paedra.png",
+  },
+  {
+    name: "ENT",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/ENT.png",
+  },
+  {
+    name: "Surgery",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/surgery.png",
+  },
+  {
+    name: "Orthopaedics & Rheumatology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/ortho.png",
+  },
+  {
+    name: "Nephrology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/nephro.png",
+  },
+  {
+    name: "Metabolic Disease",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/metabolic%20disease.png",
+  },
+  {
+    name: "Pulmonology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/pulmno.png",
+  },
+  {
+    name: "Dental",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/dental.png",
+  },
+  {
+    name: "Medical Device",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/medica.png",
+  },
 ];
 
-/* ── Carousel ────────────────────────────────────── */
+/* ── Infinite Carousel ───────────────────────────── */
 function TherapeuticCarousel() {
-  const trackRef = useRef(null);
-  const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
+  const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Clone items at start and end for infinite loop
+  const cloned = [
+    ...THERAPEUTIC_AREAS.slice(-visibleCount),
+    ...THERAPEUTIC_AREAS,
+    ...THERAPEUTIC_AREAS.slice(0, visibleCount),
+  ];
+
+  const total = THERAPEUTIC_AREAS.length;
+  // Real index inside cloned array (offset by the leading clones)
+  const offset = visibleCount;
 
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 640) setVisibleCount(1);
+      if (w < 480) setVisibleCount(1);
       else if (w < 768) setVisibleCount(2);
       else if (w < 1024) setVisibleCount(3);
       else setVisibleCount(4);
@@ -97,38 +145,72 @@ function TherapeuticCarousel() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const maxIndex = THERAPEUTIC_AREAS.length - visibleCount;
+  // When visibleCount changes, reset to beginning without animation
+  useEffect(() => {
+    setIsTransitioning(false);
+    setCurrent(0);
+  }, [visibleCount]);
 
-  const prev = () => setCurrent((c) => Math.max(c - 1, 0));
-  const next = () => setCurrent((c) => Math.min(c + 1, maxIndex));
+  const goTo = (idx) => {
+    setIsTransitioning(true);
+    setCurrent(idx);
+  };
+
+  const prev = () => goTo(current - 1);
+  const next = () => goTo(current + 1);
+
+  // After transition ends, silently snap if we've gone past the real items
+  const handleTransitionEnd = () => {
+    if (current < 0) {
+      setIsTransitioning(false);
+      setCurrent(total - 1);
+    } else if (current >= total) {
+      setIsTransitioning(false);
+      setCurrent(0);
+    }
+  };
 
   const cardWidthPct = 100 / visibleCount;
+  const translateX = (offset + current) * cardWidthPct;
+
+  // Dots reflect position within real items (wrapping)
+  const dotIndex = ((current % total) + total) % total;
 
   return (
     <div className="relative">
-      {/* Track */}
+      {/* Track wrapper */}
       <div className="overflow-hidden">
         <div
-          ref={trackRef}
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${current * cardWidthPct}%)` }}
+          className="flex"
+          style={{
+            transform: `translateX(-${translateX}%)`,
+            transition: isTransitioning
+              ? "transform 500ms ease-in-out"
+              : "none",
+          }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {THERAPEUTIC_AREAS.map(({ icon: Icon, label }) => (
+          {cloned.map(({ name, img }, idx) => (
             <div
-              key={label}
+              key={`${name}-${idx}`}
               style={{ minWidth: `${cardWidthPct}%` }}
-              className="px-3"
+              className="px-2 sm:px-3"
             >
-              <div className="group bg-white border border-stone-100 rounded-2xl p-8 flex flex-col items-center text-center hover:shadow-lg hover:border-primary-200 transition-all duration-300 cursor-default">
-                <div className="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors duration-300">
-                  <Icon
-                    size={28}
-                    className="text-primary-500 group-hover:text-white transition-colors duration-300"
+              <div className="group bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-primary-200 transition-all duration-300 cursor-default">
+                {/* Image */}
+                <div className="w-full aspect-square bg-stone-50 overflow-hidden">
+                  <img
+                    src={img}
+                    alt={name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-stone-800 font-semibold text-base leading-snug">
-                  {label}
-                </p>
+                {/* Label */}
+                {/* <div className="px-4 py-3 text-center">
+                  <p className="text-stone-800 font-semibold text-sm sm:text-base leading-snug">
+                    {name}
+                  </p>
+                </div> */}
               </div>
             </div>
           ))}
@@ -136,25 +218,24 @@ function TherapeuticCarousel() {
       </div>
 
       {/* Controls */}
-      <div className="flex items-center justify-center gap-4 mt-10">
+      <div className="flex items-center justify-center gap-3 mt-8">
         <button
           onClick={prev}
-          disabled={current === 0}
-          className="w-11 h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all duration-200"
         >
           <ChevronLeft size={20} />
         </button>
 
         {/* Dots */}
-        <div className="flex gap-2">
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+        <div className="flex gap-1.5 flex-wrap justify-center max-w-[200px] sm:max-w-none">
+          {THERAPEUTIC_AREAS.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => goTo(i)}
               className={`rounded-full transition-all duration-300 ${
-                i === current
-                  ? "w-6 h-2.5 bg-primary-500"
-                  : "w-2.5 h-2.5 bg-stone-200 hover:bg-stone-300"
+                i === dotIndex
+                  ? "w-5 h-2 sm:w-6 sm:h-2.5 bg-primary-500"
+                  : "w-2 h-2 sm:w-2.5 sm:h-2.5 bg-stone-200 hover:bg-stone-300"
               }`}
             />
           ))}
@@ -162,8 +243,7 @@ function TherapeuticCarousel() {
 
         <button
           onClick={next}
-          disabled={current === maxIndex}
-          className="w-11 h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all duration-200"
         >
           <ChevronRight size={20} />
         </button>
@@ -198,7 +278,6 @@ export default function HomePage() {
               Site Management Organization
             </span>
 
-            {/* <h1 className="section-title mb-4 text-gray-900 "> */}
             <h1 className="section-title mb-4 text-primary-600">
               MedArc Clinical Research{" "}
               <span className="text-primary-600">Pvt. Ltd.</span>
@@ -300,7 +379,11 @@ export default function HomePage() {
       {/* ══ THERAPEUTIC AREAS ══════ */}
       <section className="section-pad bg-white">
         <div className="container-site">
-          <SectionHeader label="Therapeutic Areas" className="mb-14" />
+          <div className="text-center mb-14">
+            <span className="inline-block text-2xl font-semibold tracking-widest uppercase text-primary-500 mb-4">
+              Therapeutic Areas
+            </span>
+          </div>
           <TherapeuticCarousel />
         </div>
       </section>
