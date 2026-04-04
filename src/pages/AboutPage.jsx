@@ -113,9 +113,8 @@ export default function AboutPage() {
             About MedArc
           </span>
 
-          <h1 className="font-display text-5xl sm:text-6xl font-bold text-stone-900 mt-2 mb-6 leading-tight max-w-3xl mx-auto">
-            Advancing Clinical Research Through{" "}
-            <span className="text-gradient">Integrity & Excellence</span>
+          <h1 className="font-display text-5xl sm:text-6xl font-bold text-primary-500 mt-2 mb-6 leading-tight max-w-3xl mx-auto">
+            Advancing Clinical Research Through Integrity & Excellence
           </h1>
 
           <p className="text-stone-500 text-lg max-w-3xl mx-auto leading-relaxed mb-6">
@@ -154,7 +153,7 @@ export default function AboutPage() {
             <span className="inline-block text-xl font-semibold tracking-widest uppercase text-primary-500 mb-4">
               Who We Are
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-primary-500 mb-4 leading-tight">
               Clinical Research Support You Can Trust
             </h2>
             <p className="text-stone-400 text-lg mb-12">
@@ -196,7 +195,7 @@ export default function AboutPage() {
             <span className="inline-block text-xl font-semibold tracking-widest uppercase text-primary-500 mb-4">
               Our Strengths
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-primary-500 mb-4 leading-tight">
               Why Choose MedArc
             </h2>
             <p className="text-stone-400 text-lg max-w-xl mx-auto">

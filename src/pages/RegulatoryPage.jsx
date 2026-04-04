@@ -102,7 +102,7 @@ export default function RegulatoryPage() {
             Regulatory Affairs
           </span>
 
-          <h1 className="section-title max-w-3xl mx-auto mb-4">
+          <h1 className="text-primary-500 section-title max-w-3xl mx-auto mb-4">
             Regulatory Affairs & Medical Writing Services
           </h1>
 

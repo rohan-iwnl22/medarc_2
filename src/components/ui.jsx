@@ -86,17 +86,18 @@ export function SectionHeader({
   theme = "dark",
   className = "",
 }) {
-  const titleCls = theme === "light" ? "section-title-light" : "section-title";
   const subCls = theme === "light" ? "text-white/60" : "text-stone-500";
   const labelCls =
     theme === "light"
-      ? "text-xs font-mono font-semibold uppercase tracking-widest text-primary-300 mb-2"
+      ? "text-xs font-mono font-semibold uppercase tracking-widest text-primary-500 mb-2"
       : "section-label";
 
   return (
     <div className={`text-center max-w-2xl mx-auto ${className}`}>
       {label && <p className={labelCls}>{label}</p>}
-      <h2 className={titleCls}>{title}</h2>
+      <h2 className="text-primary-500 font-display text-3xl md:text-4xl font-bold">
+        {title}
+      </h2>
       {subtitle && (
         <p className={`mt-4 text-base leading-relaxed ${subCls}`}>{subtitle}</p>
       )}

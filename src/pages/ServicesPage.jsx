@@ -124,7 +124,7 @@ export default function ServicesPage() {
         <div className="container-site text-center">
           <span className="tag-label mb-4 inline-block">Our Services</span>
 
-          <h1 className="section-title max-w-2xl mx-auto mb-4">
+          <h1 className="text-primary-500 section-title max-w-2xl mx-auto mb-4">
             End-to-End Clinical Trial Support
           </h1>
 
