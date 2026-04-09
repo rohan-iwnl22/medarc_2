@@ -23,13 +23,13 @@ const SERVICES = [
       "Feasibility reporting and recommendations",
     ],
     // link: "https://i.postimg.cc/CKPSR40X/chatgpt-site-selection-and-feasbility.png",
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20site%20selection%20and%20feasbility.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/site_selection.png",
     reverse: false,
   },
   {
     id: "regulatory",
     icon: Scale,
-    title: "Regulatory & Ethics Support",
+    title: "Regulatory & Ethics Committee Support",
     desc: "Our regulatory experts assist in navigating complex clinical research frameworks and ensure compliance with global standards.",
     items: [
       "Ethics committee submissions",
@@ -38,13 +38,13 @@ const SERVICES = [
       "National & international regulatory adherence",
     ],
     // link: "https://i.postimg.cc/SsHXM44V/chatgpt-regulatory.png",
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20regulatory.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory.png",
     reverse: true,
   },
   {
     id: "startup",
     icon: Rocket,
-    title: "Study Start-Up Services",
+    title: "Study Inititations",
     desc: "We accelerate trial initiation with efficient start-up processes ensuring timely study activation.",
     items: [
       "Site initiation support",
@@ -53,22 +53,24 @@ const SERVICES = [
       "Study activation & approvals",
     ],
     // link: "https://i.postimg.cc/WbHyqfqm/chatgpt-study-startup-services.png",
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20study%20startup%20services.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_start_up.png",
     reverse: false,
   },
   {
     id: "management",
     icon: ClipboardList,
-    title: "Clinical Trial Management",
-    desc: "Comprehensive coordination between investigators, sponsors, and CROs to ensure smooth trial execution.",
+    title: "Study Executions",
+    desc: "Comprehensive coordination between investigators, sponsor/CROs, ethics committee, Patients and health authority to ensure smooth trial execution. ",
     items: [
-      "Study conduct support",
+      "Study Conduct Support",
       "Patient recruitment coordination",
       "Protocol adherence",
       "Documentation and monitoring support",
+      "Patients visit follow-up and tracking",
+      "Sample storage, IP management as per protocol requirements",
     ],
     // link: "https://i.postimg.cc/3r6jXM9K/chatgpt-clinical-trial-management.png",
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chatgpt%20clinical%20trial%20management.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/clinical_trial_management.png",
     reverse: true,
   },
   {
@@ -83,7 +85,7 @@ const SERVICES = [
       "Archiving as per GCP guidelines",
     ],
     // link: "https://i.postimg.cc/wMJktFCP/chagpt-study-close-up-services.png",
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/chagpt%20study%20close%20up%20services.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_close_out_documentation.png",
     reverse: false,
   },
 ];
@@ -92,7 +94,7 @@ const SERVICES = [
 const STEPS = [
   {
     num: "1",
-    title: "Discovery",
+    title: "Strategic Assessment",
     desc: "Understanding your study requirements, objectives, and timelines.",
   },
   {
@@ -102,14 +104,19 @@ const STEPS = [
   },
   {
     num: "3",
+    title: "Initiation",
+    desc: "Seamless initiations with regulatory approvals and site preparedness",
+  },
+  {
+    num: "4",
     title: "Execution",
     desc: "Managing trial operations, coordination, and compliance.",
   },
   {
-    num: "4",
+    num: "5",
     title: "Delivery",
     desc: "Final reporting, documentation, and study closure.",
-    active: true,
+    // active: true,
   },
 ];
 
@@ -122,10 +129,10 @@ export default function ServicesPage() {
       {/* ══ HERO ═══════════════════════════════════ */}
       <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
-          <span className="tag-label mb-4 inline-block">Our Services</span>
+          {/* <span className="tag-label mb-4 inline-block">Our Services</span> */}
 
           <h1 className="text-primary-500 section-title max-w-2xl mx-auto mb-4">
-            End-to-End Clinical Trial Support
+            Clinical Trial Management
           </h1>
 
           <p className="text-stone-500 max-w-2xl mx-auto leading-relaxed">
@@ -198,15 +205,14 @@ export default function ServicesPage() {
         <div className="container-site">
           <div ref={stepsRef} className="reveal">
             <SectionHeader
-              label="Our Process"
-              title="How We Work With You"
+              title="Our Operational Framework"
               subtitle="A structured and efficient approach ensuring compliance, quality, and timely execution."
               theme="light"
               className="mb-16"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4  gap-8">
             {STEPS.map((step) => (
               <div key={step.num} className="text-center">
                 <div
