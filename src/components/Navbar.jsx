@@ -22,17 +22,17 @@ const NAV_LINKS = [
     label: "Services",
     children: [
       {
-        label: "For Sponsors / CROs & Investigators",
+        label: "Clinical Trial Management",
         to: "/services",
         Icon: FlaskConical,
       },
       {
-        label: "Regulatory Affairs & Medical Writing",
+        label: "Regulatory: Global Regulatory Submissions",
         to: "/regulatory",
         Icon: FileCheck,
       },
       {
-        label: "Ethics Committee Establishment & Guidance",
+        label: "Ethics Committee Services",
         to: "/iec",
         Icon: Scale,
       },
@@ -103,30 +103,25 @@ export default function Navbar() {
   const [logoError, setLogoError] = useState(false);
   const [dark, setDark] = useState(false);
   const closeTimer = useRef(null);
-  const observerRef = useRef(null);
 
   // Detect background color of the element currently behind the navbar
   useEffect(() => {
     const NAVBAR_HEIGHT = 72;
 
     const checkBackground = () => {
-      // Get the element at the center of the navbar bottom edge
       const el = document.elementFromPoint(
         window.innerWidth / 2,
         NAVBAR_HEIGHT + 1,
       );
       if (!el) return;
 
-      // Walk up the DOM to find the first element with a non-transparent bg
       let target = el;
       while (target && target !== document.body) {
         const bg = window.getComputedStyle(target).backgroundColor;
         if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
-          // Parse RGB to determine luminance
           const match = bg.match(/\d+/g);
           if (match) {
             const [r, g, b] = match.map(Number);
-            // Relative luminance formula
             const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
             setDark(luminance < 0.5);
           }
@@ -134,7 +129,6 @@ export default function Navbar() {
         }
         target = target.parentElement;
       }
-      // Default: light
       setDark(false);
     };
 
@@ -178,53 +172,7 @@ export default function Navbar() {
     >
       <div className="container-site">
         <div className="flex items-center justify-between h-[72px]">
-          {/* ── LOGO ──────────────────────── */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 group shrink-0"
-            aria-label="MedArc home"
-          >
-            <div
-              className={`relative flex items-center justify-center rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-[1.03] ${
-                dark
-                  ? "bg-white shadow-md shadow-black/30 ring-1 ring-white/20"
-                  : "bg-white ring-1 ring-stone-200 shadow-sm"
-              }`}
-              style={{ width: 48, height: 48 }}
-            >
-              {!logoError ? (
-                <img
-                  src={LogoURL}
-                  alt="MedArc"
-                  className="w-full h-full object-cover"
-                  onError={() => setLogoError(true)}
-                />
-              ) : (
-                <span className="text-primary-600 font-bold text-base tracking-tight">
-                  MA
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col leading-none gap-0.5">
-              <span
-                className={`text-[17px] font-semibold tracking-tight transition-colors duration-300 ${
-                  dark ? "text-white" : "text-stone-900"
-                }`}
-              >
-                MedArc
-              </span>
-              <span
-                className={`text-[10px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 ${
-                  dark ? "text-white/50" : "text-stone-400"
-                }`}
-              >
-                Clinical Research
-              </span>
-            </div>
-          </Link>
-
-          {/* ── DESKTOP NAV ───────────────── */}
+          {/* ── DESKTOP NAV (left) ───────────────── */}
           <nav className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) =>
               link.children ? (
@@ -279,31 +227,64 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* ── CTA + MOBILE TOGGLE ───────── */}
-          <div className="flex items-center gap-3">
-            <Link
-              to="/contact"
-              className={`hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                dark
-                  ? "bg-white text-stone-900 hover:bg-stone-100"
-                  : "bg-primary-600 text-white hover:bg-primary-700"
-              }`}
-            >
-              Get in Touch
-            </Link>
+          {/* ── MOBILE TOGGLE (left on mobile) ───── */}
+          <button
+            className={`md:hidden flex items-center justify-center w-9 h-9 rounded-lg transition-colors ${
+              dark
+                ? "text-white hover:bg-white/10"
+                : "text-stone-600 hover:bg-stone-100"
+            }`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
 
-            <button
-              className={`md:hidden flex items-center justify-center w-9 h-9 rounded-lg transition-colors ${
+          {/* ── LOGO (right) ──────────────────────── */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 group shrink-0"
+            aria-label="MedArc home"
+          >
+            <div className="flex flex-col leading-none gap-0.5 text-right">
+              <span
+                className={`text-[17px] font-semibold tracking-tight transition-colors duration-300 ${
+                  dark ? "text-white" : "text-stone-900"
+                }`}
+              >
+                MedArc
+              </span>
+              <span
+                className={`text-[10px] uppercase tracking-[0.18em] font-medium transition-colors duration-300 ${
+                  dark ? "text-white/50" : "text-stone-400"
+                }`}
+              >
+                Clinical Research
+              </span>
+            </div>
+
+            <div
+              className={`relative flex items-center justify-center rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-[1.03] ${
                 dark
-                  ? "text-white hover:bg-white/10"
-                  : "text-stone-600 hover:bg-stone-100"
+                  ? "bg-white shadow-md shadow-black/30 ring-1 ring-white/20"
+                  : "bg-white ring-1 ring-stone-200 shadow-sm"
               }`}
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
+              style={{ width: 48, height: 48 }}
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+              {!logoError ? (
+                <img
+                  src={LogoURL}
+                  alt="MedArc"
+                  className="w-full h-full object-cover"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <span className="text-primary-600 font-bold text-base tracking-tight">
+                  MA
+                </span>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -394,20 +375,6 @@ export default function Navbar() {
               </NavLink>
             ),
           )}
-
-          <div className="pt-3 pb-2 mt-1 border-t border-stone-100/20">
-            <Link
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className={`block text-center px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                dark
-                  ? "bg-white text-stone-900 hover:bg-stone-100"
-                  : "bg-primary-600 text-white hover:bg-primary-700"
-              }`}
-            >
-              Get in Touch
-            </Link>
-          </div>
         </nav>
       </div>
     </header>

@@ -12,6 +12,9 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  Target,
+  Microscope,
+  Globe,
 } from "lucide-react";
 
 import { Button, SectionHeader } from "../components/ui.jsx";
@@ -19,24 +22,21 @@ import useReveal from "../hooks/useReveal.js";
 
 const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
 
-const SERVICES = [
+const PILLARS = [
   {
-    icon: FlaskConical,
+    icon: Target,
+    title: "Our Mission",
+    desc: "To deliver excellence in clinical research through high-quality Site Management (SMO) services for clinical trials. We are equally committed to enabling global healthcare innovation through strategically managed regulatory submission services worldwide.",
+  },
+  {
+    icon: Microscope,
     title: "Clinical Trial Management",
-    desc: "End-to-end clinical trial support ensuring coordination, compliance, and patient safety.",
-    to: "/services",
+    desc: "Empowering your clinical development journey with speed and precision, unlocking the full potential of your assets and enhancing enterprise value.",
   },
   {
-    icon: FileCheck2,
-    title: "Study Start-Up Services",
-    desc: "Efficient study initiation including regulatory approvals and site activation.",
-    to: "/regulatory",
-  },
-  {
-    icon: BarChart3,
-    title: "Study Close-Out",
-    desc: "Accurate documentation, compliance, and proper trial closure.",
-    to: "/services",
+    icon: Globe,
+    title: "Regulatory: Global Regulatory Submissions",
+    desc: "Comprehensive regulatory and CMC support with global submissions to health authorities across therapeutic areas and product types.",
   },
 ];
 
@@ -121,7 +121,6 @@ function TherapeuticCarousel() {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // Clone items at start and end for infinite loop
   const cloned = [
     ...THERAPEUTIC_AREAS.slice(-visibleCount),
     ...THERAPEUTIC_AREAS,
@@ -129,7 +128,6 @@ function TherapeuticCarousel() {
   ];
 
   const total = THERAPEUTIC_AREAS.length;
-  // Real index inside cloned array (offset by the leading clones)
   const offset = visibleCount;
 
   useEffect(() => {
@@ -145,7 +143,6 @@ function TherapeuticCarousel() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // When visibleCount changes, reset to beginning without animation
   useEffect(() => {
     setIsTransitioning(false);
     setCurrent(0);
@@ -159,7 +156,6 @@ function TherapeuticCarousel() {
   const prev = () => goTo(current - 1);
   const next = () => goTo(current + 1);
 
-  // After transition ends, silently snap if we've gone past the real items
   const handleTransitionEnd = () => {
     if (current < 0) {
       setIsTransitioning(false);
@@ -172,13 +168,10 @@ function TherapeuticCarousel() {
 
   const cardWidthPct = 100 / visibleCount;
   const translateX = (offset + current) * cardWidthPct;
-
-  // Dots reflect position within real items (wrapping)
   const dotIndex = ((current % total) + total) % total;
 
   return (
     <div className="relative">
-      {/* Track wrapper */}
       <div className="overflow-hidden">
         <div
           className="flex"
@@ -197,7 +190,6 @@ function TherapeuticCarousel() {
               className="px-2 sm:px-3"
             >
               <div className="group bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-primary-200 transition-all duration-300 cursor-default">
-                {/* Image */}
                 <div className="w-full aspect-square bg-stone-50 overflow-hidden">
                   <img
                     src={img}
@@ -205,19 +197,12 @@ function TherapeuticCarousel() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                {/* Label */}
-                {/* <div className="px-4 py-3 text-center">
-                  <p className="text-stone-800 font-semibold text-sm sm:text-base leading-snug">
-                    {name}
-                  </p>
-                </div> */}
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Controls */}
       <div className="flex items-center justify-center gap-3 mt-8">
         <button
           onClick={prev}
@@ -226,7 +211,6 @@ function TherapeuticCarousel() {
           <ChevronLeft size={20} />
         </button>
 
-        {/* Dots */}
         <div className="flex gap-1.5 flex-wrap justify-center max-w-[200px] sm:max-w-none">
           {THERAPEUTIC_AREAS.map((_, i) => (
             <button
@@ -255,7 +239,7 @@ function TherapeuticCarousel() {
 /* ═════════════════════════════════ */
 export default function HomePage() {
   const heroRef = useReveal();
-  const servicesRef = useReveal();
+  const pillarsRef = useReveal();
 
   return (
     <>
@@ -274,43 +258,37 @@ export default function HomePage() {
             ref={heroRef}
             className="reveal max-w-4xl mx-auto flex flex-col items-center text-center"
           >
-            <span className="tag-label mb-4 inline-block bg-primary-500/10 text-primary-600 border-primary-500/30">
-              Site Management Organization
-            </span>
-
             <h1 className="section-title mb-4 text-primary-600">
-              MedArc Clinical Research{" "}
-              <span className="text-primary-600">Pvt. Ltd.</span>
+              MedArc Clinical Research
             </h1>
 
             <p className="text-gray-700 mb-4 leading-relaxed">
-              MedArc Clinical Research Pvt. Ltd. is a distinguished and trusted
-              Site Management Organization (SMO) dedicated to delivering
-              unparalleled excellence in clinical trial management across India.
-              Our steadfast commitment to quality is powerfully reflected in our
-              rigorous adherence to the highest global industry standards and
-              best practices — upheld at every critical stage of the research
-              journey.
+              MedArc Clinical Research Organization provides comprehensive Site
+              Management services for clinical studies across India, ensuring
+              seamless, high-quality, and rigorously compliant clinical trial
+              management.
             </p>
 
             <p className="text-gray-700 mb-4 leading-relaxed">
-              At MedArc Clinical Research, we have meticulously developed
-              comprehensive Standard Operating Procedures (SOPs) that not only
-              meet but consistently surpass regulatory expectations — ensuring
-              efficient, precise, and seamless execution of clinical trials
-              while instilling unwavering confidence in our clients and
-              partners.
+              In parallel, the organization offers comprehensive, strategically
+              guided, and rigorously compliant global regulatory submission
+              services to health authorities worldwide.
             </p>
 
             <p className="text-gray-700 mb-4 leading-relaxed">
-              With a resolute focus on operational excellence and patient
-              safety, we guarantee smooth and effective trial conduct through
-              well-structured, time-tested processes and seasoned oversight.
-              Every initiative we undertake is firmly guided by the highest
-              ethical principles and strict compliance with all applicable
-              regulatory frameworks — including ICH Guidelines — ensuring
-              uncompromising data integrity, accuracy, and reliability at every
-              turn.
+              Our services are designed to support organizations across Life
+              Sciences, Pharmaceuticals, Biologics, Medical Devices, Ayurvedic
+              and Consumer Products Sectors, delivering tailored solutions
+              aligned with their clinical and regulatory requirements.
+            </p>
+
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Every initiative we undertake is governed by strong ethical
+              principles and strict compliance with global regulatory
+              requirements, including ICH Guidelines, regional regulatory
+              authorities, and international regulatory standards, ensuring
+              robust data integrity, accuracy, and reliability throughout the
+              lifecycle.
             </p>
 
             <p className="text-gray-700 mb-8 leading-relaxed">
@@ -318,57 +296,56 @@ export default function HomePage() {
               results-driven team passionately committed to precision,
               professionalism, and transformative excellence — empowering
               meaningful and lasting progress in the ever-evolving landscape of
-              clinical research.
+              clinical research and global regulatory submissions.
             </p>
-
-            <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Button to="/services" className="block text-center">
-                Explore Services
-              </Button>
-              <Button
-                to="/contact"
-                variant="dark"
-                className="block text-center"
-              >
-                Contact Us
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ══ SERVICES ═══════════════ */}
+      {/* ══ PILLARS ═══════════════════ */}
       <section className="section-pad bg-[#f7f6f4]">
         <div className="container-site">
-          <div ref={servicesRef}>
-            <SectionHeader
-              label="Core Services"
-              title="Clinical Research Solutions"
-              subtitle="Delivering quality, compliance, and efficiency."
-            />
+          {/* Intro text */}
+          <div
+            ref={pillarsRef}
+            className="reveal text-center max-w-3xl mx-auto mb-14"
+          >
+            <p className="text-lg text-stone-600 leading-relaxed">
+              A unified and trusted partner for best-in-class clinical trial
+              management services, while also delivering specialized expertise
+              in global regulatory submissions to support successful approvals
+              worldwide.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {SERVICES.map((svc, idx) => {
-              const Icon = svc.icon;
+          {/* Three boxes */}
+          {/* Three boxes */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {PILLARS.map((pillar, idx) => {
+              const Icon = pillar.icon;
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100 hover:border-primary-200"
+                  className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-stone-100 hover:border-primary-200 flex flex-col justify-between group"
                 >
-                  <Icon className="text-primary-500 w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {svc.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    {svc.desc}
-                  </p>
-                  <Link
-                    to={svc.to}
-                    className="text-primary-600 text-sm inline-flex items-center gap-1 font-medium hover:text-primary-700 transition-colors"
-                  >
-                    Learn more <ArrowRight size={16} />
-                  </Link>
+                  <div className="flex flex-col gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center shrink-0">
+                      <Icon className="text-primary-500 w-6 h-6" />
+                    </div>
+
+                    <h3 className="text-lg font-semibold text-stone-900 leading-snug">
+                      {pillar.title}
+                    </h3>
+
+                    <p className="text-stone-600 leading-relaxed text-sm">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  {/* Arrow (FIXED & VISIBLE) */}
+                  {/* <div className="mt-6 flex justify-end">
+                    <ArrowRight className="w-5 h-5 text-primary-500 group-hover:translate-x-1 transition-transform duration-200" />
+                  </div> */}
                 </div>
               );
             })}
