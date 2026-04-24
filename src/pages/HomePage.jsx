@@ -43,75 +43,75 @@ const PILLARS = [
 const THERAPEUTIC_AREAS = [
   {
     name: "Neurology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/neuro.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/neuro.png",
   },
   {
     name: "Oncology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/onco.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/onco.png",
   },
   {
     name: "Endocrinology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/endo.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/endo.png",
   },
   {
     name: "Cardiology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/cardio.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/cardio.png",
   },
   {
     name: "Infectious Disease",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/infec.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/infec.png",
   },
   {
     name: "Gastroenterology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/gastro.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/gastro.png",
   },
   {
     name: "Gynaecology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/gynao.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/gynao.png",
   },
   {
     name: "Haematology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/haemo.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/haemo.png",
   },
   {
     name: "Critical Care",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/cric%20care.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/cric%20care.png",
   },
   {
     name: "Paediatrics",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/paedra.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/paedra.png",
   },
   {
     name: "ENT",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/ENT.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/ENT.png",
   },
   {
     name: "Surgery",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/surgery.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/surgery.png",
   },
   {
     name: "Orthopaedics & Rheumatology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/ortho.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/ortho.png",
   },
   {
     name: "Nephrology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/nephro.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/nephro.png",
   },
   {
     name: "Metabolic Disease",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/metabolic%20disease.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/metabolic%20disease.png",
   },
   {
     name: "Pulmonology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/pulmno.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/pulmno.png",
   },
   {
     name: "Dental",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/dental.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/dental.png",
   },
   {
     name: "Medical Device",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/caroussal/medica.png",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/medica.png",
   },
 ];
 
