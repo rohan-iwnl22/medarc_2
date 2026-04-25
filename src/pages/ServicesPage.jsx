@@ -9,6 +9,10 @@ import { Search, Scale, Rocket, ClipboardList, FileCheck2 } from "lucide-react";
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
+const URL_1 = "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical_R.png";
+const URL_2 =
+  "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical%20Resrach%20Banner.png?updatedAt=1777047508806";
+
 /* ── Updated Services Data ───────────────────────── */
 const SERVICES = [
   {
@@ -22,7 +26,6 @@ const SERVICES = [
       "Investigator experience review",
       "Feasibility reporting and recommendations",
     ],
-    // link: "https://i.postimg.cc/CKPSR40X/chatgpt-site-selection-and-feasbility.png",
     link: "https://ik.imagekit.io/umm5llpkg/MedArc/site_selection.png",
     reverse: false,
   },
@@ -37,7 +40,6 @@ const SERVICES = [
       "ICH-GCP compliance",
       "National & international regulatory adherence",
     ],
-    // link: "https://i.postimg.cc/SsHXM44V/chatgpt-regulatory.png",
     link: "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory.png",
     reverse: true,
   },
@@ -52,7 +54,6 @@ const SERVICES = [
       "Essential document preparation",
       "Study activation & approvals",
     ],
-    // link: "https://i.postimg.cc/WbHyqfqm/chatgpt-study-startup-services.png",
     link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_start_up.png",
     reverse: false,
   },
@@ -69,7 +70,6 @@ const SERVICES = [
       "Patients visit follow-up and tracking",
       "Sample storage, IP management as per protocol requirements",
     ],
-    // link: "https://i.postimg.cc/3r6jXM9K/chatgpt-clinical-trial-management.png",
     link: "https://ik.imagekit.io/umm5llpkg/MedArc/clinical_trial_management.png",
     reverse: true,
   },
@@ -84,7 +84,6 @@ const SERVICES = [
       "Essential document completion",
       "Archiving as per GCP guidelines",
     ],
-    // link: "https://i.postimg.cc/wMJktFCP/chagpt-study-close-up-services.png",
     link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_close_out_documentation.png",
     reverse: false,
   },
@@ -116,7 +115,6 @@ const STEPS = [
     num: "5",
     title: "Delivery",
     desc: "Final reporting, documentation, and study closure.",
-    // active: true,
   },
 ];
 
@@ -129,9 +127,24 @@ export default function ServicesPage() {
       {/* ══ HERO ═══════════════════════════════════ */}
       <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
-          {/* <span className="tag-label mb-4 inline-block">Our Services</span> */}
+          {/* Banner Image */}
+          <div className="mb-8 max-w-full mx-auto rounded-xl overflow-hidden shadow-lg">
+            <img
+              src={URL_1}
+              alt="Clinical Research Banner"
+              className="w-full h-full"
+            />
+          </div>
 
-          <h1 className="text-primary-500 section-title max-w-2xl mx-auto mb-4">
+          {/* <div className="w-full">
+            <img
+              src={URL_1}
+              alt="MedArc Clinical Research"
+              className="w-full object-cover max-h-[520px]"
+            />
+          </div> */}
+
+          <h1 className="pt-5 text-primary-500 section-title max-w-2xl mx-auto mb-4">
             Clinical Trial Management
           </h1>
 

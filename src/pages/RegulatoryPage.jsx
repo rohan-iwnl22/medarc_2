@@ -52,8 +52,7 @@ const SECTIONS = [
       "General Correspondences",
       "Submission Management: Aggregate Report Scheduling",
     ],
-    image:
-      "https://ik.imagekit.io/umm5llpkg/MedArc/Life%20Cycle%20Management.png",
+    image: "https://ik.imagekit.io/umm5llpkg/MedArc/RA-Life%20Cycle.png",
     imageAlt: "Life Cycle Management Post-Approval",
   },
   {
@@ -69,8 +68,7 @@ const SECTIONS = [
       "High-quality QOS & technical summaries",
       "Seamless global CMC submissions",
     ],
-    image:
-      "https://ik.imagekit.io/umm5llpkg/MedArc/CMC%20Writing%20Services.png",
+    image: "https://ik.imagekit.io/umm5llpkg/MedArc/RA-CMC.png",
     imageAlt: "CMC Writing Services",
   },
   {
@@ -102,7 +100,7 @@ const SECTIONS = [
       "High-quality submissions that are compliant, efficient, and market-ready",
     ],
     image:
-      "https://ik.imagekit.io/umm5llpkg/MedArc/Regulatory%20Compliance%20&%20Global%20Guidelines.png",
+      "https://ik.imagekit.io/umm5llpkg/MedArc/RA-global%20gudline%20and%20complaince.png",
     imageAlt: "Regulatory Compliance & Global Guidelines",
   },
   {
@@ -116,7 +114,7 @@ const SECTIONS = [
       "Ensure efficiency, minimized timelines, and streamlined efforts across all regulatory activities",
     ],
     image:
-      "https://ik.imagekit.io/umm5llpkg/MedArc/Specialised%20Assignment.png",
+      "https://ik.imagekit.io/umm5llpkg/MedArc/RA%20specilized%20assiment.png",
     imageAlt: "Specialized Assignment Services",
   },
 ];
@@ -181,6 +179,13 @@ export default function RegulatoryPage() {
       {/* HERO */}
       <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
         <div className="container-site text-center">
+          <div className="mb-8 max-w-full mx-auto rounded-xl overflow-hidden shadow-lg">
+            <img
+              src="https://ik.imagekit.io/umm5llpkg/MedArc/Regulatory-requirements.webp"
+              alt="Clinical Research Banner"
+              className="w-full h-full"
+            />
+          </div>
           <span className="tag-label mb-4 inline-block">
             Regulatory Affairs
           </span>
