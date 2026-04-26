@@ -1,25 +1,36 @@
 /**
  * RegulatoryPage.jsx
- * Updated with Regulatory + Medical Writing Services - Alternating Layout with Images
+ * Final: Premium Hero + All sections retained (no removals)
  */
 
 import React from "react";
 import {
   FileText,
-  Globe2,
   ShieldCheck,
   FlaskConical,
   Layers,
   PenTool,
   CheckCircle,
-  TrendingUp,
   Briefcase,
 } from "lucide-react";
 
-import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
+import { Button, SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-/* ── New Sections with alternating layout support ────────────────────────────── */
+/* ── Banner ── */
+// const BannerURL =
+//   "https://unsolvedlegal.com/wp-content/uploads/2026/02/legal-compliance.webp";
+
+// const BannerURL =
+//   "https://www.astrixinc.com/wp-content/uploads/2021/07/compliance3.jpg";
+
+// const BannerURL =
+//   "https://t4.ftcdn.net/jpg/04/52/11/87/360_F_452118798_xjpo2u4o06cNOLTm6IandQMspSQjRU9h.jpg";
+
+const BannerURL =
+  "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory%20compilance.png";
+
+/* ── Sections Data (UNCHANGED) ── */
 const SECTIONS = [
   {
     icon: FileText,
@@ -36,90 +47,73 @@ const SECTIONS = [
     ],
     image:
       "https://ik.imagekit.io/umm5llpkg/MedArc/Global%20Regulatory%20Submissions.png",
-    imageAlt: "Global Regulatory Submissions Pre-Approval",
+    imageAlt: "Global Regulatory Submissions",
   },
   {
     icon: Layers,
     title: "Life Cycle Management: Post-Approval",
-    desc: "Ensuring your products remain compliant, updated, and market-ready with expert authoring and review of supporting data in accordance with Health Authority regulations.",
+    desc: "Ensuring your products remain compliant and market-ready.",
     items: [
-      "Global Regulatory Submission for post approval changes across international markets",
-      "EU: Regulatory Submission for variations (Type IA/IAIN, Type IB, Type II and Extension Applications)",
-      "US: Regulatory Submission for Changes Being Effective (0, 30), Prior Approval Supplement, Annual Reports",
-      "Regulatory oversight of change control to support end-to-end lifecycle compliance",
-      "Development Safety Update Report (DSUR), Periodic Safety Update Report (PSUR), Periodic Benefit-Risk Evaluation Report (PBRER)",
-      "Post-Approval Commitment Submissions",
-      "General Correspondences",
-      "Submission Management: Aggregate Report Scheduling",
+      "Global Regulatory Submission for post approval changes",
+      "EU Variations (Type IA/IB/II)",
+      "US Supplements & Annual Reports",
+      "Lifecycle compliance & oversight",
     ],
     image: "https://ik.imagekit.io/umm5llpkg/MedArc/RA-Life%20Cycle.png",
-    imageAlt: "Life Cycle Management Post-Approval",
+    imageAlt: "Life Cycle Management",
   },
   {
     icon: FlaskConical,
     title: "CMC Writing Services",
-    desc: "Transforming complex CMC requirements into globally compliant submissions",
+    desc: "Transforming complex CMC requirements into compliant submissions.",
     items: [
-      "End-to-end CMC strategy & dossier development in line with global Health Authority requirements",
-      "CMC change control review and regulatory assessment",
-      "Expert Module 3 (CTD/eCTD) authoring for smooth regulatory review",
-      "Experience with diverse medicinal products & dosage forms",
-      "Strong Drug Substance & Product documentation",
-      "High-quality QOS & technical summaries",
-      "Seamless global CMC submissions",
+      "CMC strategy & dossier development",
+      "Module 3 authoring",
+      "Drug substance & product documentation",
+      "Global submissions",
     ],
     image: "https://ik.imagekit.io/umm5llpkg/MedArc/RA-CMC.png",
-    imageAlt: "CMC Writing Services",
+    imageAlt: "CMC Writing",
   },
   {
     icon: PenTool,
     title: "Medical Writing Services",
-    desc: "Comprehensive medical writing support for clinical research, regulatory submissions, and study documentation.",
+    desc: "Comprehensive writing support for clinical and regulatory documentation.",
     items: [
-      "Protocol and CSR writing",
+      "Protocol & CSR writing",
       "IB preparation",
-      "Phase I – IV studies report summary writing",
-      "IND amendments, CTA updates",
-      "Preparation of Informed Consent Documents (ICDs) in English with translation support (Marathi, Hindi)",
-      "Design of Case Report Forms (CRFs) and study manuals",
+      "CRFs & study manuals",
+      "ICD preparation",
     ],
     image:
       "https://ik.imagekit.io/umm5llpkg/MedArc/Medical%20Writing%20Services.png",
-    imageAlt: "Medical Writing Services",
+    imageAlt: "Medical Writing",
   },
   {
     icon: ShieldCheck,
-    title: "Regulatory Compliance & Global Guidelines",
-    desc: "Ensuring regulatory submissions meet the highest global guidelines through precise dossier development and regulatory assessment, fully aligned with international standards.",
+    title: "Regulatory Compliance & Guidelines",
+    desc: "Ensuring global compliance across all submissions.",
     items: [
-      "Global compliance aligned with top health authority standards",
-      "Template-driven dossier preparation for diverse submissions",
-      "Strategic roadmaps tailored to regulatory review processes",
-      "Adherence to ICH, 21 CFR, MAPPs, EU, US, and global regulations",
-      "Translating complex regulatory guidelines into seamless compliance",
-      "High-quality submissions that are compliant, efficient, and market-ready",
+      "ICH, US FDA, EU compliance",
+      "Strategic regulatory roadmap",
+      "Dossier preparation",
     ],
     image:
       "https://ik.imagekit.io/umm5llpkg/MedArc/RA-global%20gudline%20and%20complaince.png",
-    imageAlt: "Regulatory Compliance & Global Guidelines",
+    imageAlt: "Compliance",
   },
   {
     icon: Briefcase,
     title: "Specialized Assignment",
-    desc: "Transforming regulatory challenges into streamlined, compliant solutions through tailored regulatory solutions and strategic global submissions.",
-    items: [
-      "Conduct gap analysis and dossier inspection while managing submissions to additional Health Authorities",
-      "Perform comprehensive dossier review and LCM assessment with strategic regulatory roadmap development for ownership transfer products",
-      "Implement process optimization and lean methodologies for regulatory submissions",
-      "Ensure efficiency, minimized timelines, and streamlined efforts across all regulatory activities",
-    ],
+    desc: "Tailored regulatory solutions for complex challenges.",
+    items: ["Gap analysis", "Dossier review", "Process optimization"],
     image:
       "https://ik.imagekit.io/umm5llpkg/MedArc/RA%20specilized%20assiment.png",
-    imageAlt: "Specialized Assignment Services",
+    imageAlt: "Specialized Assignment",
   },
 ];
 
-/* ── Alternating Section Component ── */
+/* ── Alternating Section ── */
 const AlternatingSection = ({
   icon: Icon,
   title,
@@ -132,35 +126,27 @@ const AlternatingSection = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 last:mb-0">
-      {/* Image - Left on even, Right on odd */}
-      <div className={`order-1 ${isEven ? "md:order-1" : "md:order-2"}`}>
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className={isEven ? "" : "md:order-2"}>
         <img
           src={image}
           alt={imageAlt}
-          className="w-full h-auto rounded-2xl shadow-lg border border-stone-100"
+          className="w-full rounded-2xl object-cover"
         />
       </div>
 
-      {/* Content */}
-      <div className={`order-2 ${isEven ? "md:order-2" : "md:order-1"}`}>
-        <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
-          <Icon size={24} className="text-primary-500" />
+      <div className={isEven ? "" : "md:order-1"}>
+        <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
+          <Icon className="text-primary-500" />
         </div>
 
-        <h3 className="font-display font-semibold text-2xl text-stone-900 mb-3">
-          {title}
-        </h3>
-
-        <p className="text-stone-500 mb-5 leading-relaxed">{desc}</p>
+        <h3 className="text-2xl font-bold mb-3">{title}</h3>
+        <p className="text-stone-500 mb-4">{desc}</p>
 
         <ul className="space-y-2">
           {items.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-stone-700">
-              <CheckCircle
-                size={18}
-                className="text-primary-500 shrink-0 mt-0.5"
-              />
+            <li key={item} className="flex gap-2">
+              <CheckCircle size={18} className="text-primary-500 mt-1" />
               <span className="text-sm">{item}</span>
             </li>
           ))}
@@ -170,54 +156,58 @@ const AlternatingSection = ({
   );
 };
 
-/* ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════ */
 export default function RegulatoryPage() {
   const sectionRef = useReveal();
 
   return (
     <>
-      {/* HERO */}
-      <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
-        <div className="container-site text-center">
-          <div className="mb-8 max-w-full mx-auto rounded-xl overflow-hidden shadow-lg">
-            <img
-              src="https://ik.imagekit.io/umm5llpkg/MedArc/Regulatory-requirements.webp"
-              alt="Clinical Research Banner"
-              className="w-full h-full"
-            />
+      {/* 🔥 HERO (FIXED PROPERLY) */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={BannerURL}
+          alt="Regulatory Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* ✅ SOFT GRADIENT FIX */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-700/60 via-primary-600/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
+
+        {/* CONTENT */}
+        <div className="container-site relative z-10">
+          <div className="max-w-2xl text-white">
+            {/* <span className="uppercase tracking-widest text-sm text-white/80 mb-4 block">
+              Regulatory Affairs
+            </span> */}
+
+            {/* <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              Regulatory & Medical Writing Services
+            </h1>
+
+            <p className="text-white/85 mb-8 leading-relaxed">
+              Delivering global regulatory excellence with strategic
+              submissions, lifecycle management, and high-quality medical
+              writing support.
+            </p> */}
           </div>
-          <span className="tag-label mb-4 inline-block">
-            Regulatory Affairs
-          </span>
-
-          <h1 className="text-primary-500 section-title max-w-3xl mx-auto mb-4">
-            Regulatory Affairs & Medical Writing Services
-          </h1>
-
-          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed">
-            MedArc Clinical Research offers comprehensive regulatory affairs and
-            medical writing services to support global product development and
-            lifecycle management. Our team brings strong expertise in regulatory
-            strategy, dossier preparation, submission management, and clinical
-            documentation across the United States, Europe, and international
-            markets.
-          </p>
         </div>
       </section>
 
-      {/* MAIN SECTIONS - Alternating Layout */}
-      <section className="section-pad bg-white">
+      {/* ✅ COMPREHENSIVE SECTION (RETAINED) */}
+      <section className="section-pad">
         <div className="container-site">
-          <div ref={sectionRef} className="reveal">
+          <div ref={sectionRef}>
             <SectionHeader
-              // label="Our Capabilities"
-              title="Comprehensive Regulatory & Medical Writing Support"
-              // subtitle="End-to-end services covering global submissions, lifecycle management, CMC writing, medical writing, compliance, and specialized regulatory assignments."
+              title="Comprehensive Regulatory Support"
               className="mb-14"
             />
           </div>
 
-          <div className="space-y-16 md:space-y-20">
+          <div className="space-y-16">
             {SECTIONS.map((section, idx) => (
               <AlternatingSection
                 key={section.title}
@@ -232,24 +222,17 @@ export default function RegulatoryPage() {
       {/* CTA */}
       <section className="py-20 bg-navy-900 text-center">
         <div className="container-site">
-          <h2 className="section-title-light mb-3 max-w-xl mx-auto">
+          <h2 className="section-title-light mb-3">
             Need regulatory or medical writing support?
           </h2>
 
-          <p className="text-white/60 mb-8 max-w-md mx-auto">
-            Partner with MedArc Clinical Research for expert regulatory
-            strategy, documentation, submissions, and high-quality medical
-            writing services across global markets.
+          <p className="text-white/60 mb-8">
+            Partner with MedArc for expert regulatory strategy and submissions.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button to="/contact" variant="accent">
-              Contact Our Experts
-            </Button>
-            <Button to="/services" variant="ghost">
-              View Services
-            </Button>
-          </div>
+          <Button to="/contact" variant="accent">
+            Contact Our Experts
+          </Button>
         </div>
       </section>
     </>

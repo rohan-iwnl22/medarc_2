@@ -4,6 +4,15 @@ import { ShieldCheck, Users, FileText, ClipboardList } from "lucide-react";
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
+/* ── Banner ── */
+// const BannerURL =
+//   "https://thumbs.dreamstime.com/b/closeup-hand-arrange-wood-letters-as-ethics-word-ethics-wood-letters-121060467.jpg";
+
+// const BannerURL =
+//   "https://t4.ftcdn.net/jpg/06/07/34/71/360_F_607347177_HyysUY5FKwAcpIpwV8p4drSutidDIleN.jpg";
+
+const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/ec.png";
+
 /* ── IEC Sections ────────────────────────────── */
 const SECTIONS = [
   {
@@ -55,27 +64,42 @@ const IEC = () => {
 
   return (
     <>
-      {/* HERO */}
-      <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
-        <div className="container-site text-center">
-          <span className="tag-label mb-4 inline-block">
-            Ethics Committee Services
-          </span>
+      {/* 🔥 HERO (CLIENT STYLE FIXED) */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={BannerURL}
+          alt="IEC Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-          <h1 className="text-primary-500 section-title max-w-3xl mx-auto mb-4">
-            Institutional Ethics Committee (IEC) Establishment
-          </h1>
+        {/* ✅ Soft Gradient (Fixed) */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-700/60 via-primary-600/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
 
-          <p className="text-stone-500 max-w-3xl mx-auto leading-relaxed">
-            MedArc Clinical Research provides end-to-end support to hospitals
-            and institutions for the establishment, registration, and smooth
-            functioning of Institutional and Independent Ethics Committees (IEC)
-            in compliance with CDSCO, DHR, and ICH-GCP guidelines.
-          </p>
+        {/* CONTENT */}
+        <div className="container-site relative z-10">
+          <div className="max-w-2xl text-white">
+            {/* <span className="uppercase tracking-widest text-sm text-white/80 mb-4 block">
+              Ethics Committee Services
+            </span> */}
+
+            {/* <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              Ethics Committee Establishment
+            </h1>
+
+            <p className="text-white/85 leading-relaxed">
+              End-to-end support for IEC establishment, regulatory approvals,
+              and compliant operations aligned with CDSCO, DHR, and ICH-GCP
+              guidelines.
+            </p> */}
+          </div>
         </div>
       </section>
 
-      {/* INTRO */}
+      {/* ✅ INTRO (UNCHANGED) */}
       <section className="section-pad">
         <div className="container-site">
           <div className="bg-primary-50 border border-primary-100 rounded-2xl p-6 md:p-8">
@@ -89,7 +113,7 @@ const IEC = () => {
         </div>
       </section>
 
-      {/* MAIN SECTIONS */}
+      {/* ✅ MAIN SECTIONS (UNCHANGED) */}
       <section className="section-pad bg-[#f7f6f4]">
         <div className="container-site">
           <div ref={sectionRef} className="reveal">
@@ -127,7 +151,7 @@ const IEC = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ✅ CTA (UNCHANGED) */}
       <section className="py-20 bg-navy-900 text-center">
         <div className="container-site">
           <h2 className="section-title-light mb-3 max-w-xl mx-auto">

@@ -1,6 +1,6 @@
 /**
  * ServicesPage.jsx
- * Updated with real MedArc Clinical Research services
+ * Final: Creative Hero + Original Services & Steps retained
  */
 
 import React from "react";
@@ -9,11 +9,15 @@ import { Search, Scale, Rocket, ClipboardList, FileCheck2 } from "lucide-react";
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-const URL_1 = "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical_R.png";
-const URL_2 =
-  "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical%20Resrach%20Banner.png?updatedAt=1777047508806";
+/* ── Banner ── */
+// const BannerURL =
+//   "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical%20Resrach%20Banner.png?updatedAt=1777047508806";
 
-/* ── Updated Services Data ───────────────────────── */
+// const BannerURL = "https://data-matica.com/img/ctms.jpg";
+
+const BannerURL = "https://clinfinite.com/img/Clinical_Developmen_Solutions_Background.webp";
+
+/* ── SERVICES (UNCHANGED) ── */
 const SERVICES = [
   {
     id: "feasibility",
@@ -61,7 +65,7 @@ const SERVICES = [
     id: "management",
     icon: ClipboardList,
     title: "Study Executions",
-    desc: "Comprehensive coordination between investigators, sponsor/CROs, ethics committee, Patients and health authority to ensure smooth trial execution. ",
+    desc: "Comprehensive coordination between investigators, sponsor/CROs, ethics committee, Patients and health authority to ensure smooth trial execution.",
     items: [
       "Study Conduct Support",
       "Patient recruitment coordination",
@@ -89,7 +93,7 @@ const SERVICES = [
   },
 ];
 
-/* ── Process Steps ───────────────────────────────── */
+/* ── STEPS (UNCHANGED) ── */
 const STEPS = [
   {
     num: "1",
@@ -118,46 +122,67 @@ const STEPS = [
   },
 ];
 
-/* ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════ */
 export default function ServicesPage() {
   const stepsRef = useReveal();
 
   return (
     <>
-      {/* ══ HERO ═══════════════════════════════════ */}
-      <section className="pt-32 pb-16 bg-[#f7f6f4] border-b border-stone-100">
-        <div className="container-site text-center">
-          {/* Banner Image */}
-          <div className="mb-8 max-w-full mx-auto rounded-xl overflow-hidden shadow-lg">
-            <img
-              src={URL_1}
-              alt="Clinical Research Banner"
-              className="w-full h-full"
-            />
+      {/* 🔥 CREATIVE HERO ONLY */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background */}
+        <img
+          src={BannerURL}
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+
+        {/* Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-transparent" />
+
+        {/* Blur Decoration */}
+        <div className="absolute top-[-120px] right-[-120px] w-[350px] h-[350px] bg-primary-500/30 blur-3xl rounded-full" />
+
+        {/* Content */}
+        <div className="container-site relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+          {/* LEFT */}
+          <div className="text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-5 leading-tight">
+              Clinical Trial Management 
+            </h1>
+
+            <p className="text-white/80 mb-6 max-w-lg">
+              Delivering seamless, compliant, and high-quality clinical trial
+              solutions from feasibility to study close-out.
+            </p>
+
+            {/* <div className="flex gap-4 flex-wrap">
+              <Button className="bg-white text-primary-700">Get Started</Button>
+
+              <Button variant="ghost" className="text-white border-white">
+                Learn More
+              </Button>
+            </div> */}
           </div>
 
-          {/* <div className="w-full">
-            <img
-              src={URL_1}
-              alt="MedArc Clinical Research"
-              className="w-full object-cover max-h-[520px]"
-            />
+          {/* RIGHT CARD */}
+          {/* <div className="hidden lg:block">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-2xl">
+              <h3 className="text-white text-xl font-semibold mb-4">
+                Key Strengths
+              </h3>
+
+              <ul className="space-y-3 text-white/80 text-sm">
+                <li>✔ End-to-end clinical support</li>
+                <li>✔ Regulatory compliance expertise</li>
+                <li>✔ Faster study execution</li>
+                <li>✔ High-quality data integrity</li>
+              </ul>
+            </div>
           </div> */}
-
-          <h1 className="pt-5 text-primary-500 section-title max-w-2xl mx-auto mb-4">
-            Clinical Trial Management
-          </h1>
-
-          <p className="text-stone-500 max-w-2xl mx-auto leading-relaxed">
-            MedArc Clinical Research bridges investigators with sponsors and
-            CROs, delivering complete clinical trial support from site
-            feasibility to study close-out while ensuring quality, compliance,
-            and efficient execution.
-          </p>
         </div>
       </section>
 
-      {/* ══ SERVICES ═══════════════════════════════ */}
+      {/* ✅ SERVICES (UNCHANGED) */}
       {SERVICES.map((svc) => {
         const Icon = svc.icon;
 
@@ -168,23 +193,18 @@ export default function ServicesPage() {
           >
             <div className="container-site">
               <div
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  svc.reverse ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${svc.reverse ? "lg:flex-row-reverse" : ""}`}
               >
-                {/* LEFT CONTENT */}
                 <div className={svc.reverse ? "lg:order-2" : ""}>
                   <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
                     <Icon size={24} className="text-primary-500" />
                   </div>
 
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-stone-900 mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">
                     {svc.title}
                   </h2>
 
-                  <p className="text-stone-500 leading-relaxed mb-5">
-                    {svc.desc}
-                  </p>
+                  <p className="text-stone-500 mb-5">{svc.desc}</p>
 
                   <ul className="space-y-2 mb-6">
                     {svc.items.map((item) => (
@@ -193,18 +213,14 @@ export default function ServicesPage() {
                   </ul>
                 </div>
 
-                {/* RIGHT VISUAL — image fills container properly */}
                 <div
-                  className={`rounded-xl overflow-hidden bg-stone-100 ${
-                    svc.reverse ? "lg:order-1" : ""
-                  }`}
+                  className={`rounded-xl overflow-hidden ${svc.reverse ? "lg:order-1" : ""}`}
                   style={{ aspectRatio: "16/11" }}
                 >
                   <img
-                    loading="lazy"
                     src={svc.link}
                     alt={svc.title}
-                    className="w-full h-full object-cover block"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
@@ -213,10 +229,10 @@ export default function ServicesPage() {
         );
       })}
 
-      {/* ══ PROCESS ════════════════════════════════ */}
+      {/* ✅ STEPS (UNCHANGED) */}
       <section className="section-pad bg-navy-900">
         <div className="container-site">
-          <div ref={stepsRef} className="reveal">
+          <div ref={stepsRef}>
             <SectionHeader
               title="Our Operational Framework"
               subtitle="A structured and efficient approach ensuring compliance, quality, and timely execution."
@@ -225,19 +241,13 @@ export default function ServicesPage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4  gap-8">
+          <div className="grid lg:grid-cols-5 sm:grid-cols-2 gap-8">
             {STEPS.map((step) => (
               <div key={step.num} className="text-center">
-                <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
-                    step.active
-                      ? "bg-accent-500 text-white"
-                      : "bg-navy-800 text-white/60"
-                  }`}
-                >
+                <div className="w-12 h-12 rounded-full bg-navy-800 text-white flex items-center justify-center mx-auto mb-4">
                   {step.num}
                 </div>
-                <h3 className="text-white font-semibold mb-1">{step.title}</h3>
+                <h3 className="text-white font-semibold">{step.title}</h3>
                 <p className="text-white/50 text-sm">{step.desc}</p>
               </div>
             ))}
@@ -245,12 +255,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ══ CTA ════════════════════════════════════ */}
+      {/* CTA */}
       <section className="py-20">
         <div className="container-site text-center">
           <h2 className="section-title mb-3">
             Ready to start your clinical research study?
           </h2>
+
           <p className="text-stone-500 mb-8 max-w-md mx-auto">
             Partner with MedArc Clinical Research for reliable, compliant, and
             efficient clinical trial execution.
