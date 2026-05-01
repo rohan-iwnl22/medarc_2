@@ -22,8 +22,9 @@ import {
 import { Button, SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-const BannerURL =
-  "https://ik.imagekit.io/umm5llpkg/MedArc/updated%20banner.jpeg";
+// const BannerURL =
+//   "https://ik.imagekit.io/umm5llpkg/MedArc/updated%20banner.jpeg";
+const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/updatd%20banner.png";
 
 const PILLARS1 = [
   {
