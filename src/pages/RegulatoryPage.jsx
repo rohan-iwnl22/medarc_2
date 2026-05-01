@@ -1,7 +1,7 @@
 /**
  * RegulatoryPage.jsx
- * Revamped: Uniform fonts matching HomePage and ServicesPage
- * Premium Hero + All sections retained (no removals)
+ * FULL MOBILE BANNER FIXED VERSION
+ * Copy-Paste Ready
  */
 
 import React from "react";
@@ -15,14 +15,14 @@ import {
   Briefcase,
 } from "lucide-react";
 
-import { Button, SectionHeader } from "../components/ui.jsx";
+import { SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
 const BannerURL =
   "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory%20compilance.png";
 
-/* ── Sections Data (UNCHANGED) ── */
+/* ── Data ── */
 const SECTIONS = [
   {
     icon: FileText,
@@ -31,9 +31,9 @@ const SECTIONS = [
     items: [
       "National Drug Applications (NDAs)/Biological License Applications (BLAs)",
       "Generic (ANDA/ANDS)/Biosimilar applications",
-      "Marketing Authorization Applications (MAAs including National, De-Centralize and Centralize, MRP)",
+      "Marketing Authorization Applications (MAAs including National, De-Centralized and Centralized, MRP)",
       "Global Dossier Submissions",
-      "Pre-approval submission: Correspondences, Amendments etc",
+      "Pre-approval submissions: Correspondences, Amendments etc.",
       "ROW submissions",
       "Submission Operation Management",
     ],
@@ -105,7 +105,7 @@ const SECTIONS = [
   },
 ];
 
-/* ── Alternating Section with Uniform Fonts ── */
+/* ── Alternating Sections ── */
 const AlternatingSection = ({
   icon: Icon,
   title,
@@ -118,36 +118,38 @@ const AlternatingSection = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Image */}
       <div className={isEven ? "" : "lg:order-2"}>
         <img
           src={image}
           alt={imageAlt}
-          className="w-full rounded-xl sm:rounded-2xl object-cover"
+          className="w-full rounded-2xl object-cover shadow-md"
         />
       </div>
 
+      {/* Content */}
       <div className={isEven ? "" : "lg:order-1"}>
-        <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-4 xs:mb-5 sm:mb-6">
-          <Icon className="text-primary-500 w-5 h-5 xs:w-6 xs:h-6" />
+        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-5">
+          <Icon className="text-primary-500 w-6 h-6" />
         </div>
 
-        <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-stone-900 mb-3 xs:mb-4 leading-snug">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-stone-900 mb-4 leading-snug">
           {title}
         </h3>
 
-        <p className="text-sm xs:text-base sm:text-base md:text-lg text-stone-600 mb-5 xs:mb-6 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-stone-600 mb-6 leading-relaxed">
           {desc}
         </p>
 
-        <ul className="space-y-2 xs:space-y-2.5">
+        <ul className="space-y-3">
           {items.map((item) => (
-            <li key={item} className="flex gap-2 xs:gap-2.5">
+            <li key={item} className="flex gap-3">
               <CheckCircle
                 size={18}
                 className="text-primary-500 mt-1 flex-shrink-0"
               />
-              <span className="text-sm xs:text-base text-stone-700 leading-relaxed">
+              <span className="text-sm sm:text-base text-stone-700 leading-relaxed">
                 {item}
               </span>
             </li>
@@ -158,37 +160,44 @@ const AlternatingSection = ({
   );
 };
 
-/* ═══════════════════════════════════ */
+/* ── Main Page ── */
 export default function RegulatoryPage() {
   const sectionRef = useReveal();
 
   return (
     <>
-      {/* 🔥 HERO WITH UNIFORM FONTS */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        <img
-          src={BannerURL}
-          alt="Regulatory Banner"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* HERO SECTION FIXED FOR MOBILE */}
+      <section className="relative overflow-hidden">
+        <div className="relative h-[260px] sm:h-[420px] md:h-[550px] lg:h-[80vh] w-full">
+          <img
+            src={BannerURL}
+            alt="Regulatory Banner"
+            className="
+              absolute inset-0
+              w-full h-full
+              object-cover
+              object-[78%_center]
+              sm:object-center
+            "
+          />
 
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-700/60 via-primary-600/30 to-transparent" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-700/55 via-primary-600/25 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
       </section>
 
-      {/* ✅ COMPREHENSIVE SECTION WITH UNIFORM FONTS */}
-      <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24">
-        <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
+      {/* CONTENT */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="container-site px-4 sm:px-6 md:px-8">
           <div ref={sectionRef}>
             <SectionHeader
               title="Comprehensive Regulatory Support"
-              className="mb-10 xs:mb-12 sm:mb-14 md:mb-16"
+              className="mb-12 md:mb-16"
             />
           </div>
 
-          <div className="space-y-12 xs:space-y-14 sm:space-y-16 md:space-y-20">
+          <div className="space-y-14 md:space-y-20">
             {SECTIONS.map((section, idx) => (
               <AlternatingSection
                 key={section.title}
