@@ -135,10 +135,10 @@ export default function ServicesPage() {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-transparent" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-transparent" /> */}
 
         {/* Blur Decoration */}
-        <div className="absolute top-[-120px] right-[-120px] w-[350px] h-[350px] bg-primary-500/30 blur-3xl rounded-full" />
+        {/* <div className="absolute top-[-120px] right-[-120px] w-[350px] h-[350px] bg-primary-500/30 blur-3xl rounded-full" /> */}
 
         {/* Content */}
         <div className="container-site relative z-10 px-4 xs:px-5 sm:px-6 md:px-8">

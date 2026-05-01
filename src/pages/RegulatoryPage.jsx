@@ -19,8 +19,10 @@ import { SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
-const BannerURL =
-  "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory%20compilance.png";
+// const BannerURL =
+//   "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory%20compilance.png";
+
+const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/banner.png";
 
 /* ── Data ── */
 const SECTIONS = [
@@ -182,8 +184,8 @@ export default function RegulatoryPage() {
           />
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-700/55 via-primary-600/25 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-primary-700/55 via-primary-600/25 to-transparent" /> */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" /> */}
         </div>
       </section>
 

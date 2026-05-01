@@ -1,13 +1,14 @@
 /**
  * HomePage.jsx
- * FULL MOBILE FIXED VERSION
- * Banner + Overlay + Text + Section spacing corrected
- * Copy-Paste Ready
+ * FULL UPDATED VERSION
+ * Only changes made:
+ * - Removed rounded gradient/background behind BannerURL2
+ * - BannerURL2 now clean with no overlay/background
+ * - Full code included
  */
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import useReveal from "../hooks/useReveal.js";
 
 const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
@@ -15,7 +16,7 @@ const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
 const BannerURL2 =
   "https://ik.imagekit.io/umm5llpkg/MedArc/updatd%20banner.png";
 
-/* -------------------------------- DATA -------------------------------- */
+/* ---------------- DATA ---------------- */
 
 const PILLARS1 = [
   {
@@ -55,64 +56,190 @@ const THERAPEUTIC_AREAS = [
   },
   { name: "Oncology", img: "https://ik.imagekit.io/umm5llpkg/MedArc/onco.png" },
   {
+    name: "Endocrinology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/endo.png",
+  },
+  {
     name: "Cardiology",
     img: "https://ik.imagekit.io/umm5llpkg/MedArc/cardio.png",
   },
   {
-    name: "Endocrinology",
-    img: "https://ik.imagekit.io/umm5llpkg/MedArc/endo.png",
+    name: "Infectious Disease",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/infec.png",
+  },
+  {
+    name: "Gastroenterology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/gastro.png",
+  },
+  {
+    name: "Gynaecology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/gynao.png",
+  },
+  {
+    name: "Haematology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/haemo.png",
+  },
+  {
+    name: "Critical Care",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/cric%20care.png",
+  },
+  {
+    name: "Paediatrics",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/paedra.png",
+  },
+  { name: "ENT", img: "https://ik.imagekit.io/umm5llpkg/MedArc/ENT.png" },
+  {
+    name: "Surgery",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/surgery.png",
+  },
+  {
+    name: "Orthopaedics & Rheumatology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/ortho.png",
+  },
+  {
+    name: "Nephrology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/nephro.png",
+  },
+  {
+    name: "Metabolic Disease",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/metabolic%20disease.png",
+  },
+  {
+    name: "Pulmonology",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/pulmno.png",
+  },
+  { name: "Dental", img: "https://ik.imagekit.io/umm5llpkg/MedArc/dental.png" },
+  {
+    name: "Medical Device",
+    img: "https://ik.imagekit.io/umm5llpkg/MedArc/medica.png",
   },
 ];
 
-/* ------------------------ MOBILE RESPONSIVE CAROUSEL ------------------------ */
+/* ---------------- THERAPEUTIC CAROUSEL ---------------- */
 
 function TherapeuticCarousel() {
+  const [visibleCount, setVisibleCount] = useState(4);
   const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
-  const prev = () =>
-    setCurrent((prev) =>
-      prev === 0 ? THERAPEUTIC_AREAS.length - 1 : prev - 1,
-    );
+  const cloned = [
+    ...THERAPEUTIC_AREAS.slice(-visibleCount),
+    ...THERAPEUTIC_AREAS,
+    ...THERAPEUTIC_AREAS.slice(0, visibleCount),
+  ];
 
-  const next = () =>
-    setCurrent((prev) =>
-      prev === THERAPEUTIC_AREAS.length - 1 ? 0 : prev + 1,
-    );
+  const total = THERAPEUTIC_AREAS.length;
+  const offset = visibleCount;
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 480) setVisibleCount(1);
+      else if (w < 640) setVisibleCount(2);
+      else if (w < 768) setVisibleCount(2);
+      else if (w < 1024) setVisibleCount(3);
+      else setVisibleCount(4);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  useEffect(() => {
+    setIsTransitioning(false);
+    setCurrent(0);
+  }, [visibleCount]);
+
+  const goTo = (idx) => {
+    setIsTransitioning(true);
+    setCurrent(idx);
+  };
+
+  const prev = () => goTo(current - 1);
+  const next = () => goTo(current + 1);
+
+  const handleTransitionEnd = () => {
+    if (current < 0) {
+      setIsTransitioning(false);
+      setCurrent(total - 1);
+    } else if (current >= total) {
+      setIsTransitioning(false);
+      setCurrent(0);
+    }
+  };
+
+  const cardWidthPct = 100 / visibleCount;
+  const translateX = (offset + current) * cardWidthPct;
+  const dotIndex = ((current % total) + total) % total;
 
   return (
-    <div className="max-w-sm mx-auto">
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden border">
-        <img
-          src={THERAPEUTIC_AREAS[current].img}
-          alt={THERAPEUTIC_AREAS[current].name}
-          className="w-full h-72 object-cover"
-        />
-
-        <div className="p-4 text-center font-semibold text-lg">
-          {THERAPEUTIC_AREAS[current].name}
+    <div className="relative px-2 sm:px-4 md:px-0">
+      <div className="overflow-hidden">
+        <div
+          className="flex"
+          style={{
+            transform: `translateX(-${translateX}%)`,
+            transition: isTransitioning
+              ? "transform 500ms ease-in-out"
+              : "none",
+          }}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {cloned.map(({ name, img }, idx) => (
+            <div
+              key={`${name}-${idx}`}
+              style={{ minWidth: `${cardWidthPct}%` }}
+              className="px-1 sm:px-2 md:px-3"
+            >
+              <div className="group bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="w-full aspect-square overflow-hidden">
+                  <img
+                    src={img}
+                    alt={name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="flex justify-center gap-4 mt-5">
+      <div className="flex items-center justify-center gap-3 mt-8">
         <button
           onClick={prev}
-          className="w-10 h-10 rounded-full border flex items-center justify-center"
+          className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center hover:bg-primary-500 hover:text-white transition"
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft className="w-5 h-5" />
         </button>
+
+        <div className="flex gap-2 flex-wrap justify-center">
+          {THERAPEUTIC_AREAS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === dotIndex
+                  ? "w-6 h-2 bg-primary-500"
+                  : "w-2 h-2 bg-stone-300"
+              }`}
+            />
+          ))}
+        </div>
 
         <button
           onClick={next}
-          className="w-10 h-10 rounded-full border flex items-center justify-center"
+          className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center hover:bg-primary-500 hover:text-white transition"
         >
-          <ChevronRight size={18} />
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
     </div>
   );
 }
 
-/* ------------------------------- MAIN PAGE ------------------------------- */
+/* ---------------- MAIN PAGE ---------------- */
 
 export default function HomePage() {
   const heroRef = useReveal();
@@ -121,68 +248,83 @@ export default function HomePage() {
 
   return (
     <>
-      {/* TOP LOGO BANNER FIXED */}
+      {/* TOP BANNER */}
       <section className="w-full overflow-hidden">
         <img
           src={BannerURL}
           alt="Banner"
-          className="w-full h-[180px] sm:h-[260px] md:h-auto object-cover object-center"
+          className="w-full h-[180px] sm:h-[260px] md:h-auto object-cover"
         />
       </section>
 
-      {/* WHO WE ARE SECTION FIXED */}
-      <section ref={secondBannerRef} className="relative overflow-hidden">
-        <div className="relative h-[560px] sm:h-[650px] md:h-[720px] w-full">
-          <img
-            src={BannerURL2}
-            alt="Who We Are"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/55"></div>
-
-          {/* Content */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full px-5 sm:px-8 md:px-12">
-              <div ref={heroRef} className="max-w-xl text-white">
-                <h1 className="text-3xl sm:text-5xl font-bold mb-5">
+      {/* WHO WE ARE SPLIT SECTION */}
+      <section
+        ref={secondBannerRef}
+        className="bg-[#f7f6f4] py-10 sm:py-14 md:py-20"
+      >
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] items-center gap-10">
+            {/* LEFT CONTENT */}
+            <div className="px-4 sm:px-8 md:px-12 lg:px-14 py-10">
+              <div ref={heroRef} className="max-w-xl">
+                <h2 className="text-4xl sm:text-5xl font-light text-primary-500 mb-6">
                   Who We Are
-                </h1>
+                </h2>
 
-                <div className="space-y-4 text-sm sm:text-base md:text-lg leading-relaxed">
-                  <p>
-                    MedArc Clinical Research Organization provides comprehensive
-                    Site Management services for clinical studies across India.
-                  </p>
+                <p>
+                  MedArc Clinical Research Organization provides comprehensive
+                  Site Management services for clinical studies across India,
+                  ensuring seamless, high-quality, and rigorously compliant
+                  clinical trial management.
+                </p>
 
-                  <p>
-                    We also offer global regulatory submission services to
-                    health authorities worldwide.
-                  </p>
+                <p>
+                  In parallel, the organization offers comprehensive,
+                  strategically guided, and rigorously compliant global
+                  regulatory submission services to health authorities
+                  worldwide.
+                </p>
 
-                  <p>
-                    Our services support Pharmaceuticals, Biologics, Medical
-                    Devices, Ayurvedic and Consumer Products sectors.
-                  </p>
+                <p>
+                  Our services are designed to support organizations across Life
+                  Sciences, Pharmaceuticals, Biologics, Medical Devices,
+                  Ayurvedic and Consumer Products Sectors, delivering tailored
+                  solutions aligned with their clinical and regulatory
+                  requirements.
+                </p>
 
-                  <p className="hidden sm:block">
-                    Every initiative follows strong ethical principles, global
-                    compliance standards, and robust data integrity.
-                  </p>
+                <p>
+                  Every initiative we undertake is governed by strong ethical
+                  principles and strict compliance with global regulatory
+                  requirements, including ICH Guidelines, regional regulatory
+                  authorities, and international regulatory standards, ensuring
+                  robust data integrity, accuracy, and reliability throughout
+                  the lifecycle.
+                </p>
 
-                  <p>
-                    By choosing MedArc, you align with a results-driven team
-                    committed to excellence.
-                  </p>
-                </div>
+                <p>
+                  By choosing MedArc Clinical Research, you align with a
+                  results-driven team passionately committed to precision,
+                  professionalism, and transformative excellence - empowering
+                  meaningful and lasting progress in the ever-evolving landscape
+                  of clinical research and global regulatory submissions.
+                </p>
               </div>
+            </div>
+
+            {/* RIGHT IMAGE CLEAN */}
+            <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
+              <img
+                src={BannerURL2}
+                alt="Who We Are"
+                className="w-full h-full object-contain object-center"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOUNDATION SECTION */}
+      {/* FOUNDATION */}
       <section className="bg-[#f7f6f4] py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-center text-2xl sm:text-3xl font-bold text-primary-500 mb-10 tracking-wider">
@@ -197,9 +339,7 @@ export default function HomePage() {
                   alt={item.title}
                   className="w-14 h-14 rounded-xl mb-4 object-cover"
                 />
-
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-
                 <p className="text-stone-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -229,9 +369,7 @@ export default function HomePage() {
                   alt={item.title}
                   className="w-14 h-14 rounded-xl mb-4 object-cover"
                 />
-
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-
                 <p className="text-stone-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
