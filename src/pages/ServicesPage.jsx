@@ -1,6 +1,7 @@
 /**
  * ServicesPage.jsx
- * Final: Creative Hero + Original Services & Steps retained
+ * Revamped: Uniform fonts matching HomePage
+ * Creative Hero + Original Services & Steps retained
  */
 
 import React from "react";
@@ -10,11 +11,6 @@ import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
-// const BannerURL =
-//   "https://ik.imagekit.io/umm5llpkg/MedArc/Clinical%20Resrach%20Banner.png?updatedAt=1777047508806";
-
-// const BannerURL = "https://data-matica.com/img/ctms.jpg";
-
 const BannerURL = "https://clinfinite.com/img/Clinical_Developmen_Solutions_Background.webp";
 
 /* ── SERVICES (UNCHANGED) ── */
@@ -124,89 +120,77 @@ const STEPS = [
 
 /* ═══════════════════════════════ */
 export default function ServicesPage() {
+  const heroRef = useReveal();
   const stepsRef = useReveal();
 
   return (
     <>
-      {/* 🔥 CREATIVE HERO ONLY */}
+      {/* 🔥 CREATIVE HERO WITH UNIFORM FONTS */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         {/* Background */}
         <img
           src={BannerURL}
+          alt="Clinical Trial Management"
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />
 
-        {/* Gradient */}
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-transparent" />
 
         {/* Blur Decoration */}
         <div className="absolute top-[-120px] right-[-120px] w-[350px] h-[350px] bg-primary-500/30 blur-3xl rounded-full" />
 
         {/* Content */}
-        <div className="container-site relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-          {/* LEFT */}
-          <div className="text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-5 leading-tight">
-              Clinical Trial Management 
-            </h1>
+        <div className="container-site relative z-10 px-4 xs:px-5 sm:px-6 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* LEFT - Hero Content */}
+            <div ref={heroRef} className="reveal text-white">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 xs:mb-5 sm:mb-6 leading-tight">
+                Clinical Trial Management
+              </h1>
 
-            <p className="text-white/80 mb-6 max-w-lg">
-              Delivering seamless, compliant, and high-quality clinical trial
-              solutions from feasibility to study close-out.
-            </p>
-
-            {/* <div className="flex gap-4 flex-wrap">
-              <Button className="bg-white text-primary-700">Get Started</Button>
-
-              <Button variant="ghost" className="text-white border-white">
-                Learn More
-              </Button>
-            </div> */}
-          </div>
-
-          {/* RIGHT CARD */}
-          {/* <div className="hidden lg:block">
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-2xl">
-              <h3 className="text-white text-xl font-semibold mb-4">
-                Key Strengths
-              </h3>
-
-              <ul className="space-y-3 text-white/80 text-sm">
-                <li>✔ End-to-end clinical support</li>
-                <li>✔ Regulatory compliance expertise</li>
-                <li>✔ Faster study execution</li>
-                <li>✔ High-quality data integrity</li>
-              </ul>
+              <p className="text-sm xs:text-base sm:text-base md:text-lg text-white/80 mb-6 xs:mb-7 sm:mb-8 max-w-lg leading-relaxed">
+                Delivering seamless, compliant, and high-quality clinical trial
+                solutions from feasibility to study close-out.
+              </p>
             </div>
-          </div> */}
+
+            {/* RIGHT - Optional Card (Commented) */}
+          </div>
         </div>
       </section>
 
-      {/* ✅ SERVICES (UNCHANGED) */}
-      {SERVICES.map((svc) => {
+      {/* ✅ SERVICES SECTION WITH UNIFORM FONTS */}
+      {SERVICES.map((svc, idx) => {
         const Icon = svc.icon;
+        const serviceRef = useReveal();
 
         return (
           <section
             key={svc.id}
-            className="section-pad border-b border-stone-100 last:border-none"
+            className={`py-12 xs:py-14 sm:py-16 md:py-20 border-b border-stone-100 last:border-none ${
+              idx % 2 === 1 ? "bg-[#f7f6f4]" : "bg-white"
+            }`}
           >
-            <div className="container-site">
+            <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
               <div
-                className={`grid lg:grid-cols-2 gap-12 items-center ${svc.reverse ? "lg:flex-row-reverse" : ""}`}
+                ref={serviceRef}
+                className="reveal grid lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12 items-center"
               >
                 <div className={svc.reverse ? "lg:order-2" : ""}>
-                  <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl bg-primary-50 flex items-center justify-center mb-4 xs:mb-5 sm:mb-6">
                     <Icon size={24} className="text-primary-500" />
                   </div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">
+                  <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-stone-900 mb-3 xs:mb-4 leading-snug">
                     {svc.title}
                   </h2>
 
-                  <p className="text-stone-500 mb-5">{svc.desc}</p>
+                  <p className="text-sm xs:text-base sm:text-base md:text-lg text-stone-600 mb-5 xs:mb-6 leading-relaxed">
+                    {svc.desc}
+                  </p>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2 xs:space-y-2.5 mb-6 xs:mb-7">
                     {svc.items.map((item) => (
                       <CheckItem key={item}>{item}</CheckItem>
                     ))}
@@ -214,13 +198,15 @@ export default function ServicesPage() {
                 </div>
 
                 <div
-                  className={`rounded-xl overflow-hidden ${svc.reverse ? "lg:order-1" : ""}`}
+                  className={`rounded-xl sm:rounded-2xl overflow-hidden shadow-md ${
+                    svc.reverse ? "lg:order-1" : ""
+                  }`}
                   style={{ aspectRatio: "16/11" }}
                 >
                   <img
                     src={svc.link}
                     alt={svc.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
@@ -229,45 +215,33 @@ export default function ServicesPage() {
         );
       })}
 
-      {/* ✅ STEPS (UNCHANGED) */}
-      <section className="section-pad bg-navy-900">
-        <div className="container-site">
-          <div ref={stepsRef}>
-            <SectionHeader
-              title="Our Operational Framework"
-              subtitle="A structured and efficient approach ensuring compliance, quality, and timely execution."
-              theme="light"
-              className="mb-16"
-            />
+      {/* ✅ STEPS SECTION WITH UNIFORM FONTS */}
+      <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-r from-primary-900 to-primary-800">
+        <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
+          <div ref={stepsRef} className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold tracking-wide sm:tracking-widest uppercase text-white mb-3 sm:mb-4">
+              Our Operational Framework
+            </h2>
+            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-primary-100 leading-relaxed max-w-3xl mx-auto">
+              A structured and efficient approach ensuring compliance, quality, and timely execution.
+            </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 xs:gap-7 sm:gap-8">
             {STEPS.map((step) => (
-              <div key={step.num} className="text-center">
-                <div className="w-12 h-12 rounded-full bg-navy-800 text-white flex items-center justify-center mx-auto mb-4">
+              <div key={step.num} className="text-center group">
+                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300 text-white flex items-center justify-center mx-auto mb-4 xs:mb-5 text-xl xs:text-2xl font-bold backdrop-blur-sm">
                   {step.num}
                 </div>
-                <h3 className="text-white font-semibold">{step.title}</h3>
-                <p className="text-white/50 text-sm">{step.desc}</p>
+                <h3 className="text-base xs:text-lg sm:text-lg md:text-xl font-semibold text-white mb-2 leading-snug">
+                  {step.title}
+                </h3>
+                <p className="text-sm xs:text-base text-primary-100 leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container-site text-center">
-          <h2 className="section-title mb-3">
-            Ready to start your clinical research study?
-          </h2>
-
-          <p className="text-stone-500 mb-8 max-w-md mx-auto">
-            Partner with MedArc Clinical Research for reliable, compliant, and
-            efficient clinical trial execution.
-          </p>
-
-          <Button to="/contact">Contact Our Team</Button>
         </div>
       </section>
     </>

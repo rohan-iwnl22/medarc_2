@@ -300,25 +300,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ══ CTA ═════════════════════════════════════ */}
-      <section className="py-28 text-center">
-        <div className="container-site">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
-            Ready to collaborate with MedArc?
-          </h2>
-          <p className="text-stone-500 text-lg mb-10 max-w-md mx-auto">
-            Connect with us to explore how we can support your clinical research
-            and regulatory requirements.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button to="/contact">Contact Us</Button>
-            <Button to="/services" variant="outline">
-              Explore Services
-            </Button>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

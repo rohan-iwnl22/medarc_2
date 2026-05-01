@@ -1,6 +1,7 @@
 /**
  * RegulatoryPage.jsx
- * Final: Premium Hero + All sections retained (no removals)
+ * Revamped: Uniform fonts matching HomePage and ServicesPage
+ * Premium Hero + All sections retained (no removals)
  */
 
 import React from "react";
@@ -18,15 +19,6 @@ import { Button, SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
-// const BannerURL =
-//   "https://unsolvedlegal.com/wp-content/uploads/2026/02/legal-compliance.webp";
-
-// const BannerURL =
-//   "https://www.astrixinc.com/wp-content/uploads/2021/07/compliance3.jpg";
-
-// const BannerURL =
-//   "https://t4.ftcdn.net/jpg/04/52/11/87/360_F_452118798_xjpo2u4o06cNOLTm6IandQMspSQjRU9h.jpg";
-
 const BannerURL =
   "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory%20compilance.png";
 
@@ -113,7 +105,7 @@ const SECTIONS = [
   },
 ];
 
-/* ── Alternating Section ── */
+/* ── Alternating Section with Uniform Fonts ── */
 const AlternatingSection = ({
   icon: Icon,
   title,
@@ -126,28 +118,38 @@ const AlternatingSection = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <div className={isEven ? "" : "md:order-2"}>
+    <div className="grid lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12 items-center">
+      <div className={isEven ? "" : "lg:order-2"}>
         <img
           src={image}
           alt={imageAlt}
-          className="w-full rounded-2xl object-cover"
+          className="w-full rounded-xl sm:rounded-2xl object-cover"
         />
       </div>
 
-      <div className={isEven ? "" : "md:order-1"}>
-        <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center mb-4">
-          <Icon className="text-primary-500" />
+      <div className={isEven ? "" : "lg:order-1"}>
+        <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-4 xs:mb-5 sm:mb-6">
+          <Icon className="text-primary-500 w-5 h-5 xs:w-6 xs:h-6" />
         </div>
 
-        <h3 className="text-2xl font-bold mb-3">{title}</h3>
-        <p className="text-stone-500 mb-4">{desc}</p>
+        <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-stone-900 mb-3 xs:mb-4 leading-snug">
+          {title}
+        </h3>
 
-        <ul className="space-y-2">
+        <p className="text-sm xs:text-base sm:text-base md:text-lg text-stone-600 mb-5 xs:mb-6 leading-relaxed">
+          {desc}
+        </p>
+
+        <ul className="space-y-2 xs:space-y-2.5">
           {items.map((item) => (
-            <li key={item} className="flex gap-2">
-              <CheckCircle size={18} className="text-primary-500 mt-1" />
-              <span className="text-sm">{item}</span>
+            <li key={item} className="flex gap-2 xs:gap-2.5">
+              <CheckCircle
+                size={18}
+                className="text-primary-500 mt-1 flex-shrink-0"
+              />
+              <span className="text-sm xs:text-base text-stone-700 leading-relaxed">
+                {item}
+              </span>
             </li>
           ))}
         </ul>
@@ -162,52 +164,31 @@ export default function RegulatoryPage() {
 
   return (
     <>
-      {/* 🔥 HERO (FIXED PROPERLY) */}
+      {/* 🔥 HERO WITH UNIFORM FONTS */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background Image */}
         <img
           src={BannerURL}
           alt="Regulatory Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* ✅ SOFT GRADIENT FIX */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-primary-700/60 via-primary-600/30 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
-
-        {/* CONTENT */}
-        <div className="container-site relative z-10">
-          <div className="max-w-2xl text-white">
-            {/* <span className="uppercase tracking-widest text-sm text-white/80 mb-4 block">
-              Regulatory Affairs
-            </span> */}
-
-            {/* <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Regulatory & Medical Writing Services
-            </h1>
-
-            <p className="text-white/85 mb-8 leading-relaxed">
-              Delivering global regulatory excellence with strategic
-              submissions, lifecycle management, and high-quality medical
-              writing support.
-            </p> */}
-          </div>
-        </div>
       </section>
 
-      {/* ✅ COMPREHENSIVE SECTION (RETAINED) */}
-      <section className="section-pad">
-        <div className="container-site">
+      {/* ✅ COMPREHENSIVE SECTION WITH UNIFORM FONTS */}
+      <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24">
+        <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div ref={sectionRef}>
             <SectionHeader
               title="Comprehensive Regulatory Support"
-              className="mb-14"
+              className="mb-10 xs:mb-12 sm:mb-14 md:mb-16"
             />
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-12 xs:space-y-14 sm:space-y-16 md:space-y-20">
             {SECTIONS.map((section, idx) => (
               <AlternatingSection
                 key={section.title}
@@ -216,23 +197,6 @@ export default function RegulatoryPage() {
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-navy-900 text-center">
-        <div className="container-site">
-          <h2 className="section-title-light mb-3">
-            Need regulatory or medical writing support?
-          </h2>
-
-          <p className="text-white/60 mb-8">
-            Partner with MedArc for expert regulatory strategy and submissions.
-          </p>
-
-          <Button to="/contact" variant="accent">
-            Contact Our Experts
-          </Button>
         </div>
       </section>
     </>
