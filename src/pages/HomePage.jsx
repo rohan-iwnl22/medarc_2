@@ -438,7 +438,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ CTA SECTION - FULLY RESPONSIVE ═══════════════════ */}
+      {/* ══ CTA SECTION - FULLY RESPONSIVE ═══════════════════
       <section className="py-10 xs:py-12 sm:py-16 md:py-20 bg-gradient-to-r from-primary-800 to-primary-900 text-center">
         <div className="container-site px-3 xs:px-4 sm:px-6 md:px-8">
           <h2 className="text-white text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-3 xs:mb-4 sm:mb-4 leading-tight px-2">
@@ -455,7 +455,7 @@ export default function HomePage() {
             Get Started
           </Button>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
