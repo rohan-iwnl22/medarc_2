@@ -54,9 +54,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 flex items-center">
             <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
               <div ref={heroRef} className="reveal max-w-3xl">
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-primary-500 mb-4 leading-tight drop-shadow-lg">
+                {/* <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-primary-500 mb-4 leading-tight drop-shadow-lg">
                   About US
-                </h1>
+                </h1> */}
               </div>
             </div>
           </div>

@@ -277,14 +277,14 @@ export default function HomePage() {
                   ensuring seamless, high-quality, and rigorously compliant
                   clinical trial management.
                 </p>
-
+                <br/>
                 <p>
                   In parallel, the organization offers comprehensive,
                   strategically guided, and rigorously compliant global
                   regulatory submission services to health authorities
                   worldwide.
                 </p>
-
+                <br/>
                 <p>
                   Our services are designed to support organizations across Life
                   Sciences, Pharmaceuticals, Biologics, Medical Devices,
@@ -292,7 +292,7 @@ export default function HomePage() {
                   solutions aligned with their clinical and regulatory
                   requirements.
                 </p>
-
+                <br/>
                 <p>
                   Every initiative we undertake is governed by strong ethical
                   principles and strict compliance with global regulatory
@@ -301,7 +301,7 @@ export default function HomePage() {
                   robust data integrity, accuracy, and reliability throughout
                   the lifecycle.
                 </p>
-
+                <br/>
                 <p>
                   By choosing MedArc Clinical Research, you align with a
                   results-driven team passionately committed to precision,
