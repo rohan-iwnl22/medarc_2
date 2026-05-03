@@ -2,6 +2,7 @@
  * ServicesPage.jsx
  * Revamped: Uniform fonts matching HomePage
  * Creative Hero + Original Services & Steps retained
+ * Fixed: Banner image responsive on mobile screens
  */
 
 import React from "react";
@@ -11,7 +12,8 @@ import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
-const BannerURL = "https://clinfinite.com/img/Clinical_Developmen_Solutions_Background.webp";
+const BannerURL =
+  "https://clinfinite.com/img/Clinical_Developmen_Solutions_Background.webp";
 
 /* ── SERVICES (UNCHANGED) ── */
 const SERVICES = [
@@ -46,7 +48,7 @@ const SERVICES = [
   {
     id: "startup",
     icon: Rocket,
-    title: "Study Inititations",
+    title: "Study Initiations",
     desc: "We accelerate trial initiation with efficient start-up processes ensuring timely study activation.",
     items: [
       "Site initiation support",
@@ -125,20 +127,22 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* 🔥 CREATIVE HERO WITH UNIFORM FONTS */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <img
-          src={BannerURL}
-          alt="Clinical Trial Management"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-        />
+      {/* 🔥 CREATIVE HERO WITH RESPONSIVE BANNER - FIXED FOR MOBILE */}
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background Image - Responsive for all screen sizes */}
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src={BannerURL}
+            alt="Clinical Trial Management"
+            className="w-full h-full object-cover object-center"
+            style={{
+              objectPosition: "center center",
+            }}
+          />
+        </div>
 
-        {/* Gradient Overlay */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-transparent" /> */}
-
-        {/* Blur Decoration */}
-        {/* <div className="absolute top-[-120px] right-[-120px] w-[350px] h-[350px] bg-primary-500/30 blur-3xl rounded-full" /> */}
+        {/* Optional: Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30 sm:bg-black/20 md:bg-gradient-to-r md:from-primary-900/80 md:via-primary-800/60 md:to-transparent" />
 
         {/* Content */}
         <div className="container-site relative z-10 px-4 xs:px-5 sm:px-6 md:px-8">
@@ -149,7 +153,7 @@ export default function ServicesPage() {
                 Clinical Trial Management
               </h1>
 
-              <p className="text-sm xs:text-base sm:text-base md:text-lg text-white/80 mb-6 xs:mb-7 sm:mb-8 max-w-lg leading-relaxed">
+              <p className="text-sm xs:text-base sm:text-base md:text-lg text-white/90 sm:text-white/80 mb-6 xs:mb-7 sm:mb-8 max-w-lg leading-relaxed">
                 Delivering seamless, compliant, and high-quality clinical trial
                 solutions from feasibility to study close-out.
               </p>
@@ -218,12 +222,16 @@ export default function ServicesPage() {
       {/* ✅ STEPS SECTION WITH UNIFORM FONTS */}
       <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-r from-primary-900 to-primary-800">
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
-          <div ref={stepsRef} className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16">
+          <div
+            ref={stepsRef}
+            className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16"
+          >
             <h2 className="text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold tracking-wide sm:tracking-widest uppercase text-white mb-3 sm:mb-4">
               Our Operational Framework
             </h2>
             <p className="text-base xs:text-lg sm:text-lg md:text-xl text-primary-100 leading-relaxed max-w-3xl mx-auto">
-              A structured and efficient approach ensuring compliance, quality, and timely execution.
+              A structured and efficient approach ensuring compliance, quality,
+              and timely execution.
             </p>
           </div>
 

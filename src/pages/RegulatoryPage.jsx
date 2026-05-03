@@ -1,6 +1,7 @@
 /**
  * RegulatoryPage.jsx
  * FULL MOBILE BANNER FIXED VERSION - IMPROVED HEADER LAYOUT
+ * WITH EQUAL HEIGHT IMAGE & CONTENT COLUMNS
  * Copy-Paste Ready
  */
 
@@ -125,7 +126,7 @@ const SECTIONS = [
   },
 ];
 
-/* ── Alternating Sections ── */
+/* ── Alternating Sections with equal height columns ── */
 const AlternatingSection = ({
   icon: Icon,
   title,
@@ -138,19 +139,21 @@ const AlternatingSection = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-      {/* Image */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
+      {/* Image Column - Stretches to full height of parent */}
       <div className={isEven ? "" : "lg:order-2"}>
-        <img
-          src={image}
-          alt={imageAlt}
-          className="w-full rounded-2xl object-cover shadow-md"
-        />
+        <div className="h-full w-full">
+          <img
+            src={image}
+            alt={imageAlt}
+            className="w-full h-full object-cover rounded-2xl shadow-md"
+          />
+        </div>
       </div>
 
-      {/* Content */}
-      <div className={isEven ? "" : "lg:order-1"}>
-        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-5">
+      {/* Content Column - Automatically stretches to match image height */}
+      <div className={`${isEven ? "" : "lg:order-1"} h-full flex flex-col`}>
+        <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary-50 rounded-xl flex items-center justify-center mb-5 flex-shrink-0">
           <Icon className="text-primary-500 w-6 h-6" />
         </div>
 
@@ -280,14 +283,6 @@ export default function RegulatoryPage() {
                 Contact Our Expert
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-
-              {/* <Button
-                to="/services"
-                variant="outline"
-                className="group border-white text-white hover:bg-white hover:text-primary-700 transition-all duration-300 px-8 py-3 text-base font-semibold"
-              >
-                Explore Our Services
-              </Button> */}
             </div>
           </div>
         </div>

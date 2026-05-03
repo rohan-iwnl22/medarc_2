@@ -2,6 +2,8 @@
  * AboutPage.jsx
  * MedArc Clinical Research - About Us
  * Fixed navbar darkness issue
+ * Images now cover full width and are fully visible
+ * Reduced top spacing for better content visibility
  */
 
 import React from "react";
@@ -40,17 +42,17 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* ══ BANNER - NO DARK OVERLAY ═════════════════════════════════ */}
-      <section className="relative pt-20">
-        {/* Banner Image - removed dark overlay that was affecting navbar */}
-        <div className="relative w-full h-[60vh] min-h-[400px] max-h-[600px] overflow-hidden">
+      {/* ══ BANNER - REDUCED TOP SPACING ═════════════════════════════════ */}
+      <section className="relative pt-0">
+        {/* Banner Image Container */}
+        <div className="relative w-full overflow-hidden">
           <img
             src={bannerURL}
             alt="About MedArc Clinical Research"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-auto object-contain"
           />
 
-          {/* Banner Text Overlay - removed dark gradient, using clean text shadow only */}
+          {/* Banner Text Overlay */}
           <div className="absolute inset-0 flex items-center">
             <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
               <div ref={heroRef} className="reveal max-w-3xl">
@@ -111,8 +113,7 @@ export default function AboutPage() {
                 loading="lazy"
                 src={futureURL}
                 alt="Shaping Healthcare Future"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                style={{ aspectRatio: "4/3" }}
+                className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
@@ -131,8 +132,7 @@ export default function AboutPage() {
                 loading="lazy"
                 src={newOppURL}
                 alt="Discover New Opportunities"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                style={{ aspectRatio: "4/3" }}
+                className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
 
