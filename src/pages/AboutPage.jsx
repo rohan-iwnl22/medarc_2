@@ -4,7 +4,8 @@
  * Fixed navbar darkness issue
  * Banner now full width with object-contain to show all text
  * Images now cover full width and are fully visible
- * Reduced top spacing for better content visibility
+ * Reduced spacing between banner and introduction section
+ * Fixed: Responsive layout - image centered above text on mobile, side-by-side on desktop
  */
 
 import React from "react";
@@ -17,6 +18,8 @@ const bannerURL =
 const futureURL = "https://ik.imagekit.io/umm5llpkg/MedArc/img3.png";
 
 const newOppURL = "https://ik.imagekit.io/umm5llpkg/MedArc/img2.png";
+
+const sideImgUrl = "https://ik.imagekit.io/umm5llpkg/MedArc/About%20us.png";
 
 /* ── Why Choose MedArc ───────────────────────────── */
 const WHY_CHOOSE = [
@@ -47,47 +50,63 @@ export default function AboutPage() {
       {/* ══ BANNER - FULL WIDTH WITH OBJECT-CONTAIN ═════════════════════════════════ */}
 
       <section className="w-full bg-stone-100">
-        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[725px] flex items-center justify-center bg-stone-100 overflow-hidden">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[730px] flex items-center justify-center bg-stone-100 overflow-hidden">
           <img src={bannerURL} alt="Banner" className="w-full object-contain" />
         </div>
       </section>
 
-      {/* ══ INTRODUCTION SECTION ═══════════════════════════════════ */}
-      <section className="py-16 md:py-20 lg:py-24 bg-white">
+      {/* ══ INTRODUCTION SECTION - REDUCED TOP SPACING ═══════════════════════════════════ */}
+      <section className="py-8 md:py-9 lg:py-9 bg-white">
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-              MedArc Clinical Research is a premier global partner dedicated to
-              accelerating medicinal product development — from concept to
-              commercialization.
-            </p>
-            <br />
-            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-              We deliver comprehensive regulatory affairs solutions and expert
-              documentation, including full-spectrum global submission
-              management across the US, Europe, and international markets, with
-              deep specialization in CMC writing and medical documentation. Our
-              proactive strategy and technical excellence transform complex
-              regulatory challenges into high-quality, successful outcomes.
-            </p>
-            <br />
-            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-              As a trusted partner between sponsors, CROs, and investigators,
-              MedArc provides end-to-end clinical trial execution anchored in
-              operational excellence and unwavering ethical compliance. Backed
-              by a robust network of renowned institutions and experienced
-              Principal Investigators, our strategic site management and rapid
-              patient recruitment capabilities across India ensure timely
-              enrollment and reliable data integrity — supported by absolute
-              transparency and real-time access to critical study data.
-            </p>
-            <br />
-            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-              Our expertise spans pharmaceuticals, medical devices,
-              nutraceuticals, cosmetics, and Ayurvedic studies across all
-              therapeutic areas — making MedArc the partner of choice for
-              navigating the full clinical and regulatory journey.
-            </p>
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Column - Side Image (centered on mobile/tablet) */}
+            <div className="flex justify-center items-center w-full">
+              <img
+                src={sideImgUrl}
+                alt="About MedArc Clinical Research"
+                className="w-full max-w-[400px] lg:max-w-full h-auto object-contain rounded-2xl"
+              />
+            </div>
+
+            {/* Right Column - Introduction Text */}
+            <div className="w-full">
+              <div className="max-w-xl mx-auto lg:mx-0">
+                <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+                  MedArc Clinical Research is a premier global partner dedicated
+                  to accelerating medicinal product development — from concept
+                  to commercialization.
+                </p>
+                <br />
+                <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+                  We deliver comprehensive regulatory affairs solutions and
+                  expert documentation, including full-spectrum global
+                  submission management across the US, Europe, and international
+                  markets, with deep specialization in CMC writing and medical
+                  documentation. Our proactive strategy and technical excellence
+                  transform complex regulatory challenges into high-quality,
+                  successful outcomes.
+                </p>
+                <br />
+                <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+                  As a trusted partner between sponsors, CROs, and
+                  investigators, MedArc provides end-to-end clinical trial
+                  execution anchored in operational excellence and unwavering
+                  ethical compliance. Backed by a robust network of renowned
+                  institutions and experienced Principal Investigators, our
+                  strategic site management and rapid patient recruitment
+                  capabilities across India ensure timely enrollment and
+                  reliable data integrity — supported by absolute transparency
+                  and real-time access to critical study data.
+                </p>
+                <br />
+                <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+                  Our expertise spans pharmaceuticals, medical devices,
+                  nutraceuticals, cosmetics, and Ayurvedic studies across all
+                  therapeutic areas — making MedArc the partner of choice for
+                  navigating the full clinical and regulatory journey.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -97,9 +116,9 @@ export default function AboutPage() {
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div
             ref={futureRef}
-            className="reveal grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
+            className="reveal flex flex-col lg:grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
           >
-            <div>
+            <div className="order-2 lg:order-1">
               <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-stone-900 mb-4 md:mb-6 leading-tight">
                 Shaping the Future of Healthcare
               </h2>
@@ -113,12 +132,12 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl overflow-hidden shadow-xl">
+            <div className="rounded-2xl overflow-hidden shadow-xl order-1 lg:order-2 flex justify-center">
               <img
                 loading="lazy"
                 src={futureURL}
                 alt="Shaping Healthcare Future"
-                className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-[400px] lg:max-w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
@@ -130,18 +149,18 @@ export default function AboutPage() {
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div
             ref={discoverRef}
-            className="reveal grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
+            className="reveal flex flex-col lg:grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
           >
-            <div className="rounded-2xl overflow-hidden shadow-xl lg:order-1">
+            <div className="rounded-2xl overflow-hidden shadow-xl flex justify-center order-1 lg:order-1">
               <img
                 loading="lazy"
                 src={newOppURL}
                 alt="Discover New Opportunities"
-                className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-[400px] lg:max-w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
 
-            <div className="lg:order-2">
+            <div className="order-2 lg:order-2">
               <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-stone-900 mb-4 md:mb-6 leading-tight">
                 Discover New Opportunities
               </h2>
@@ -158,31 +177,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ══ TRANSPARENCY SECTION ════════════════════════ */}
-      {/* <section className="py-16 md:py-20 lg:py-24 bg-[#f7f6f4]">
-        <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
-          <div
-            ref={commitmentRef}
-            className="reveal max-w-4xl mx-auto text-center"
-          >
-            <p className="text-base xs:text-lg text-stone-600 leading-relaxed mb-4">
-              We emphasize transparency in all our operations, fostering trust
-              and long-term partnerships with our clients. Our streamlined
-              information management systems ensure timely reporting and provide
-              sponsors with reliable, real-time access to critical study data.
-            </p>
-            <p className="text-base xs:text-lg text-stone-600 leading-relaxed">
-              MedArc Clinical Research is committed to delivering reliable,
-              compliant, and efficient clinical trial execution. We specialize
-              in clinical research management and regulatory support for
-              pharmaceuticals across all therapeutic areas, as well as
-              nutraceuticals, cosmetics, Ayurvedic studies, PI-initiated
-              studies, observational studies, and medical devices.
-            </p>
-          </div>
-        </div>
-      </section> */}
 
       {/* ══ WHY CHOOSE MEDARC ═════════════════════ */}
       <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-navy-900 to-navy-800">
