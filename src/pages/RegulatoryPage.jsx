@@ -24,7 +24,7 @@ import useReveal from "../hooks/useReveal.js";
 
 /* ── Banner ── */
 // const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/banner.png";
-const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/bner.png";
+const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/regbaner.png";
 
 /* ── Data ── */
 const SECTIONS = [

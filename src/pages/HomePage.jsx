@@ -253,7 +253,7 @@ export default function HomePage() {
     <>
       {/* TOP BANNER - Full width with object-contain to show all text */}
       <section className="w-full bg-stone-100">
-        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-stone-100">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-stone-100 overflow-hidden">
           <img src={BannerURL} alt="Banner" className="w-full object-contain" />
         </div>
       </section>
@@ -315,11 +315,13 @@ export default function HomePage() {
 
             {/* RIGHT IMAGE CLEAN */}
             <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
-              <img
-                src={BannerURL2}
-                alt="Who We Are"
-                className="w-full h-full object-contain object-center"
-              />
+              <div className="h-full rounded-2xl overflow-hidden bg-white shadow-md">
+                <img
+                  src={BannerURL2}
+                  alt="Who We Are"
+                  className="w-full h-full object-contain object-center"
+                />
+              </div>
             </div>
           </div>
         </div>

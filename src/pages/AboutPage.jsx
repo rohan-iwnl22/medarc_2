@@ -57,18 +57,36 @@ export default function AboutPage() {
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div className="max-w-4xl mx-auto">
             <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-              MedArc Clinical Research maintains a strong network of experienced
-              Principal Investigators, reputed hospitals, and research
-              institutions, enabling efficient access to diverse patient
-              populations. This allows us to meet protocol-specific requirements
-              and support timely enrollment of eligible study participants.
+              MedArc Clinical Research is a premier global partner dedicated to
+              accelerating medicinal product development — from concept to
+              commercialization.
             </p>
-            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed mt-4">
-              In India, MedArc provides comprehensive clinical trial support,
-              including site management, project coordination, and strategic
-              patient recruitment. Our approach combines innovative thinking,
-              proactive problem-solving, and a skilled team to ensure smooth
-              study execution.
+            <br />
+            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+              We deliver comprehensive regulatory affairs solutions and expert
+              documentation, including full-spectrum global submission
+              management across the US, Europe, and international markets, with
+              deep specialization in CMC writing and medical documentation. Our
+              proactive strategy and technical excellence transform complex
+              regulatory challenges into high-quality, successful outcomes.
+            </p>
+            <br />
+            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+              As a trusted partner between sponsors, CROs, and investigators,
+              MedArc provides end-to-end clinical trial execution anchored in
+              operational excellence and unwavering ethical compliance. Backed
+              by a robust network of renowned institutions and experienced
+              Principal Investigators, our strategic site management and rapid
+              patient recruitment capabilities across India ensure timely
+              enrollment and reliable data integrity — supported by absolute
+              transparency and real-time access to critical study data.
+            </p>
+            <br />
+            <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
+              Our expertise spans pharmaceuticals, medical devices,
+              nutraceuticals, cosmetics, and Ayurvedic studies across all
+              therapeutic areas — making MedArc the partner of choice for
+              navigating the full clinical and regulatory journey.
             </p>
           </div>
         </div>
@@ -142,7 +160,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══ TRANSPARENCY SECTION ════════════════════════ */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[#f7f6f4]">
+      {/* <section className="py-16 md:py-20 lg:py-24 bg-[#f7f6f4]">
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div
             ref={commitmentRef}
@@ -164,7 +182,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══ WHY CHOOSE MEDARC ═════════════════════ */}
       <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-navy-900 to-navy-800">
