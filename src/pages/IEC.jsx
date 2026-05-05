@@ -1,5 +1,11 @@
 import React from "react";
-import { ShieldCheck, Users, FileText, ClipboardList } from "lucide-react";
+import {
+  ShieldCheck,
+  Users,
+  FileText,
+  ClipboardList,
+  CheckCircle,
+} from "lucide-react";
 
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
@@ -11,43 +17,41 @@ const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/ec.png";
 const SECTIONS = [
   {
     icon: Users,
-    title: "Guidance & Support for Hospitals",
-    desc: "Structured support for hospitals and institutions to establish compliant IECs aligned with CDSCO, DHR, and ICH-GCP guidelines.",
+    title: "Strategic Committee Establishment",
+    // desc: "Structured support for hospitals and institutions to establish compliant IECs aligned with CDSCO, DHR, and ICH-GCP guidelines.",
     items: [
-      "Step-by-step guidance for IEC establishment as per CDSCO & DHR requirements",
-      "Support in identifying and nominating IEC members (Chairperson, Member Secretary, layperson, etc.)",
-      "Coordination with hospital administration for infrastructure and documentation readiness",
-      "Guidance on roles, responsibilities, and functioning of IEC members",
+      "Expert guidance on structuring the IEC to meet national regulatory composition requirements.",
+      "Support in the professional identification and nomination of committee members (Chairperson, Member Secretary, layperson, etc.).",
+      "Defining clear roles, responsibilities, and operational mandates for committee members.",
     ],
   },
   {
     icon: ClipboardList,
-    title: "Account Setup & SOP Development",
-    desc: "Complete assistance in regulatory account setup and preparation of essential IEC documentation and SOPs.",
+    title: "Pre-submission regulatory Support",
+    // desc: "Complete assistance in regulatory account setup and preparation of essential IEC documentation and SOPs.",
     items: [
-      "Account creation on SUGAM portal (CDSCO) and DHR",
-      "Initial documentation support and regulatory checklist preparation",
-      "Preparation of IEC SOPs as per CDSCO & DHR guidelines",
-      "Development of regulatory documentation checklist",
+      "End-to-end assistance with account provisioning on the SUGAM portal (CDSCO) and DHR platform.",
+      "Development of robust, site-specific Standard Operating Procedures (SOPs) compliant with national guidelines.",
+      "Preparation of all essential regulatory documentation and comprehensive document checklists.",
     ],
   },
   {
     icon: FileText,
-    title: "Regulatory Submission & Query Management",
-    desc: "End-to-end support for regulatory submissions and communication with authorities.",
+    title: "Submission Strategy & Regulatory Liaison",
+    // desc: "End-to-end support for regulatory submissions and communication with authorities.",
     items: [
-      "Submission on SUGAM portal and DHR platform",
-      "Drafting and responding to regulatory queries",
-      "Follow-up with regulatory authorities",
+      "Full ownership of the submission lifecycle on national portals.",
+      "Technical drafting and timely submission of responses to regulatory queries.",
+      "Proactive follow-up with regulatory authorities to ensure application transparency and status tracking.",
     ],
   },
   {
     icon: ShieldCheck,
-    title: "Approval & Post-Approval Support",
-    desc: "Continuous support until approval and beyond for smooth IEC functioning.",
+    title: "Sustained Operational Support",
+    // desc: "Continuous support until approval and beyond for smooth IEC functioning.",
     items: [
-      "Coordination until final approval from CDSCO & DHR",
-      "Guidance for IEC meeting setup and operations",
+      "Continuous advisory support throughout the approval process and beyond.",
+      "Best-practice guidance for IEC meeting orchestration, agenda management, and the maintenance of accurate, audit-ready meeting records.",
     ],
   },
 ];
@@ -73,7 +77,7 @@ const IEC = () => {
       </section>
 
       {/* ✅ INTRO WITH UNIFORM FONTS */}
-      <section className="py-12 xs:py-14 sm:py-16 md:py-20">
+      {/* <section className="py-12 xs:py-14 sm:py-16 md:py-20">
         <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
           <div className="bg-primary-50 border border-primary-100 rounded-xl sm:rounded-2xl p-6 xs:p-7 sm:p-8">
             <p className="text-sm xs:text-base sm:text-base md:text-lg text-stone-700 leading-relaxed">
@@ -84,7 +88,7 @@ const IEC = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ✅ MAIN SECTIONS WITH UNIFORM FONTS */}
       <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24 bg-[#f7f6f4]">
@@ -94,11 +98,12 @@ const IEC = () => {
             className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16"
           >
             <h2 className="text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold tracking-wide sm:tracking-widest uppercase text-primary-500 mb-2 sm:mb-3">
-              Complete IEC Setup & Regulatory Support
+              Complete Ethics committee Set Up Services
             </h2>
             <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">
-              End-to-end services covering IEC establishment, documentation,
-              regulatory submissions, and post-approval support.
+              We provide comprehensive support for hospitals and research
+              institutions to establish and maintain an Ethics Committee (IEC)
+              that is fully compliant with CDSCO and DHR regulatory mandates.
             </p>
           </div>
 
@@ -123,9 +128,17 @@ const IEC = () => {
                   {desc}
                 </p>
 
-                <ul className="space-y-1 xs:space-y-1.5">
-                  {items.map((item) => (
-                    <CheckItem key={item}>{item}</CheckItem>
+                <ul className="space-y-2">
+                  {items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <CheckCircle
+                        size={18}
+                        className="text-primary-500 flex-shrink-0 mt-1"
+                      />
+                      <span className="text-stone-600 text-sm xs:text-base leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
                   ))}
                 </ul>
               </div>
