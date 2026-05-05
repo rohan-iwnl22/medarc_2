@@ -1,20 +1,21 @@
 /**
  * HomePage.jsx
  * FULL UPDATED VERSION
- * Only changes made:
- * - Removed rounded gradient/background behind BannerURL2
- * - BannerURL2 now clean with no overlay/background
+ * Changes made:
+ * - Top banner (BannerURL) now uses full width with object-contain to show all text
+ * - Banner fills entire screen width horizontally
+ * - BannerURL2 remains unchanged
  * - Full code included
  */
 
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Link } from "lucide-react";
 import useReveal from "../hooks/useReveal.js";
+import { useNavigate } from "react-router-dom";
 
-const BannerURL = "https://i.postimg.cc/MHTjvf5d/home-banner.png";
+const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/bnaer.png";
 
-const BannerURL2 =
-  "https://ik.imagekit.io/umm5llpkg/MedArc/updatd%20banner.png";
+const BannerURL2 = "https://ik.imagekit.io/umm5llpkg/MedArc/home%20page.png";
 
 /* ---------------- DATA ---------------- */
 
@@ -246,15 +247,15 @@ export default function HomePage() {
   const pillarsRef = useReveal();
   const secondBannerRef = useRef(null);
 
+  const navigate = useNavigate();
+
   return (
     <>
-      {/* TOP BANNER */}
-      <section className="w-full overflow-hidden">
-        <img
-          src={BannerURL}
-          alt="Banner"
-          className="w-full h-[180px] sm:h-[260px] md:h-auto object-cover"
-        />
+      {/* TOP BANNER - Full width with object-contain to show all text */}
+      <section className="w-full bg-stone-100">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-stone-100">
+          <img src={BannerURL} alt="Banner" className="w-full object-contain" />
+        </div>
       </section>
 
       {/* WHO WE ARE SPLIT SECTION */}
@@ -268,7 +269,7 @@ export default function HomePage() {
             <div className="px-4 sm:px-8 md:px-12 lg:px-14 py-10">
               <div ref={heroRef} className="max-w-xl">
                 <h2 className="text-4xl sm:text-5xl font-light text-primary-500 mb-6">
-                  Who We Are
+                  WHO WE ARE
                 </h2>
 
                 <p>
@@ -277,14 +278,14 @@ export default function HomePage() {
                   ensuring seamless, high-quality, and rigorously compliant
                   clinical trial management.
                 </p>
-                <br/>
+                <br />
                 <p>
                   In parallel, the organization offers comprehensive,
                   strategically guided, and rigorously compliant global
                   regulatory submission services to health authorities
                   worldwide.
                 </p>
-                <br/>
+                <br />
                 <p>
                   Our services are designed to support organizations across Life
                   Sciences, Pharmaceuticals, Biologics, Medical Devices,
@@ -292,7 +293,7 @@ export default function HomePage() {
                   solutions aligned with their clinical and regulatory
                   requirements.
                 </p>
-                <br/>
+                <br />
                 <p>
                   Every initiative we undertake is governed by strong ethical
                   principles and strict compliance with global regulatory
@@ -301,7 +302,7 @@ export default function HomePage() {
                   robust data integrity, accuracy, and reliability throughout
                   the lifecycle.
                 </p>
-                <br/>
+                <br />
                 <p>
                   By choosing MedArc Clinical Research, you align with a
                   results-driven team passionately committed to precision,
@@ -363,14 +364,28 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {PILLARS2.map((item, i) => (
-              <div key={i} className="bg-[#f7f6f4] rounded-2xl p-6">
+              <div
+                key={i}
+                className="bg-[#f7f6f4] rounded-2xl p-6 hover:shadow-md transition-all duration-300"
+              >
                 <img
                   src={item.iconLink}
                   alt={item.title}
                   className="w-14 h-14 rounded-xl mb-4 object-cover"
                 />
+
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-stone-600 leading-relaxed">{item.desc}</p>
+
+                <p className="text-stone-600 leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+
+                <button
+                  onClick={() => navigate("/regulatory")}
+                  className="text-primary-500 font-semibold text-sm hover:underline transition"
+                >
+                  Read More →
+                </button>
               </div>
             ))}
           </div>

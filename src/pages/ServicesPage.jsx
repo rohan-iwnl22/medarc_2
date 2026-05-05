@@ -3,10 +3,19 @@
  * Revamped: Uniform fonts matching HomePage
  * Creative Hero + Original Services & Steps retained
  * Fixed: Banner image responsive on mobile screens
+ * Fixed: Images scale horizontally to show all text without distortion
+ * Fixed: CheckCircle items now render properly
  */
 
 import React from "react";
-import { Search, Scale, Rocket, ClipboardList, FileCheck2 } from "lucide-react";
+import {
+  Search,
+  Scale,
+  Rocket,
+  ClipboardList,
+  FileCheck2,
+  CheckCircle,
+} from "lucide-react";
 
 import { Button, SectionHeader, CheckItem } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
@@ -20,74 +29,55 @@ const SERVICES = [
   {
     id: "feasibility",
     icon: Search,
-    title: "Site Selection & Feasibility",
-    desc: "We support sponsors and CROs in identifying qualified investigators and suitable clinical trial sites through comprehensive feasibility assessments.",
+    title: "Strategic Site Selection & Feasibility",
+    desc: "We identify the optimal trial landscape, balancing protocol complexity with site performance to maximize recruitment velocity and data quality..",
     items: [
-      "Site capability and infrastructure evaluation",
-      "Patient population assessment",
-      "Investigator experience review",
-      "Feasibility reporting and recommendations",
+      "Data-Driven Selection: Rigorous evaluation of site infrastructure, patient access, and investigator performance metrics.",
+      "Feasibility Analytics: Evidence-based site mapping to accurately predict recruitment timelines and avoid enrolment bottlenecks.",
+      "Investigator Alignment: Identifying and onboarding Principal Investigators with proven track records in your specific therapeutic indication.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/site_selection.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Strategic%20Site%20Selection%20&%20Feasibility.png",
     reverse: false,
-  },
-  {
-    id: "regulatory",
-    icon: Scale,
-    title: "Regulatory & Ethics Committee Support",
-    desc: "Our regulatory experts assist in navigating complex clinical research frameworks and ensure compliance with global standards.",
-    items: [
-      "Ethics committee submissions",
-      "Regulatory documentation support",
-      "ICH-GCP compliance",
-      "National & international regulatory adherence",
-    ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/regulatory.png",
-    reverse: true,
   },
   {
     id: "startup",
     icon: Rocket,
-    title: "Study Initiations",
-    desc: "We accelerate trial initiation with efficient start-up processes ensuring timely study activation.",
+    title: "Accelerated Site Start-Up",
+    desc: "We streamline the start-up phase to ensure your trial is activation-ready, saving you time and reducing project complexity.",
     items: [
-      "Site initiation support",
-      "Investigator coordination",
-      "Essential document preparation",
-      "Study activation & approvals",
+      "Regulatory Submission Strategy: We prepare and manage all site-specific documentation and regulatory binders, ensuring accurate and timely submissions to the Ethics Committee (EC) or Institutional Review Board (IRB).",
+      "Expedited Activation: We oversee the end-to-end process of essential document collection, site contract negotiations, and final study approvals to minimize delays and get your site active quickly.",
+      "Site Initiation (SIV): We ensure smooth site readiness by coordinating with investigators and site staff, verifying that all study materials are in place and the team is fully trained to begin the trial.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_start_up.png",
-    reverse: false,
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Accelerated%20Site%20Start-Up.png",
+    reverse: true,
   },
   {
     id: "management",
     icon: ClipboardList,
-    title: "Study Executions",
-    desc: "Comprehensive coordination between investigators, sponsor/CROs, ethics committee, Patients and health authority to ensure smooth trial execution.",
+    title: "Comprehensive Study Execution & Oversight",
+    desc: "We serve as the operational nexus, maintaining protocol fidelity, rigorous patient safety standards, and high-quality data collection throughout the clinical phase.",
     items: [
-      "Study Conduct Support",
-      "Patient recruitment coordination",
-      "Protocol adherence",
-      "Documentation and monitoring support",
-      "Patients visit follow-up and tracking",
-      "Sample storage, IP management as per protocol requirements",
+      "Strategic Protocol Alignment: We prioritize deep scientific understanding. By internalizing the study rationale and mastering the primary and secondary endpoints, our team ensures that all site-level activities are precisely aligned with the trial's success criteria. We don't just capture data; we understand what that data means for the trial's objectives.",
+      "Rigorous Pharmacovigilance (PV) & Safety Reporting: We provide comprehensive Adverse Event (AE) and Serious Adverse Event (SAE) management in strict adherence to Regulatory guidelines. Our team facilitates the accurate assessment, documentation, and expedited reporting of all safety events to the Sponsor, Ethics Committees, and relevant regulatory authorities within mandatory submission timelines, ensuring full compliance and uncompromising patient safety.",
+      "Patient-Centric Retention: Implementation of engagement strategies to maintain high recruitment levels and reduce attrition, including logistical support and patient visit tracking.",
+      "Data & Logistics Integrity: Rigorous oversight of IP management, cold-chain sample storage, and real-time monitoring of source data, electronic data to minimize deviations and ensure audit-ready data integrity.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/clinical_trial_management.png",
-    reverse: true,
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Comprehensive%20Study%20Execution%20&%20Oversight.png",
+    reverse: false,
   },
   {
     id: "closeout",
     icon: FileCheck2,
-    title: "Study Close-Out & Documentation",
-    desc: "We ensure proper trial closure with complete documentation, compliance, and archiving as per regulatory requirements.",
+    title: "Audit-Ready Close-Out & Archiving",
+    desc: "We ensure a seamless trial close-out process, delivering a clean, fully reconciled, and inspection-ready database.",
     items: [
-      "Regulatory compliance verification",
-      "Data reconciliation",
-      "Essential document completion",
-      "Archiving as per GCP guidelines",
+      "Data Reconciliation: Validating all trial records to ensure data is complete, accurate, and ready for final analysis.",
+      "Regulatory Compliance: Systematic verification of the Trial Master File (TMF) and essential documents.",
+      "GCP-Compliant Archiving: Secure, long-term document retention strategies tailored to satisfy all regulatory audit requirements.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/study_close_out_documentation.png",
-    reverse: false,
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Close-Out%20&%20Archiving.png",
+    reverse: true,
   },
 ];
 
@@ -164,7 +154,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ✅ SERVICES SECTION WITH UNIFORM FONTS */}
+      {/* ✅ SERVICES SECTION - IMAGES SCALE HORIZONTALLY TO SHOW ALL TEXT */}
       {SERVICES.map((svc, idx) => {
         const Icon = svc.icon;
         const serviceRef = useReveal();
@@ -179,7 +169,7 @@ export default function ServicesPage() {
             <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
               <div
                 ref={serviceRef}
-                className="reveal grid lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12 items-center"
+                className="reveal grid lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12 items-start lg:items-center"
               >
                 <div className={svc.reverse ? "lg:order-2" : ""}>
                   <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl bg-primary-50 flex items-center justify-center mb-4 xs:mb-5 sm:mb-6">
@@ -195,23 +185,29 @@ export default function ServicesPage() {
                   </p>
 
                   <ul className="space-y-2 xs:space-y-2.5 mb-6 xs:mb-7">
-                    {svc.items.map((item) => (
-                      <CheckItem key={item}>{item}</CheckItem>
+                    {svc.items.map((item, itemIdx) => (
+                      <li key={itemIdx} className="flex items-start gap-3">
+                        <CheckCircle
+                          size={18}
+                          className="text-primary-500 flex-shrink-0 mt-0.5"
+                        />
+                        <span className="text-stone-600 text-sm xs:text-base leading-relaxed">
+                          {item}
+                        </span>
+                      </li>
                     ))}
                   </ul>
                 </div>
 
-                <div
-                  className={`rounded-xl sm:rounded-2xl overflow-hidden shadow-md ${
-                    svc.reverse ? "lg:order-1" : ""
-                  }`}
-                  style={{ aspectRatio: "16/11" }}
-                >
-                  <img
-                    src={svc.link}
-                    alt={svc.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
+                {/* Image Container - Full width, taller aspect ratio to show all horizontal content */}
+                <div className={`${svc.reverse ? "lg:order-1" : ""}`}>
+                  <div className="w-full h-[750px] rounded-xl overflow-hidden">
+                    <img
+                      src={svc.link}
+                      alt={svc.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

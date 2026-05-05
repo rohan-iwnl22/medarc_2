@@ -2,6 +2,7 @@
  * AboutPage.jsx
  * MedArc Clinical Research - About Us
  * Fixed navbar darkness issue
+ * Banner now full width with object-contain to show all text
  * Images now cover full width and are fully visible
  * Reduced top spacing for better content visibility
  */
@@ -11,7 +12,8 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Button, SectionHeader } from "../components/ui.jsx";
 import useReveal from "../hooks/useReveal.js";
 
-const bannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/img1.png";
+const bannerURL =
+  "https://ik.imagekit.io/umm5llpkg/MedArc/banner%20about%20us.png";
 const futureURL = "https://ik.imagekit.io/umm5llpkg/MedArc/img3.png";
 
 const newOppURL = "https://ik.imagekit.io/umm5llpkg/MedArc/img2.png";
@@ -42,26 +44,11 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* ══ BANNER - REDUCED TOP SPACING ═════════════════════════════════ */}
-      <section className="relative pt-0">
-        {/* Banner Image Container */}
-        <div className="relative w-full overflow-hidden">
-          <img
-            src={bannerURL}
-            alt="About MedArc Clinical Research"
-            className="w-full h-auto object-contain"
-          />
+      {/* ══ BANNER - FULL WIDTH WITH OBJECT-CONTAIN ═════════════════════════════════ */}
 
-          {/* Banner Text Overlay */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="container-site px-4 xs:px-5 sm:px-6 md:px-8">
-              <div ref={heroRef} className="reveal max-w-3xl">
-                {/* <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-primary-500 mb-4 leading-tight drop-shadow-lg">
-                  About US
-                </h1> */}
-              </div>
-            </div>
-          </div>
+      <section className="w-full bg-stone-100">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[725px] flex items-center justify-center bg-stone-100 overflow-hidden">
+          <img src={bannerURL} alt="Banner" className="w-full object-contain" />
         </div>
       </section>
 
