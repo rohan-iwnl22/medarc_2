@@ -117,6 +117,22 @@ export default function ServicesPage() {
   const heroRef = useReveal();
   const stepsRef = useReveal();
 
+  // Helper function to format bullet points with bold headers
+  const formatBulletPoint = (text) => {
+    const colonIndex = text.indexOf(":");
+    if (colonIndex !== -1) {
+      const header = text.substring(0, colonIndex + 1);
+      const rest = text.substring(colonIndex + 1);
+      return (
+        <>
+          <span className="font-bold text-stone-800">{header}</span>
+          {rest}
+        </>
+      );
+    }
+    return text;
+  };
+
   return (
     <>
       {/* 🔥 CREATIVE HERO WITH RESPONSIVE BANNER - FIXED FOR MOBILE */}
@@ -194,7 +210,7 @@ export default function ServicesPage() {
                           className="text-primary-500 flex-shrink-0 mt-0.5"
                         />
                         <span className="text-stone-600 text-sm xs:text-base leading-relaxed">
-                          {item}
+                          {formatBulletPoint(item)}
                         </span>
                       </li>
                     ))}
