@@ -30,7 +30,27 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-[9999] bg-white shadow-sm">
       <div className="container-site">
         <div className="flex items-center justify-between h-[72px]">
-          {/* DESKTOP NAV */}
+          {/* LOGO - NOW ON LEFT */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-12 h-12 overflow-hidden rounded-xl border">
+              {!logoError ? (
+                <img
+                  src={LogoURL}
+                  alt="logo"
+                  className="w-full h-full object-cover"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <span>MA</span>
+              )}
+            </div>
+            <div className="text-left text-xl">
+              <div className="text-[#61ab9b]">MedArc</div>
+              <div className="text-xs opacity-60">Clinical Research</div>
+            </div>
+          </Link>
+
+          {/* DESKTOP NAV - NOW ON RIGHT */}
           <nav className="hidden md:flex items-center gap-4">
             {NAV_LINKS.map((link) =>
               link.children ? (
@@ -40,7 +60,7 @@ export default function Navbar() {
                     <ChevronDown size={14} />
                   </button>
 
-                  <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-xl w-64">
+                  <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-xl w-64 right-0">
                     {link.children.map((child) => (
                       <NavLink
                         key={child.to}
@@ -56,7 +76,7 @@ export default function Navbar() {
                 <NavLink
                   key={link.to}
                   to={link.to}
-                  className="px-4 py-2 text-sm"
+                  className="px-4 py-2 text-sm font-medium hover:text-[#61ab9b] transition"
                 >
                   {link.label}
                 </NavLink>
@@ -64,34 +84,13 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* MOBILE BUTTON */}
+          {/* MOBILE BUTTON - REMAINS ON RIGHT */}
           <button
             className="md:hidden px-3 py-2"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? "Close" : "Menu"}
           </button>
-
-          {/* LOGO */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="text-right text-xl">
-              <div className="text-[#61ab9b]">MedArc</div>
-              <div className="text-xs opacity-60">Clinical Research</div>
-            </div>
-
-            <div className="w-12 h-12 overflow-hidden rounded-xl border">
-              {!logoError ? (
-                <img
-                  src={LogoURL}
-                  alt="logo"
-                  className="w-full h-full object-cover"
-                  onError={() => setLogoError(true)}
-                />
-              ) : (
-                <span>MA</span>
-              )}
-            </div>
-          </Link>
         </div>
       </div>
 

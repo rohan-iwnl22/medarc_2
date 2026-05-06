@@ -36,7 +36,8 @@ const SERVICES = [
       "Feasibility Analytics: Evidence-based site mapping to accurately predict recruitment timelines and avoid enrolment bottlenecks.",
       "Investigator Alignment: Identifying and onboarding Principal Investigators with proven track records in your specific therapeutic indication.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Strategic%20Site%20Selection%20&%20Feasibility.png",
+    // link: "https://ik.imagekit.io/umm5llpkg/MedArc/Strategic%20Site%20Selection%20&%20Feasibility.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/img11.png",
     reverse: false,
   },
   {
@@ -49,7 +50,8 @@ const SERVICES = [
       "Expedited Activation: We oversee the end-to-end process of essential document collection, site contract negotiations, and final study approvals to minimize delays and get your site active quickly.",
       "Site Initiation (SIV): We ensure smooth site readiness by coordinating with investigators and site staff, verifying that all study materials are in place and the team is fully trained to begin the trial.",
     ],
-    link: "https://ik.imagekit.io/umm5llpkg/MedArc/Accelerated%20Site%20Start-Up.png",
+    // link: "https://ik.imagekit.io/umm5llpkg/MedArc/Accelerated%20Site%20Start-Up.png",
+    link: "https://ik.imagekit.io/umm5llpkg/MedArc/img12.png",
     reverse: true,
   },
   {
@@ -201,7 +203,7 @@ export default function ServicesPage() {
 
                 {/* Image Container - Full width, taller aspect ratio to show all horizontal content */}
                 <div className={`${svc.reverse ? "lg:order-1" : ""}`}>
-                  <div className="w-full h-[750px] rounded-xl overflow-hidden">
+                  <div className="w-full h-[450px] rounded-xl overflow-hidden">
                     <img
                       src={svc.link}
                       alt={svc.title}

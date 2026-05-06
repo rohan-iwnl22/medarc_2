@@ -4,7 +4,8 @@
  * Changes made:
  * - Top banner (BannerURL) now uses full width with object-contain to show all text
  * - Banner fills entire screen width horizontally
- * - BannerURL2 remains unchanged
+ * - WHO WE ARE section: image replaced with video (Banner2VIDURL), video plays automatically with controls
+ * - WHO WE ARE section: video on left, text on right
  * - Full code included
  */
 
@@ -15,7 +16,8 @@ import { useNavigate } from "react-router-dom";
 
 const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/bnaer.png";
 
-const BannerURL2 = "https://ik.imagekit.io/umm5llpkg/MedArc/home%20page.png";
+// const BannerURL2 = "https://ik.imagekit.io/umm5llpkg/MedArc/home%20page.png";
+const Banner2VIDURL = "https://ik.imagekit.io/umm5llpkg/MedArc/whoweareVid.mp4";
 
 /* ---------------- DATA ---------------- */
 
@@ -28,12 +30,12 @@ const PILLARS1 = [
   {
     iconLink: "https://ik.imagekit.io/umm5llpkg/MedArc/our%20vision.jpeg",
     title: "Our Vision",
-    desc: "To become a comprehensive and trusted partner in clinical trials and global regulatory solutions.",
+    desc: "To become a comprehensive and trusted partner delivering excellence in clinical trial management services and specialized global regulatory solutions for successful approvals worldwide.",
   },
   {
     iconLink: "https://ik.imagekit.io/umm5llpkg/MedArc/our%20experience.jpeg",
     title: "Our Experience",
-    desc: "Backed by deep expertise in Clinical Operations and Regulatory Affairs with a committed professional team.",
+    desc: "With leadership bringing substantial expertise in Clinical Operations and Global Regulatory Affairs, and a team of committed professionals, we consistently deliver high-quality, compliant, and reliable clinical and regulatory services.",
   },
 ];
 
@@ -41,12 +43,14 @@ const PILLARS2 = [
   {
     iconLink: "https://ik.imagekit.io/umm5llpkg/MedArc/clincal%20research.jpeg",
     title: "Clinical Trial Management",
-    desc: "Accelerating clinical development with precision and operational excellence.",
+    desc: "We prioritize deep scientific understanding by fully internalizing study rationale and key endpoints, ensuring every site-level activity is precisely aligned with trial success—while driving clinical research forward with agility and precision, unlocking the true potential of your assets and elevating enterprise value, where every data point brings new hope to patients awaiting a cure.",
+    naviTo: "/services",
   },
   {
     iconLink: "https://ik.imagekit.io/umm5llpkg/MedArc/regualtory.jpeg",
     title: "Global Regulatory Submissions",
-    desc: "End-to-end regulatory writing and submission support for faster approvals.",
+    desc: "We provide comprehensive regulatory writing and pharmaceutical regulatory support, enabling the preparation of high-quality documents for global submissions. With a deep understanding of evolving guidelines, we assist sponsors in managing complex data and developing clear, concise, and compliant documentation. Our emphasis on accuracy and consistency helps reduce regulatory risks and ensures smooth and timely approvals.",
+    naviTo: "/regulatory",
   },
 ];
 
@@ -258,17 +262,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHO WE ARE SPLIT SECTION */}
+      {/* WHO WE ARE SPLIT SECTION - VIDEO LEFT, TEXT RIGHT */}
       <section
         ref={secondBannerRef}
         className="bg-[#f7f6f4] py-10 sm:py-14 md:py-20"
       >
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] items-center gap-10">
-            {/* LEFT CONTENT */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] items-center gap-10">
+            {/* LEFT VIDEO */}
+            <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
+              <div className="h-full rounded-2xl overflow-hidden bg-black shadow-md">
+                <video
+                  src={Banner2VIDURL}
+                  className="w-full h-full object-contain object-center"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
+            </div>
+
+            {/* RIGHT CONTENT */}
             <div className="px-4 sm:px-8 md:px-12 lg:px-14 py-10">
               <div ref={heroRef} className="max-w-xl">
-                <h2 className="text-4xl sm:text-5xl font-light text-primary-500 mb-6">
+                <h2 className="text-4xl sm:text-5xl font-bold text-primary-500 mb-6">
                   WHO WE ARE
                 </h2>
 
@@ -310,17 +328,6 @@ export default function HomePage() {
                   meaningful and lasting progress in the ever-evolving landscape
                   of clinical research and global regulatory submissions.
                 </p>
-              </div>
-            </div>
-
-            {/* RIGHT IMAGE CLEAN */}
-            <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
-              <div className="h-full rounded-2xl overflow-hidden bg-white shadow-md">
-                <img
-                  src={BannerURL2}
-                  alt="Who We Are"
-                  className="w-full h-full object-contain object-center"
-                />
               </div>
             </div>
           </div>
@@ -383,7 +390,7 @@ export default function HomePage() {
                 </p>
 
                 <button
-                  onClick={() => navigate("/regulatory")}
+                  onClick={() => navigate(item.naviTo)}
                   className="text-primary-500 font-semibold text-sm hover:underline transition"
                 >
                   Read More →
