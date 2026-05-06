@@ -63,11 +63,11 @@ const IEC = () => {
   return (
     <>
       {/* 🔥 HERO WITH UNIFORM FONTS */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <img
           src={BannerURL}
           alt="IEC Banner"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-[850px] object-fit"
         />
 
         <div className="absolute inset-0">
@@ -97,7 +97,7 @@ const IEC = () => {
             ref={sectionRef}
             className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16"
           >
-            <h2 className="text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold tracking-wide sm:tracking-widest uppercase text-primary-500 mb-2 sm:mb-3">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-primary-500 mb-4">
               Complete Ethics committee Set Up Services
             </h2>
             <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">

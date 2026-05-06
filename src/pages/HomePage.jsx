@@ -16,8 +16,8 @@ import { useNavigate } from "react-router-dom";
 
 const BannerURL = "https://ik.imagekit.io/umm5llpkg/MedArc/bnaer.png";
 
-// const BannerURL2 = "https://ik.imagekit.io/umm5llpkg/MedArc/home%20page.png";
-const Banner2VIDURL = "https://ik.imagekit.io/umm5llpkg/MedArc/whoweareVid.mp4";
+const BannerURL2 = "https://ik.imagekit.io/umm5llpkg/MedArc/home%20page.png";
+// const Banner2VIDURL = "https://ik.imagekit.io/umm5llpkg/MedArc/whoweareVid.mp4";
 
 /* ---------------- DATA ---------------- */
 
@@ -272,13 +272,9 @@ export default function HomePage() {
             {/* LEFT VIDEO */}
             <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
               <div className="h-full rounded-2xl overflow-hidden bg-black shadow-md">
-                <video
-                  src={Banner2VIDURL}
+                <img
+                  src={BannerURL2}
                   className="w-full h-full object-contain object-center"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                 />
               </div>
             </div>
