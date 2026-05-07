@@ -25,7 +25,7 @@ const EMAILJS_CONFIG = {
   templateId: "template_dccawew",
   publicKey: "EsP9nJzWmSPXyAtVc",
   // Add your recipient email here
-  recipientEmail: "prakashrohan2004@gmail.com", // or latika.medarc@gmail.com
+  recipientEmail: "medarcresearch@gmail.com", // or latika.medarc@gmail.com
 };
 
 /* ── Contact info items ───────────────────────────── */
@@ -36,7 +36,7 @@ const INFO = [
     text: "Plot no:25, Wardhaman Nagar, Ring Road \n Kaulkhed Akola 444004",
   },
   { icon: Phone, label: "Phone", text: "+91 9359283227" },
-  { icon: Mail, label: "Email", text: "latika.medarc@gmail.com" },
+  { icon: Mail, label: "Email", text: "medarcresearch@gmail.com" },
   { icon: Clock, label: "Hours", text: "Mon–Fri: 8 AM – 6 PM ET" },
 ];
 
