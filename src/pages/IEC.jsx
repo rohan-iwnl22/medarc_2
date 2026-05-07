@@ -63,11 +63,11 @@ const IEC = () => {
   return (
     <>
       {/* 🔥 HERO WITH UNIFORM FONTS */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden">
         <img
           src={BannerURL}
           alt="IEC Banner"
-          className="absolute inset-0 w-full h-[850px] object-fit"
+          className="absolute inset-0 w-full h-[750px] object-cover"
         />
 
         <div className="absolute inset-0">
