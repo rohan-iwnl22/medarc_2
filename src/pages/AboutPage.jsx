@@ -72,9 +72,9 @@ export default function AboutPage() {
             <div className="w-full">
               <div className="max-w-xl mx-auto lg:mx-0">
                 <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
-                  MedArc Clinical Research is a premier global partner dedicated
-                  to accelerating medicinal product development — from concept
-                  to commercialization.
+                  MedArc Clinical Research is a premier partner dedicated to
+                  accelerating medicinal product development — from concept to
+                  commercialization.
                 </p>
                 <br />
                 <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed">
