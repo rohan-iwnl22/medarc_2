@@ -1,12 +1,32 @@
 /**
  * ContactPage.jsx
  * Contact form + sidebar info + map placeholder.
+ * Configured with EmailJS for email delivery
  */
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import { Button, TagLabel } from "../components/ui.jsx";
 import LocMap from "../components/LocMap.jsx";
+import emailjs from "@emailjs/browser";
+
+/* ── EmailJS Configuration ───────────────────────── */
+// Replace these with your actual EmailJS credentials
+const EMAILJS_CONFIG = {
+  serviceId: "service_ts29d3k",
+  templateId: "template_dccawew",
+  publicKey: "EsP9nJzWmSPXyAtVc",
+  // Add your recipient email here
+  recipientEmail: "prakashrohan2004@gmail.com", // or latika.medarc@gmail.com
+};
 
 /* ── Contact info items ───────────────────────────── */
 const INFO = [
@@ -41,20 +61,81 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate async submit
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+
+    // Prepare template parameters - MAKE SURE to include 'to_email' or 'reply_to'
+    const templateParams = {
+      // Common EmailJS field names for recipient
+      to_email: EMAILJS_CONFIG.recipientEmail, // This is CRITICAL
+      to_name: "MedArc Team",
+      reply_to: form.email, // So you can reply to the sender
+
+      // Form data
+      from_name: form.name,
+      from_email: form.email,
+      company: form.company || "Not provided",
+      phone: form.phone || "Not provided",
+      interest: form.interest || "Not specified",
+      message: form.message,
+
+      // Alternative field names that EmailJS might expect
+      user_email: form.email,
+      user_name: form.name,
+    };
+
+    console.log("Sending with params:", templateParams);
+
+    try {
+      // Send email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey,
+      );
+
+      console.log("Email sent successfully:", response);
+
+      // Reset form and show success
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        interest: "",
+        message: "",
+      });
       setSubmitted(true);
-    }, 1200);
+      setLoading(false);
+    } catch (err) {
+      console.error("EmailJS error details:", err);
+
+      // Provide more specific error message
+      let errorMessage = "Failed to send message. ";
+      if (err.text === "The recipients address is empty") {
+        errorMessage +=
+          "Please check your EmailJS template configuration to ensure a recipient email is set.";
+      } else if (err.status === 412) {
+        errorMessage += "Please check your EmailJS template parameters.";
+      } else {
+        errorMessage += "Please try again or contact us directly.";
+      }
+
+      setError(errorMessage);
+      setLoading(false);
+    }
   };
 
   return (
@@ -95,15 +176,7 @@ export default function ContactPage() {
                 </div>
               ))}
 
-              {/* Map placeholder */}
-              {/* <div className="rounded-2xl overflow-hidden bg-stone-100 h-44 flex items-center justify-center border border-stone-200">
-                <div className="text-center">
-                  <MapPin l size={28} className="text-primary-400 mx-auto mb-1" />
-                  <p className="text-xs text-stone-400">Cambridge, MA 02142</p>
-                </div>
-              </div> */}
-
-              <div className=" flex items-center justify-center">
+              <div className="flex items-center justify-center">
                 <LocMap theme="light" />
               </div>
             </aside>
@@ -134,6 +207,17 @@ export default function ContactPage() {
                   <h2 className="font-display text-xl font-bold text-stone-900">
                     Request a Consultation
                   </h2>
+
+                  {/* Error message */}
+                  {error && (
+                    <div className="flex gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <AlertCircle
+                        size={16}
+                        className="text-red-500 shrink-0 mt-0.5"
+                      />
+                      <p className="text-sm text-red-700">{error}</p>
+                    </div>
+                  )}
 
                   {/* Name + Company */}
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -207,7 +291,7 @@ export default function ContactPage() {
                         type="tel"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+91 12345 67890"
                         className="w-full px-3 py-2.5 text-sm border border-stone-200 rounded-lg focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 placeholder-stone-300 transition"
                       />
                     </div>
