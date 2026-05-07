@@ -6,6 +6,7 @@
  * - Banner fills entire screen width horizontally
  * - WHO WE ARE section: image and text side by side with reduced whitespace
  * - Removed excessive padding between image and text
+ * - Fixed: Read More buttons now scroll to top of the respective page
  * - Full code included
  */
 
@@ -253,6 +254,12 @@ export default function HomePage() {
 
   const navigate = useNavigate();
 
+  // Function to handle navigation with scroll to top
+  const handleNavigate = (path) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   return (
     <>
       {/* TOP BANNER - Full width with object-contain to show all text */}
@@ -387,7 +394,7 @@ export default function HomePage() {
                 </p>
 
                 <button
-                  onClick={() => navigate(item.naviTo)}
+                  onClick={() => handleNavigate(item.naviTo)}
                   className="text-primary-500 font-semibold text-sm hover:underline transition"
                 >
                   Read More →
