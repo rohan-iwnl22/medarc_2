@@ -4,8 +4,8 @@
  * Changes made:
  * - Top banner (BannerURL) now uses full width with object-contain to show all text
  * - Banner fills entire screen width horizontally
- * - WHO WE ARE section: image replaced with video (Banner2VIDURL), video plays automatically with controls
- * - WHO WE ARE section: video on left, text on right
+ * - WHO WE ARE section: image and text side by side with reduced whitespace
+ * - Removed excessive padding between image and text
  * - Full code included
  */
 
@@ -262,45 +262,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHO WE ARE SPLIT SECTION - VIDEO LEFT, TEXT RIGHT */}
+      {/* WHO WE ARE SPLIT SECTION - IMAGE LEFT, TEXT RIGHT WITH REDUCED GAP */}
       <section
         ref={secondBannerRef}
         className="bg-[#f7f6f4] py-10 sm:py-14 md:py-20"
       >
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] items-center gap-10">
-            {/* LEFT VIDEO */}
-            <div className="relative flex items-center justify-center w-full h-[430px] sm:h-[520px] md:h-[620px] lg:h-[700px]">
-              <div className="h-full rounded-2xl overflow-hidden bg-black shadow-md">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] items-start gap-4 lg:gap-6">
+            {/* LEFT IMAGE */}
+            <div className="relative flex items-center justify-center w-full">
+              <div className="w-full rounded-2xl overflow-hidden bg-black shadow-md">
                 <img
                   src={BannerURL2}
-                  className="w-full h-full object-contain object-center"
+                  alt="Who We Are"
+                  className="w-full h-auto object-contain object-center"
                 />
               </div>
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div className="px-4 sm:px-8 md:px-12 lg:px-14 py-10">
-              <div ref={heroRef} className="max-w-xl">
+            {/* RIGHT CONTENT - REDUCED PADDING */}
+            <div className="px-0 sm:px-4 lg:px-6 py-4">
+              <div ref={heroRef}>
                 <h2 className="text-4xl sm:text-5xl font-bold text-primary-500 mb-6">
                   WHO WE ARE
                 </h2>
 
-                <p>
+                <p className="text-xl">
                   MedArc Clinical Research Organization provides comprehensive
                   Site Management services for clinical studies across India,
                   ensuring seamless, high-quality, and rigorously compliant
                   clinical trial management.
                 </p>
                 <br />
-                <p>
+                <p className="text-xl">
                   In parallel, the organization offers comprehensive,
                   strategically guided, and rigorously compliant global
                   regulatory submission services to health authorities
                   worldwide.
                 </p>
                 <br />
-                <p>
+                <p className="text-xl">
                   Our services are designed to support organizations across Life
                   Sciences, Pharmaceuticals, Biologics, Medical Devices,
                   Ayurvedic and Consumer Products Sectors, delivering tailored
@@ -308,7 +309,7 @@ export default function HomePage() {
                   requirements.
                 </p>
                 <br />
-                <p>
+                <p className="text-xl">
                   Every initiative we undertake is governed by strong ethical
                   principles and strict compliance with global regulatory
                   requirements, including ICH Guidelines, regional regulatory
@@ -317,7 +318,7 @@ export default function HomePage() {
                   the lifecycle.
                 </p>
                 <br />
-                <p>
+                <p className="text-xl">
                   By choosing MedArc Clinical Research, you align with a
                   results-driven team passionately committed to precision,
                   professionalism, and transformative excellence - empowering

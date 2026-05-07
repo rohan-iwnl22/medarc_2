@@ -97,8 +97,8 @@ const IEC = () => {
             ref={sectionRef}
             className="reveal text-center mb-10 xs:mb-12 sm:mb-14 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-primary-500 mb-4">
-              Complete Ethics committee Set Up Services
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold  text-primary-500 mb-4">
+              Complete Ethics Committee Set Up Services
             </h2>
             <p className="text-base xs:text-lg sm:text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">
               We provide comprehensive support for hospitals and research
