@@ -25,7 +25,7 @@ const EMAILJS_CONFIG = {
   templateId: "template_dccawew",
   publicKey: "EsP9nJzWmSPXyAtVc",
   // Add your recipient email here
-  recipientEmail: "medarcresearch@gmail.com", // or latika.medarc@gmail.com
+  recipientEmail: "medarcresearch@gmail.com", 
 };
 
 /* ── Contact info items ───────────────────────────── */
