@@ -17,9 +17,9 @@ const COMPANY_LINKS = [
     label: "ICH GCP",
     to: "https://database.ich.org/sites/default/files/ICH_E6%28R3%29_Step4_FinalGuideline_2025_0106.pdf",
   },
-  { label: "Trails Gov", to: "https://clinicaltrials.gov/" },
+  { label: "Clinical Trail Gov", to: "https://clinicaltrials.gov/" },
   {
-    label: "Trails India",
+    label: "Clinical Trail India",
     to: "https://ctri.nic.in/Clinicaltrials/login.php",
   },
   { label: "ICMR", to: "https://www.icmr.gov.in/" },

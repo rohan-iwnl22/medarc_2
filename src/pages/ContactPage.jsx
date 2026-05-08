@@ -21,11 +21,11 @@ import emailjs from "@emailjs/browser";
 /* ── EmailJS Configuration ───────────────────────── */
 // Replace these with your actual EmailJS credentials
 const EMAILJS_CONFIG = {
-  serviceId: "service_ts29d3k",
-  templateId: "template_dccawew",
-  publicKey: "EsP9nJzWmSPXyAtVc",
+  serviceId: "service_ltx5wuu",
+  templateId: "template_dohmxal",
+  publicKey: "PDSd8e7vWbaZIWl80",
   // Add your recipient email here
-  recipientEmail: "medarcresearch@gmail.com", 
+  recipientEmail: "medarcresearch@gmail.com",
 };
 
 /* ── Contact info items ───────────────────────────── */
