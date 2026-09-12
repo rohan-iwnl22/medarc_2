@@ -36,9 +36,15 @@ const INFO = [
     text: "Plot no:25, Wardhaman Nagar, Ring Road \n Kaulkhed Akola 444004",
   },
   { icon: Phone, label: "Phone", text: "+91 9359283227" },
-  { icon: Mail, label: "Email", text: "contactus@medarcresearch.com" },
-  { icon: Mail, label: "Email", text: "latika.patil@medarcresearch.com" },
-  { icon: Mail, label: "Email", text: "satish.patil@medarcresearch.com" },
+  {
+    icon: Mail,
+    label: "Email",
+    emails: [
+      "contactus@medarcresearch.com",
+      "latika.patil@medarcresearch.com",
+      "satish.patil@medarcresearch.com",
+    ],
+  },
   { icon: Clock, label: "Hours", text: "Mon–Fri: 8 AM – 6 PM ET" },
 ];
 
@@ -162,7 +168,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* ── Contact info sidebar ── */}
             <aside className="space-y-6">
-              {INFO.map(({ icon: Icon, label, text }) => (
+              {INFO.map(({ icon: Icon, label, text, emails }) => (
                 <div key={label} className="flex gap-3">
                   <div className="w-9 h-9 rounded-lg bg-primary-50 flex items-center justify-center shrink-0 mt-0.5">
                     <Icon size={16} className="text-primary-500" />
@@ -171,9 +177,19 @@ export default function ContactPage() {
                     <p className="text-xs font-mono font-semibold uppercase tracking-wider text-stone-400 mb-0.5">
                       {label}
                     </p>
-                    <p className="text-sm text-stone-700 whitespace-pre-line leading-relaxed">
-                      {text}
-                    </p>
+                    {emails ? (
+                      <ul className="space-y-1">
+                        {emails.map((email) => (
+                          <li key={email} className="text-sm text-stone-700 leading-relaxed">
+                            {email}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm text-stone-700 whitespace-pre-line leading-relaxed">
+                        {text}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}

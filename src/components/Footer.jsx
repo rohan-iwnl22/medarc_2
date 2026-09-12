@@ -163,7 +163,7 @@ export default function Footer() {
           </div>
 
           {/* Map */}
-          <div className="lg:col-span-1 w-full">
+          <div className="lg:col-span-1 w-full lg:pl-7">
             <LocMap theme="dark" />
           </div>
         </div>
