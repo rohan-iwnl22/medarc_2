@@ -40,7 +40,9 @@ const CONTACT_INFO = [
     text: "Plot no:25, wardhaman Nagar, Ring Road Kaulkhed Akola 444004",
   },
   { icon: Phone, text: "+91-9359283227" },
-  { icon: Mail, text: "medarcresearch@gmail.com" },
+  { icon: Mail, text: "contactus@medarcresearch.com" },
+  { icon: Mail, text: "latika.patil@medarcresearch.com" },
+  { icon: Mail, text: "satish.patil@medarcresearch.com" },
 ];
 
 export default function Footer() {

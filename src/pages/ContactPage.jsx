@@ -25,7 +25,7 @@ const EMAILJS_CONFIG = {
   templateId: "template_dohmxal",
   publicKey: "PDSd8e7vWbaZIWl80",
   // Add your recipient email here
-  recipientEmail: "medarcresearch@gmail.com",
+  recipientEmail: "contactus@medarcresearch.com",
 };
 
 /* ── Contact info items ───────────────────────────── */
@@ -36,7 +36,9 @@ const INFO = [
     text: "Plot no:25, Wardhaman Nagar, Ring Road \n Kaulkhed Akola 444004",
   },
   { icon: Phone, label: "Phone", text: "+91 9359283227" },
-  { icon: Mail, label: "Email", text: "medarcresearch@gmail.com" },
+  { icon: Mail, label: "Email", text: "contactus@medarcresearch.com" },
+  { icon: Mail, label: "Email", text: "latika.patil@medarcresearch.com" },
+  { icon: Mail, label: "Email", text: "satish.patil@medarcresearch.com" },
   { icon: Clock, label: "Hours", text: "Mon–Fri: 8 AM – 6 PM ET" },
 ];
 
